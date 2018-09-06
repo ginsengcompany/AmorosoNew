@@ -6,13 +6,11 @@
 
     <ContentPage.ToolbarItems>
 
-
         <ToolbarItem
             Name="terminiduso"
             Text="Impostazioni privacy"
             Order="Secondary"
-            Priority="0"
-            />
+            Priority="0"/>
         <ToolbarItem 
             Name="logout" 
             Text="Logout"

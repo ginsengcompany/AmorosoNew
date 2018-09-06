@@ -1,10 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using Foundation;
 using UIKit;
+using Xamarin.Forms;
+using Concorsi.iOS;
+using Xamarin.Forms.Platform.iOS;
+using ImageCircle.Forms.Plugin.iOS;
+using static Concorsi.iOS.AppDelegate;
+using System.Threading.Tasks;
+using System.ComponentModel;
+using Xfx;
 
+[assembly: ExportRenderer(typeof(Button), typeof(MyButtonRenderer))]
 namespace Concorsi.iOS
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
@@ -20,12 +28,62 @@ namespace Concorsi.iOS
         //
         // You have 17 seconds to return from this method, or iOS will terminate your application.
         //
+        public override void OnResignActivation(UIApplication application)
+        {
+            var view = new UIView(Window.Frame)
+            {
+                Tag = new nint(101),
+                BackgroundColor = UIColor.White
+            };
+            Window.AddSubview(view);
+            Window.BringSubviewToFront(view);
+        }
+
+        // Remove window hiding app content when app is resumed
+        public override void OnActivated(UIApplication application)
+        {
+            var view = Window.ViewWithTag(new nint(101));
+            view?.RemoveFromSuperview();
+        }
+
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
 
+            XfxControls.Init();
+
+            LoadApplication(new App());
+            ImageCircleRenderer.Init();
+            // Serve per non far andare l'applicazione in onSleep automaticamente
+            UIApplication.SharedApplication.IdleTimerDisabled = true;
             return base.FinishedLaunching(app, options);
+        }
+
+        public class MyButtonRenderer : ButtonRenderer
+        {
+            protected override void OnElementChanged(ElementChangedEventArgs<Button> e)
+            {
+                base.OnElementChanged(e);
+                if (Control != null)
+                {
+                    Control.TitleLabel.LineBreakMode = UIKit.UILineBreakMode.WordWrap;
+                    Control.TitleLabel.LineBreakMode = UILineBreakMode.CharacterWrap;
+                    Control.TitleLabel.TextAlignment = UITextAlignment.Center;
+                    Control.TitleLabel.Lines = 0;
+                }
+            }
+            protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+            {
+                base.OnElementPropertyChanged(sender, e);
+                if (Control != null)
+                    Control.SetTitleColor(Color.White.ToUIColor(), UIControlState.Normal);
+                Control.SetTitleColor(Color.White.ToUIColor(), UIControlState.Application);
+                Control.SetTitleColor(Color.White.ToUIColor(), UIControlState.Disabled);
+                Control.SetTitleColor(Color.White.ToUIColor(), UIControlState.Focused);
+                Control.SetTitleColor(Color.White.ToUIColor(), UIControlState.Highlighted);
+                Control.SetTitleColor(Color.White.ToUIColor(), UIControlState.Selected);
+                Control.SetTitleColor(Color.White.ToUIColor(), UIControlState.Reserved);
+            }
         }
     }
 }
