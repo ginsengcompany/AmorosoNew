@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Concorsi.View;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Concorsi
@@ -11,7 +12,7 @@ namespace Concorsi
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()

@@ -156,6 +156,9 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>11.0.2</Version>
     </PackageReference>
+    <PackageReference Include="Xam.Plugin.DeviceInfo">
+      <Version>4.0.0.13</Version>
+    </PackageReference>
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle">
       <Version>3.0.0.5</Version>
     </PackageReference>
@@ -185,5 +188,8 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\videolezioni.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\LogoAmorosoSenzaSfondo.png" />
   </ItemGroup>
 </Project>

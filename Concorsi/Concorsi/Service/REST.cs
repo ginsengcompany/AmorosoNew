@@ -208,6 +208,39 @@ namespace Concorsi.Service
             return default(T);
         }
 
+        public async Task<T> PostFormURLEncoded(string url, List<KeyValuePair<string, string>> valuePairs)
+        {
+            T Item;
+            HttpClient client = new HttpClient();
+            string ContentType = "application/json"; // or application/xml
+            var uri = new Uri(string.Format(url, String.Empty));
+            HttpContent httpContent = new StringContent("");
+            httpContent.Headers.ContentType = new MediaTypeHeaderValue(ContentType);
+            var content = new FormUrlEncodedContent(valuePairs);
+            try
+            {
+                client.Timeout = System.Threading.Timeout.InfiniteTimeSpan;
+                var result = await client.PostAsync(url, content);
+                var response = await result.Content.ReadAsStringAsync();
+                responseMessage = result.StatusCode;
+                if (responseMessage == HttpStatusCode.ServiceUnavailable)
+                    warning = result.ReasonPhrase;
+                else
+                    warning = response;
+                var isValid = JToken.Parse(response);
+                Item = JsonConvert.DeserializeObject<T>(response);
+                return Item;
+            }
+            catch (Exception)
+            {
+
+            }
+            return default(T);
+        }
+
+
+                
+
         public async Task<T> PostJson(string url, List<Header> header)
         {
             T Item;
