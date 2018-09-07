@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Concorsi.Model
 {
-    public class DatiUtente
+    public class DatiUtenteLogin
     {
         public string username { get; set; }
         public string nome { get; set; }
@@ -13,9 +13,9 @@ namespace Concorsi.Model
         public string attivo { get; set; }
     }
 
-    public class ResponseLogin
+    public class Response
     {
         public bool status { get; set; }
-        public DatiUtente message { get; set; }
+        public Object message { get; set; }
     }
 }

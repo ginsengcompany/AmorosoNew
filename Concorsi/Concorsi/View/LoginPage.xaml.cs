@@ -7,7 +7,6 @@ namespace Concorsi.View
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class LoginPage : ContentPage
 	{
-        private bool flaglogin = false;
         private LoginModelView z;
         public LoginPage()
         {
