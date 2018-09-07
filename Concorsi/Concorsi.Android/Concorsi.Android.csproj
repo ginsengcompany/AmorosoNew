@@ -55,6 +55,9 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>11.0.2</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfChart">
+      <Version>16.2.0.50</Version>
+    </PackageReference>
     <PackageReference Include="Xam.Plugin.DeviceInfo">
       <Version>4.0.0.13</Version>
     </PackageReference>

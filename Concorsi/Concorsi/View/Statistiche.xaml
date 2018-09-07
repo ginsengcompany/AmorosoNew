@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Concorsi.View.Statistiche">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <chart:ChartColorCollection x:Key="Colors">
+                <Color>Green</Color>
+                <Color>Red</Color>
+                <Color>#1C7ECD</Color>
+            </chart:ChartColorCollection>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical" BackgroundColor="#072034">
+                <Picker SelectedIndex="0" BackgroundColor="#37637F" TextColor="White" Title="Seleziona la materia" ItemsSource="{Binding _listamaterie}" SelectedIndexChanged="Picker_SelectedIndexChanged" />
+                <Grid BackgroundColor="Transparent" IsVisible="{Binding _visible}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Domande totali:" TextColor="White" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding _statistiche.numerodomande}" TextColor="White" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium"/>
+                    <Label Grid.Row="1" Grid.Column="0" Text="Risposte esatte:" TextColor="White" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding _statistiche.risposteesatte}" TextColor="White" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium"/>
+                    <Label Grid.Row="2" Grid.Column="0" Text="Risposte errate:" TextColor="White" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium"/>
+                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding _statistiche.rispostesbagliate}" TextColor="White" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium"/>
+                    <Label Grid.Row="3" Grid.Column="0" Text="Domande senza risposta:" TextColor="White" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium"/>
+                    <Label Grid.Row="3" Grid.Column="1" Text="{Binding _statistiche.domandesenzarisposta}" TextColor="White" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium"/>
+                    <Label Grid.Row="4" Grid.Column="0" Text="Tempo totale (minuti)" TextColor="White" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium"/>
+                    <Label Grid.Row="4" Grid.Column="1" Text="{Binding _statistiche.tempototale}" TextColor="White" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Medium"/>
+                </Grid>
+                <chart:SfChart VerticalOptions="FillAndExpand" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand">
+
+                    <chart:SfChart.Legend>
+                        <chart:ChartLegend IsIconVisible="True" IconHeight="20" IconWidth="20" OverflowMode="Wrap">
+                            <chart:ChartLegend.LabelStyle>
+                                <chart:ChartLegendLabelStyle TextColor="White" Margin="5" Font="Bold,18"/>
+                            </chart:ChartLegend.LabelStyle>
+                        </chart:ChartLegend>
+                    </chart:SfChart.Legend>
+
+                    <chart:PieSeries SelectedDataPointColor="#49C3CD" EnableAnimation="True" AnimationDuration="2" EnableDataPointSelection="True" CircularCoefficient="0.5" ItemsSource="{Binding Data}" XBindingPath="Name" YBindingPath="Value"
+                                 EnableSmartLabels="True" ConnectorLineType="Bezier" DataMarkerPosition="OutsideExtended" LegendIcon="Diamond" ExplodeOnTouch="True">
+                        <chart:PieSeries.ColorModel>
+                            <chart:ChartColorModel Palette="Custom" CustomBrushes="{StaticResource Colors}"/>
+                        </chart:PieSeries.ColorModel>
+                        <chart:PieSeries.DataMarker>
+                            <chart:ChartDataMarker />
+                        </chart:PieSeries.DataMarker>
+                    </chart:PieSeries>
+
+                </chart:SfChart>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
