@@ -206,15 +206,13 @@ namespace Concorsi.ModelView
                     IsBusy = true; //L'activity indicator è in stato IsRunning
 
                     var values = new List<KeyValuePair<string, string>>();
-                    values.Add(new KeyValuePair<string, string>("username", "MANUTENZIONE0000"));
-                    values.Add(new KeyValuePair<string, string>("password", "ciao"));
+                    values.Add(new KeyValuePair<string, string>("username", "MANUTENZIONE7800"));
+                    values.Add(new KeyValuePair<string, string>("password", "cia11o"));
                     values.Add(new KeyValuePair<string, string>("devInfo", "C0CACB29-8B2B-40BB-88EB-10BC9BB82821"));
                     values.Add(new KeyValuePair<string, string>("devDescrizione", "Phone iPhone iOS"));
 
                     REST <Utente, ResponseLogin> rest = new REST<Utente, ResponseLogin>(); //Crea l'oggetto per eseguire la chiamata REST per la login
-                    ResponseLogin
-                            response = await rest.PostFormURLEncoded(URL.login,
-                                values); //Chiamata POST per la richiesta di autenticazione delle informazioni inserite dall'utente (codice fiscale e password)
+                    ResponseLogin response = await rest.PostFormURLEncoded(URL.login,values); //Chiamata POST per la richiesta di autenticazione delle informazioni inserite dall'utente (codice fiscale e password)
                     if (rest.responseMessage != HttpStatusCode.OK)
                     {
                         await App.Current.MainPage.DisplayAlert("Attenzione " + (int)rest.responseMessage, rest.warning, "OK");
@@ -240,14 +238,12 @@ namespace Concorsi.ModelView
                 {
                     ShowPasswordImage = "eye.png";
                     ShowPassword = false;
-                }
-
+                }   
                 else
                 {
                     ShowPassword = true;
                     ShowPasswordImage = "EyePasswordWhite.png";
                 }
-
             });
         }
 

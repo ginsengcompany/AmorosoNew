@@ -27,7 +27,8 @@ namespace Concorsi.Model
           "https://amorosoconcorsi.ak12srl.it/services/servizioapp/domandeNew";
 
         public const string login =
-            "https://amorosoconcorsi.ak12srl.it/services/servizioapp/login";
+            //"https://amorosoconcorsi.ak12srl.it/services/servizioapp/login";
+            "http://192.168.125.97/servizioapp/login";
 
         public const string logout =
             "https://amorosoconcorsi.ak12srl.it/services/servizioapp/logout";
