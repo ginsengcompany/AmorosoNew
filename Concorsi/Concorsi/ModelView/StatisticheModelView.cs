@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Concorsi.ModelView
 {
-    class StatisticheModelView
+    public class StatisticheModelView
     {
     }
 }
