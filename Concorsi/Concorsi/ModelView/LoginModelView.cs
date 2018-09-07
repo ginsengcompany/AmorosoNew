@@ -12,7 +12,6 @@ using Concorsi.View;
 
 #endregion
 
-
 /*
  * Questa classe è il ModelView delle pagine Login e LoginIOS. La classe gestisce tutte le informazioni inserite e prelevate da remoto riguardanti l'utenza del cliente.
  * La classe concede l'accesso all'utente solo se le informazioni da lui inserite sono corrette. 
@@ -25,21 +24,19 @@ namespace Concorsi.ModelView
 
         #region DichiarazioneVariabili
 
-        private Utente utente; //Oggetto che astrae l'utenza del cliente e che nel caso in cui la login vada a buon fine conterrà le informazioni relative all'utente
         private bool flagLogin = false;//Booleano che andrà a true quando l'utente avrà effettuato la login
         public event PropertyChangedEventHandler PropertyChanged; //evento che implementa l'interfaccia INotifyPropertyChanged
         private string nameErrorTextPassword;//Variabile utilizzata nel caso in cui ci sia un errore nel campo password o sia vuoto
-        private Utenza utenteP;
+        private Utente utente;
         private bool isbusy; //variabile booleana utilizzata per gestire la proprietà IsRunning dell'activity indicator
         private string nameErrorText;//Variabile utilizzata nel caso in cui ci sia un errore nel campo nome o sia vuoto
         private bool showPassword = true;//Booleano utilizzato per mostrare o meno la password
         private bool isvisible; //variabile booleana utilizzata per gestire la proprietà IsVisible dell'activity indicator
         private bool loginisvisible;//Booleano utilizzato per mostrare o meno alcuni elementi nello xaml
-        private bool signupisvisible;//Booleano utilizzato per rendere visibile o meno la label per la registrazione
         private bool isenabled;//booleano utilizzato per abilitare o meno un elemento nello xaml
         private LoginPage loginPage;//Oggetto del tipo della pagina Login
         private List<Header> listaHeader = new List<Header>();//Lista di header
-        private ImageSource showPasswordImage = "EyePasswordWhite.png";//Sorgente da cui andremo a prendere l'immagine dell'occhio per mostrare la password
+        private ImageSource showPasswordImage = "eye.png";//Sorgente da cui andremo a prendere l'immagine dell'occhio per mostrare la password
 
         #endregion
 
@@ -131,22 +128,22 @@ namespace Concorsi.ModelView
         //Proprietà che definisce l' Username di chi effettua l'accesso
         public string Username
         {
-            get { return utente.getUserName; }
+            get { return GestioneUtente.Instance.getUserName; }
             set
             {
                 OnPropertyChanged();
-                utente.getUserName = value;
+                GestioneUtente.Instance.getUserName = value;
             }
         }
 
         //Proprietà che definisce la password di chi effettua il login
         public string passWord
         {
-            get { return utente.getPassword; }
+            get { return GestioneUtente.Instance.getPassword; }
             set
             {
                 OnPropertyChanged();
-                utente.getPassword = value;
+                GestioneUtente.Instance.getPassword = value;
             }
         }
 
@@ -178,10 +175,7 @@ namespace Concorsi.ModelView
         // Costruttore del ModelView che inizializza le variabili fondamentali per il corretto funzionamento della pagina di login (sia Android che IOS).
         public LoginModelView(LoginPage loginPage)
         {
-            utente = new Utente(); //Crea un oggetto Utente vuoto
-            utenteP = new Utenza();
-           
-            Username = utente.getUserName = utente.recuperaUserName();
+            utente = new Utente();
             LoginIsVisible = true;
             this.loginPage = loginPage;
             IsEnabled = true;
@@ -207,18 +201,15 @@ namespace Concorsi.ModelView
                     LoginIsVisible = false;
                     IsVisible = true; //L'activity indicator è visibile
                     IsBusy = true; //L'activity indicator è in stato IsRunning
-                    utenteP.username = Username;
-                    utenteP.password = passWord;
-                    utenteP.devDescrizione = utente.getDevDescrizione;
-                    utenteP.devInfo = utente.getDevInfo;
-                  await  utenteP.Login();
-                    /* utente.cancellaEdAggiornaUsername(utente.getUserName);
-                     App.Current.MainPage = new MainPage();*/
+                    utente.username = Username;
+                    utente.password = passWord;
+                    utente.devDescrizione = GestioneUtente.Instance.getDevDescrizione;
+                    utente.devInfo = GestioneUtente.Instance.getDevInfo;
+                    await  utente.Login();
                     IsBusy = false; //L'activity indicator non è in stato IsRunning
-                        IsVisible = false; //L'activity indicator non è visibile
-                        LoginIsVisible = true;
-                        IsEnabled = true;
-                    
+                    IsVisible = false; //L'activity indicator non è visibile
+                    LoginIsVisible = true;
+                    IsEnabled = true;
                 }
                 else
                     IsEnabled = true;
@@ -235,7 +226,7 @@ namespace Concorsi.ModelView
                 else
                 {
                     ShowPassword = true;
-                    ShowPasswordImage = "EyePasswordWhite.png";
+                    ShowPasswordImage = "eye_hide.png";
                 }
             });
         }
