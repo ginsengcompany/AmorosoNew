@@ -28,11 +28,11 @@ namespace Concorsi.View
             if (picker.SelectedIndex > 0)
             {
                 string materia = picker.SelectedItem as string;
-                modelView.getStatistiche(materia);
+              //  modelView.getStatistiche(materia);
             }
             else if (picker.SelectedIndex == 0)
             {
-                modelView.getStatistiche("");
+               // modelView.getStatistiche("");
             }
         }
     }

@@ -29,6 +29,7 @@ namespace Concorsi.ModelView
         private bool flagLogin = false;//Booleano che andrà a true quando l'utente avrà effettuato la login
         public event PropertyChangedEventHandler PropertyChanged; //evento che implementa l'interfaccia INotifyPropertyChanged
         private string nameErrorTextPassword;//Variabile utilizzata nel caso in cui ci sia un errore nel campo password o sia vuoto
+        private Utenza utenteP;
         private bool isbusy; //variabile booleana utilizzata per gestire la proprietà IsRunning dell'activity indicator
         private string nameErrorText;//Variabile utilizzata nel caso in cui ci sia un errore nel campo nome o sia vuoto
         private bool showPassword = true;//Booleano utilizzato per mostrare o meno la password
@@ -178,6 +179,8 @@ namespace Concorsi.ModelView
         public LoginModelView(LoginPage loginPage)
         {
             utente = new Utente(); //Crea un oggetto Utente vuoto
+            utenteP = new Utenza();
+           
             Username = utente.getUserName = utente.recuperaUserName();
             LoginIsVisible = true;
             this.loginPage = loginPage;
@@ -193,39 +196,29 @@ namespace Concorsi.ModelView
                     NameErrorText = "Attenzione Username non inserito correttamente";
                     IsBusy = false;
                 }
-                else if (string.IsNullOrEmpty(passWord)) //Controlla che il campo password non sia nullo o vuoto
+                 if (string.IsNullOrEmpty(passWord)) //Controlla che il campo password non sia nullo o vuoto
                 {
                     NameErrorTextPassword = "Attenzione password non inserita correttamente";
                     IsBusy = false;
                 }
-                else if (!string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(passWord)) 
+                 if (!string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(passWord)) 
                 //se i campi codice fiscale e password non sono vuoti o null
                 {
                     LoginIsVisible = false;
                     IsVisible = true; //L'activity indicator è visibile
                     IsBusy = true; //L'activity indicator è in stato IsRunning
-
-                    var values = new List<KeyValuePair<string, string>>();
-                    values.Add(new KeyValuePair<string, string>("username", "MANUTENZIONE7800"));
-                    values.Add(new KeyValuePair<string, string>("password", "cia11o"));
-                    values.Add(new KeyValuePair<string, string>("devInfo", "C0CACB29-8B2B-40BB-88EB-10BC9BB82821"));
-                    values.Add(new KeyValuePair<string, string>("devDescrizione", "Phone iPhone iOS"));
-
-                    REST <Utente, ResponseLogin> rest = new REST<Utente, ResponseLogin>(); //Crea l'oggetto per eseguire la chiamata REST per la login
-                    ResponseLogin response = await rest.PostFormURLEncoded(URL.login,values); //Chiamata POST per la richiesta di autenticazione delle informazioni inserite dall'utente (codice fiscale e password)
-                    if (rest.responseMessage != HttpStatusCode.OK)
-                    {
-                        await App.Current.MainPage.DisplayAlert("Attenzione " + (int)rest.responseMessage, rest.warning, "OK");
-                    }
-                    else if (rest.warning != null) //Le informazioni dell'utenza sono corrette
-                    {
-                        utente.cancellaEdAggiornaUsername(utente.getUserName);
-                        App.Current.MainPage = new MainPage();
-                        IsBusy = false; //L'activity indicator non è in stato IsRunning
+                    utenteP.username = Username;
+                    utenteP.password = passWord;
+                    utenteP.devDescrizione = utente.getDevDescrizione;
+                    utenteP.devInfo = utente.getDevInfo;
+                  await  utenteP.Login();
+                    /* utente.cancellaEdAggiornaUsername(utente.getUserName);
+                     App.Current.MainPage = new MainPage();*/
+                    IsBusy = false; //L'activity indicator non è in stato IsRunning
                         IsVisible = false; //L'activity indicator non è visibile
                         LoginIsVisible = true;
                         IsEnabled = true;
-                    }
+                    
                 }
                 else
                     IsEnabled = true;
