@@ -11,6 +11,8 @@ namespace Concorsi.ModelView
     {
         public ICommand effettuaLogout { protected set; get; }
         public ICommand visualizzaInfo { protected set; get; }
+        public ICommand VaiPaginaCronologiaStatistiche { protected set; get; }
+
         private MainPage mainPage;
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -33,6 +35,10 @@ namespace Concorsi.ModelView
             visualizzaInfo = new Command(async () =>
             {
                 await App.Current.MainPage.Navigation.PushAsync(new InfoPage());
+            });
+            VaiPaginaCronologiaStatistiche = new Command(async () =>
+            {
+                await App.Current.MainPage.Navigation.PushAsync(new CronologiaPage());
             });
         }
     }

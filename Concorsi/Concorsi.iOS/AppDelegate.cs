@@ -11,6 +11,8 @@ using static Concorsi.iOS.AppDelegate;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using Xfx;
+using Syncfusion.SfCalendar.XForms.iOS;
+using Syncfusion.SfSchedule.XForms.iOS;
 
 [assembly: ExportRenderer(typeof(Button), typeof(MyButtonRenderer))]
 namespace Concorsi.iOS
@@ -56,6 +58,8 @@ namespace Concorsi.iOS
             ImageCircleRenderer.Init();
             // Serve per non far andare l'applicazione in onSleep automaticamente
             UIApplication.SharedApplication.IdleTimerDisabled = true;
+            SfScheduleRenderer.Init();
+            new SfCalendarRenderer();
             return base.FinishedLaunching(app, options);
         }
 

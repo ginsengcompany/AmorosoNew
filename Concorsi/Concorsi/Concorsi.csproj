@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="16.2.0.50" />
     <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="16.2.0.50" />
     <PackageReference Include="Syncfusion.Xamarin.SfSchedule" Version="16.2.0.50" />
     <PackageReference Include="Xam.Plugin.DeviceInfo" Version="4.0.0.13" />

@@ -77,10 +77,10 @@
                                Source="statistiche.png" 
                                WidthRequest="100"
                                HeightRequest="100"
-                               HorizontalOptions="Center">
+                               HorizontalOptions="Center" >
 
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer NumberOfTapsRequired="1"/>
+                                <TapGestureRecognizer Command="{Binding VaiPaginaCronologiaStatistiche}" NumberOfTapsRequired="1"/>
                             </Image.GestureRecognizers>
 
                         </Image>
