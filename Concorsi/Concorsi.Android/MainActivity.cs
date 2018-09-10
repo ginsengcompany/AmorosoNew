@@ -21,7 +21,6 @@ namespace Concorsi.Droid
             ToolbarResource = Resource.Layout.Toolbar;
             Window.SetFlags(WindowManagerFlags.Secure, WindowManagerFlags.Secure);
             base.OnCreate(bundle);
-
             XfxControls.Init();
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
