@@ -5,7 +5,7 @@ using Xamarin.Forms.Xaml;
 namespace Concorsi.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CronologiaPage : ContentPage
+    public partial class CronologiaPage : TabbedPage
     {
         private bool flaglogin = false;
         private CronologiaModelView z;
