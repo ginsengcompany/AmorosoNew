@@ -31,7 +31,8 @@ namespace Concorsi.Model
             "http://192.168.125.97/amorosoNew/servizioapp/login";
 
         public const string logout =
-            "https://amorosoconcorsi.ak12srl.it/services/servizioapp/logout";
+            //"https://amorosoconcorsi.ak12srl.it/services/servizioapp/logout";
+            "http://192.168.125.97/amorosoNew/servizioapp/logout";
 
         public const string domconcorsorandomNew =
             // "http://192.168.125.97/servizioApp/domandeconcorsorandomNew.php";

@@ -1,4 +1,5 @@
 ﻿using Concorsi.Service;
+using Concorsi.View;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -32,16 +33,32 @@ namespace Concorsi.Model
             this.devDescrizione = string.Empty;
             this.devInfo = string.Empty;
         }
+
         public async Task Login()
         {
-            REST<Utente, ResponseLogin> connessioneLogin = new REST<Utente, ResponseLogin>();
+            REST<Utente, Response> connessioneLogin = new REST<Utente, Response>();
             var respone = await connessioneLogin.PostJson(URL.login, this);
             if (connessioneLogin.responseMessage != HttpStatusCode.OK)
             {
                 await App.Current.MainPage.DisplayAlert("Attenzione " + (int)connessioneLogin.responseMessage, connessioneLogin.warning, "OK");
             } else
             {
-                App.Current.MainPage = new NavigationPage( new MainPage());
+                var obj = respone.message;
+                App.Current.MainPage = new NavigationPage( new MainPage(this));
+            }
+        }
+
+        public async Task Logout()
+        {
+            REST<Utente, Response> connessioneLogout = new REST<Utente, Response>();
+            var respone = await connessioneLogout.PostJson(URL.logout, this);
+            if (connessioneLogout.responseMessage != HttpStatusCode.OK)
+            {
+                await App.Current.MainPage.DisplayAlert("Attenzione " + (int)connessioneLogout.responseMessage, connessioneLogout.warning, "OK");
+            }
+            else
+            {
+                App.Current.MainPage = new LoginPage();
             }
         }
 

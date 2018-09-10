@@ -14,6 +14,7 @@
         <ToolbarItem Name="logout" 
                      Text="Logout"
                      Order="Secondary"
+                     Command="{Binding effettuaLogout}"
                      Priority="1"/>
         
     </ContentPage.ToolbarItems>
