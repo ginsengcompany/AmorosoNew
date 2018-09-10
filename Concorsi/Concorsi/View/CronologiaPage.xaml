@@ -4,6 +4,10 @@
              x:Class="Concorsi.View.CronologiaPage"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms">
     <ContentPage.Content>
-        <syncfusion:SfSchedule x:Name="schedule" />
+        <syncfusion:SfSchedule x:Name="schedule" ScheduleView="MonthView"  HeaderHeight="50" DataSource="{Binding Appuntamento}">
+            <syncfusion:SfSchedule.MonthViewSettings>
+                <syncfusion:MonthViewSettings ShowAgendaView="true"/>
+            </syncfusion:SfSchedule.MonthViewSettings>
+        </syncfusion:SfSchedule>
     </ContentPage.Content>
 </ContentPage>
