@@ -4,9 +4,7 @@
              x:Class="Concorsi.View.CronologiaPage">
     <ContentPage>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            
         </StackLayout>
     </ContentPage>
 </TabbedPage>

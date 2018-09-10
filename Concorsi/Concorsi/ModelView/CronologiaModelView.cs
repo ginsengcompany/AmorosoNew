@@ -20,7 +20,6 @@ namespace Concorsi.ModelView
         private bool isenabled;//booleano utilizzato per abilitare o meno un elemento nello xaml
         private CronologiaPage cronologiaPage;//Oggetto del tipo della pagina Login
         public static string risultatoRispostaCronologia;
-        public static List<StrutturaHistory> lista = new List<StrutturaHistory>();
         public static List<Sessioni> SessionedataSelezionata = new List<Sessioni>();
 
         #endregion
@@ -30,7 +29,6 @@ namespace Concorsi.ModelView
         //Command utilizzato per il tentativo di accesso ai servizi da parte dell'utente
         public ICommand effettuaLogin { protected set; get; }
         //Command utilizzato per mostrare la password
-        public ICommand showPass { protected set; get; }
 
         //proprietà relativa al campo isEnabled
         public bool IsEnabled
