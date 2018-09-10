@@ -2,6 +2,8 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Concorsi.View;
+using ImageCircle.Forms.Plugin.Abstractions;
+
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Concorsi
@@ -11,7 +13,6 @@ namespace Concorsi
         public App()
         {
             InitializeComponent();
-
             MainPage = new NavigationPage(new LoginPage());
         }
 
