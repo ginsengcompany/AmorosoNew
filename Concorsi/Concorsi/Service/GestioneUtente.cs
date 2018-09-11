@@ -44,12 +44,12 @@ namespace Concorsi.Service
             this.password = pass;
             this.devInfo = getDevInfo;
             this.devDescrizione = getDevDescrizione;
+            this.nomeDiBattesimo = getNomeDiBattesimo;
         }
 
         public string getUserName { get; set; }
         public string getPassword { get; set; }
         public string getNomeDiBattesimo { get; set; }
-        public int getBitLogin { get; set; }
 
         public string getDevInfo
         {

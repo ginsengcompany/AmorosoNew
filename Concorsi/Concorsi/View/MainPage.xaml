@@ -6,7 +6,7 @@
 
     <ContentPage.ToolbarItems>
 
-        <ToolbarItem Name="terminiduso"
+        <ToolbarItem Name="terminiduso" 
                      Text="Informazioni"
                      Order="Secondary"
                      Command="{Binding visualizzaInfo}"
@@ -25,11 +25,21 @@
             <StackLayout x:Name="stackPrincipale" 
                          VerticalOptions="Start"
                          HorizontalOptions="Center" 
-                         Margin="0,0,0,30" 
+                         Margin="0,0,0,30"
+                         Orientation="Vertical"
                          Padding="10">
-            </StackLayout>
+
+                <Image Source="LogoAmorosoSenzaSfondo.png"
+                       WidthRequest="300"
+                       HeightRequest="185"
+                       VerticalOptions="Center"
+                       HorizontalOptions="CenterAndExpand">
+                </Image>
+                
+                </StackLayout>
             
             <ScrollView>
+
                 <Grid Padding="10,0,0,0" 
                       HorizontalOptions="FillAndExpand"
                       VerticalOptions="FillAndExpand" RowSpacing="20">
@@ -45,7 +55,7 @@
                     </Grid.ColumnDefinitions>
 
                     <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="Center">
-                        <Image x:Name="tapIconaPrenotazioni" 
+                        <Image x:Name="tapIconaEsercitazione" 
                                Source="esercitazione.png" 
                                WidthRequest="100"
                                HeightRequest="100"
@@ -59,7 +69,7 @@
                     </StackLayout>
 
                     <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
-                        <Image x:Name="tapIconaAppuntamenti" 
+                        <Image x:Name="tapIconaRisultati" 
                                Source="risultati.png" 
                                WidthRequest="100"
                                HeightRequest="100"
@@ -73,7 +83,7 @@
                     </StackLayout>
 
                     <StackLayout  Grid.Row="1" Grid.Column="0"  HorizontalOptions="Center" >
-                        <Image x:Name="tapIconaContatti" 
+                        <Image x:Name="tapIconaStatistiche" 
                                Source="statistiche.png" 
                                WidthRequest="100"
                                HeightRequest="100"
@@ -87,26 +97,50 @@
                     </StackLayout>
 
                     <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="Center">
-                        <Image x:Name="tapIconaPagamenti" 
+                        <Image x:Name="tapIconaVideolezioni" 
                                Source="videolezioni.png" 
                                WidthRequest="100"
                                HeightRequest="100"
                                HorizontalOptions="Center">
 
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer NumberOfTapsRequired="1"/>
+                                <TapGestureRecognizer Command="{Binding VaiPaginaListaMaterieVideolezioni}"/>
                             </Image.GestureRecognizers>
 
                         </Image>
                     </StackLayout>
                 </Grid>
             </ScrollView>
+            
             <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" Padding="10,10,10,10">
                 <Label x:Name ="labelReminder"  HorizontalOptions="CenterAndExpand">
                 </Label>
             </StackLayout>
 
+            <StackLayout VerticalOptions="End">
+                <StackLayout.IsVisible>
+                    <OnPlatform x:TypeArguments="x:Boolean" WinPhone="true" Android="true" iOS="false"/>
+                </StackLayout.IsVisible>
+                <StackLayout HorizontalOptions="StartAndExpand"></StackLayout>
+                <Frame>
+                    <Frame.BackgroundColor>
+                        <OnPlatform x:TypeArguments="Color" WinPhone="White" Android="#1b2776" iOS="#1b2776"/>
+                    </Frame.BackgroundColor>
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Powered by " YAlign="End" FontAttributes="Italic">
+                                <Label.TextColor>
+                                    <OnPlatform x:TypeArguments="Color" WinPhone="Black" Android="White" iOS="White"/>
+                                </Label.TextColor>
+                            </Label>
+                            <Image x:Name="logoFooter" Source="cerchietto_ak12.png"  HeightRequest="25">
+                            </Image>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
             </StackLayout>
+
+        </StackLayout>
     </ContentPage.Content>
 
 </ContentPage>

@@ -15,15 +15,16 @@ namespace Concorsi.Model
         public string password { get; set; }
         public string devInfo { get; set; }
         public string devDescrizione { get; set; }
+        public string nome { get; set; }
 
 
         public Utente(Utente utente)
-
         {
             this.username = utente.username;
             this.password = utente.password;
             this.devDescrizione = utente.devDescrizione;
             this.devInfo = utente.devInfo;
+            this.nome = utente.nome;
         }
 
         public Utente()
@@ -32,11 +33,12 @@ namespace Concorsi.Model
             this.password = string.Empty;
             this.devDescrizione = string.Empty;
             this.devInfo = string.Empty;
+            this.nome = string.Empty;
         }
 
         public async Task Login()
         {
-            REST<Utente, Response> connessioneLogin = new REST<Utente, Response>();
+            REST<Utente, ResponseLogin> connessioneLogin = new REST<Utente, ResponseLogin>();
             var respone = await connessioneLogin.PostJson(URL.login, this);
             if (connessioneLogin.responseMessage != HttpStatusCode.OK)
             {
@@ -44,13 +46,13 @@ namespace Concorsi.Model
             } else
             {
                 var obj = respone.message;
-                App.Current.MainPage = new NavigationPage( new MainPage(this));
+                App.Current.MainPage = new NavigationPage( new MainPage(respone, this));
             }
         }
 
         public async Task Logout()
         {
-            REST<Utente, Response> connessioneLogout = new REST<Utente, Response>();
+            REST<Utente, ResponseLogout> connessioneLogout = new REST<Utente, ResponseLogout>();
             var respone = await connessioneLogout.PostJson(URL.logout, this);
             if (connessioneLogout.responseMessage != HttpStatusCode.OK)
             {

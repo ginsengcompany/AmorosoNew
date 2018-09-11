@@ -13,7 +13,13 @@ namespace Concorsi.Model
         public string attivo { get; set; }
     }
 
-    public class Response
+    public class ResponseLogin
+    {
+        public bool status { get; set; }
+        public DatiUtenteLogin message { get; set; }
+    }
+
+    public class ResponseLogout
     {
         public bool status { get; set; }
         public Object message { get; set; }

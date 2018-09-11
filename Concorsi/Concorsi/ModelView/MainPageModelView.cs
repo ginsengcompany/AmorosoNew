@@ -12,6 +12,7 @@ namespace Concorsi.ModelView
         public ICommand effettuaLogout { protected set; get; }
         public ICommand visualizzaInfo { protected set; get; }
         public ICommand VaiPaginaCronologiaStatistiche { protected set; get; }
+        public ICommand VaiPaginaListaMaterieVideolezioni { protected set; get; }
 
         private MainPage mainPage;
         public event PropertyChangedEventHandler PropertyChanged;
@@ -39,6 +40,10 @@ namespace Concorsi.ModelView
             VaiPaginaCronologiaStatistiche = new Command(async () =>
             {
                 await App.Current.MainPage.Navigation.PushAsync(new CronologiaPage());
+            });
+            VaiPaginaListaMaterieVideolezioni = new Command(async () =>
+            {
+                await App.Current.MainPage.Navigation.PushAsync(new ListaMaterieVideolezioniPage());
             });
         }
     }
