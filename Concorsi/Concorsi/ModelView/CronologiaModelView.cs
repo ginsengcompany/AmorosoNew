@@ -1,10 +1,14 @@
 ﻿#region Librerie
 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Concorsi.Model;
+using Concorsi.Service;
 using Concorsi.View;
 
 #endregion
@@ -20,7 +24,8 @@ namespace Concorsi.ModelView
         private bool isenabled;//booleano utilizzato per abilitare o meno un elemento nello xaml
         private CronologiaPage cronologiaPage;//Oggetto del tipo della pagina Login
         public static string risultatoRispostaCronologia;
-        public static List<Sessioni> SessionedataSelezionata = new List<Sessioni>();
+        private static List<Sessioni> dataSessione = new List<Sessioni>();
+        private DateTime appuntamento=new DateTime(2018,12,4);
 
         #endregion
 
@@ -40,6 +45,25 @@ namespace Concorsi.ModelView
                 isenabled = value;
             }
         }
+        public List<Sessioni> DataSessioni
+        {
+            get { return dataSessione; }
+            set
+            {
+                OnPropertyChanged();
+                dataSessione = value;
+            }
+        }
+
+        public DateTime Appuntamento
+        {
+            get { return appuntamento; }
+            set
+            {
+                OnPropertyChanged();
+                appuntamento = value;
+            }
+        }
 
         #endregion
 
@@ -57,19 +81,31 @@ namespace Concorsi.ModelView
         // Costruttore del ModelView che inizializza le variabili fondamentali per il corretto funzionamento della pagina di login (sia Android che IOS).
         public CronologiaModelView(CronologiaPage cronologiaPage)
         {
-            
+            connessioneCronologia();
         }
 
         #endregion
 
         #region Metodi
 
-
-        public void modificaFlag(bool flag)
+        public async Task connessioneCronologia()
         {
-
+            REST<string, List<Sessioni>> connectHistory = new REST<string, List<Sessioni>>();
+            List<KeyValuePair<string, string>> valuePairs = new List<KeyValuePair<string, string>>();
+            valuePairs.Add(new KeyValuePair<string, string>("username",GestioneUtente.Instance.getUserName.ToUpper()));
+            var response = await connectHistory.PostFormURLEncoded(URL.cronologia,valuePairs);
+            DataSessioni = response;
         }
+  
 
         #endregion
+    }
+    public class Meeting
+    {
+        public string EventName { get; set; }
+        public DateTime From { get; set; }
+        public DateTime To { get; set; }
+        public Color Color { get; set; }
+        public string RecurrenceRule { get; set; }
     }
 }
