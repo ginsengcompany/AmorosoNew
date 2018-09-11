@@ -1,4 +1,5 @@
 ﻿using Concorsi.ModelView;
+using Concorsi.Service;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,7 +14,6 @@ namespace Concorsi.View
             InitializeComponent();
             z = new LoginModelView(this);
             BindingContext = z; //Questa pagina utilizza l'MWWM ed effettua il binding con la classe LoginModelView
-
 		}
 	}
 }
