@@ -14,9 +14,8 @@
                            HeightRequest="200"
                            VerticalOptions="Center"
                            HorizontalOptions="CenterAndExpand">
-
                 </Image>
-
+                
                 <Grid HorizontalOptions="Center" Margin="0,40,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.3*"></ColumnDefinition>

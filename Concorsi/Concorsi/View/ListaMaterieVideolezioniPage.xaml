@@ -6,7 +6,7 @@
     
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="listaMaterie" HasUnevenRows="True" ItemTapped="listaMaterie_ItemTapped">
+            <ListView ItemsSource="{Binding Materia}" HasUnevenRows="True" ItemTapped="listaMaterie_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
