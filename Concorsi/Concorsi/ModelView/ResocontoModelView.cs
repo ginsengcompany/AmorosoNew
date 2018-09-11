@@ -3,6 +3,7 @@ using Concorsi.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -25,7 +26,15 @@ namespace Concorsi.ModelView
         }
         public ResocontoModelView(Resoconto ResocontoPage,List<Domande>listaDomande)
         {
-            this.listaDomande = listaDomande;
+            foreach( var domanda in listaDomande)
+            {
+                if(domanda.esito == "Errata")
+                    domanda.color = Color.Red;
+                else if (domanda.esito == "Corretta")
+                    domanda.color = Color.Green;
+                else
+                    domanda.color = Color.OrangeRed;
+            }
             ListaDomande = listaDomande;
         }
 
