@@ -14,8 +14,10 @@ namespace Concorsi.Model
         public string username { get; set; }
         public string password { get; set; }
         public string devInfo { get; set; }
+        public string cognome { get; set; }
         public string devDescrizione { get; set; }
         public string nome { get; set; }
+        public string attivo { get; set; }
 
 
         public Utente(Utente utente)
@@ -25,6 +27,8 @@ namespace Concorsi.Model
             this.devDescrizione = utente.devDescrizione;
             this.devInfo = utente.devInfo;
             this.nome = utente.nome;
+            this.cognome = utente.cognome;
+            this.attivo = utente.attivo;
         }
 
         public Utente()
@@ -34,25 +38,26 @@ namespace Concorsi.Model
             this.devDescrizione = string.Empty;
             this.devInfo = string.Empty;
             this.nome = string.Empty;
+            this.cognome = string.Empty;
+            this.attivo = string.Empty;
         }
 
         public async Task Login()
         {
-            REST<Utente, ResponseLogin> connessioneLogin = new REST<Utente, ResponseLogin>();
+            REST<Utente, Response<Utente>> connessioneLogin = new REST<Utente, Response<Utente>>();
             var respone = await connessioneLogin.PostJson(URL.login, this);
             if (connessioneLogin.responseMessage != HttpStatusCode.OK)
             {
                 await App.Current.MainPage.DisplayAlert("Attenzione " + (int)connessioneLogin.responseMessage, connessioneLogin.warning, "OK");
             } else
             {
-                var obj = respone.message;
-                App.Current.MainPage = new NavigationPage( new MainPage(respone, this));
+                App.Current.MainPage = new NavigationPage( new MainPage(respone.message));
             }
         }
 
         public async Task Logout()
         {
-            REST<Utente, ResponseLogout> connessioneLogout = new REST<Utente, ResponseLogout>();
+            REST<Utente, Response<Utente>> connessioneLogout = new REST<Utente, Response<Utente>>();
             var respone = await connessioneLogout.PostJson(URL.logout, this);
             if (connessioneLogout.responseMessage != HttpStatusCode.OK)
             {

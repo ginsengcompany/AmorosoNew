@@ -1,15 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
 
 namespace Concorsi.Model
 {
-  
-
     public class Domande
     {
         public string domanda { get; set; }
         public string risposta { get; set; }
         public string risposta_utente { get; set; }
         public string esito { get; set; }
+
+        public Color color { get; set; }
+        public bool lbl_RispostaUtente { get; set; } = true;
     }
 
     public class Sessione
