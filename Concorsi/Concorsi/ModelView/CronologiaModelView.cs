@@ -11,6 +11,7 @@ using System.Windows.Input;
 using Concorsi.Model;
 using Concorsi.Service;
 using Concorsi.View;
+using Newtonsoft.Json;
 
 #endregion
 
@@ -25,8 +26,8 @@ namespace Concorsi.ModelView
         private bool isenabled;//booleano utilizzato per abilitare o meno un elemento nello xaml
         private CronologiaPage cronologiaPage;//Oggetto del tipo della pagina Login
         public static string risultatoRispostaCronologia;
-        private List<Sessioni> dateDisponibili = new List<Sessioni>();
-        private List<Sessioni> sessioneDisponibile = new List<Sessioni>();
+        private List<Cronologia> dateDisponibili = new List<Cronologia>();
+        private List<Sessione> sessioneDisponibile = new List<Sessione>();
 
         #endregion
 
@@ -45,7 +46,7 @@ namespace Concorsi.ModelView
             }
         }
 
-        public List<Sessioni>DateDisponibili
+        public List<Cronologia>DateDisponibili
         {
             get{return dateDisponibili;}
             set
@@ -54,7 +55,7 @@ namespace Concorsi.ModelView
                 dateDisponibili = value;
             }
         }
-        public List<Sessioni> SessioneDisponibile
+        public List<Sessione> SessioneDisponibile
         {
             get
             {
@@ -92,14 +93,16 @@ namespace Concorsi.ModelView
 
         public async Task connessioneCronologia()
         {
-            REST<Utente,Response> connectHistory = new REST<Utente, Response>();
+            REST<Utente,Response<List<Cronologia>>> connectHistory = new REST<Utente, Response<List<Cronologia>>>();
             Utente utenteUsername = new Utente();
             utenteUsername.username = GestioneUtente.Instance.getUserName.ToUpper();
             var response = await connectHistory.PostJson(URL.cronologia, utenteUsername);
-            /*List<KeyValuePair<string, string>> valuePairs = new List<KeyValuePair<string, string>>();
-            valuePairs.Add(new KeyValuePair<string, string>("username",GestioneUtente.Instance.getUserName.ToUpper()));
-            var response = await connectHistory.PostFormURLEncoded(URL.cronologia,valuePairs);*/
-            DateDisponibili = response;
+            DateDisponibili = response.message;
+        }
+
+        public void SessioneDataSelezionata(List<Sessione> sessioneSelezionata)
+        {
+            SessioneDisponibile = sessioneSelezionata;
         }
   
 

@@ -78,7 +78,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormsVideoLibrary\IThumbnailsVideo.cs" />
+    <None Include="FormsVideoLibrary\IThumbnailsVideo.cs" />
     <Compile Include="FormsVideoLibrary\VideoPlayerRenderer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />

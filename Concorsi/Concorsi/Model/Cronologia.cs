@@ -23,7 +23,7 @@ namespace Concorsi.Model
         public List<Domande> domande { get; set; }
     }
 
-    public class Sessioni
+    public class Cronologia
     {
         public string dataSessione { get; set; }
         public List<Sessione> sessioni { get; set; }
