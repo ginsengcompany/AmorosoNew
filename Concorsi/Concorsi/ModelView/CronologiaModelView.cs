@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.CompilerServices;
@@ -24,16 +25,14 @@ namespace Concorsi.ModelView
         private bool isenabled;//booleano utilizzato per abilitare o meno un elemento nello xaml
         private CronologiaPage cronologiaPage;//Oggetto del tipo della pagina Login
         public static string risultatoRispostaCronologia;
-        private static List<Sessioni> dataSessione = new List<Sessioni>();
-        private DateTime appuntamento=new DateTime(2018,12,4);
+        private List<Sessioni> dateDisponibili = new List<Sessioni>();
+        private List<Sessioni> sessioneDisponibile = new List<Sessioni>();
 
         #endregion
 
         #region Proprietà
 
-        //Command utilizzato per il tentativo di accesso ai servizi da parte dell'utente
         public ICommand effettuaLogin { protected set; get; }
-        //Command utilizzato per mostrare la password
 
         //proprietà relativa al campo isEnabled
         public bool IsEnabled
@@ -45,23 +44,26 @@ namespace Concorsi.ModelView
                 isenabled = value;
             }
         }
-        public List<Sessioni> DataSessioni
+
+        public List<Sessioni>DateDisponibili
         {
-            get { return dataSessione; }
+            get{return dateDisponibili;}
             set
             {
                 OnPropertyChanged();
-                dataSessione = value;
+                dateDisponibili = value;
             }
         }
-
-        public DateTime Appuntamento
+        public List<Sessioni> SessioneDisponibile
         {
-            get { return appuntamento; }
+            get
+            {
+                return sessioneDisponibile;
+            }
             set
             {
                 OnPropertyChanged();
-                appuntamento = value;
+                sessioneDisponibile = value;
             }
         }
 
@@ -90,22 +92,17 @@ namespace Concorsi.ModelView
 
         public async Task connessioneCronologia()
         {
-            REST<string, List<Sessioni>> connectHistory = new REST<string, List<Sessioni>>();
-            List<KeyValuePair<string, string>> valuePairs = new List<KeyValuePair<string, string>>();
+            REST<Utente,Response> connectHistory = new REST<Utente, Response>();
+            Utente utenteUsername = new Utente();
+            utenteUsername.username = GestioneUtente.Instance.getUserName.ToUpper();
+            var response = await connectHistory.PostJson(URL.cronologia, utenteUsername);
+            /*List<KeyValuePair<string, string>> valuePairs = new List<KeyValuePair<string, string>>();
             valuePairs.Add(new KeyValuePair<string, string>("username",GestioneUtente.Instance.getUserName.ToUpper()));
-            var response = await connectHistory.PostFormURLEncoded(URL.cronologia,valuePairs);
-            DataSessioni = response;
+            var response = await connectHistory.PostFormURLEncoded(URL.cronologia,valuePairs);*/
+            DateDisponibili = response;
         }
   
 
         #endregion
-    }
-    public class Meeting
-    {
-        public string EventName { get; set; }
-        public DateTime From { get; set; }
-        public DateTime To { get; set; }
-        public Color Color { get; set; }
-        public string RecurrenceRule { get; set; }
     }
 }

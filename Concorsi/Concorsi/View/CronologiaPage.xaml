@@ -1,13 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Concorsi.View.CronologiaPage"
-             xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms">
+             x:Class="Concorsi.View.CronologiaPage">
     <ContentPage.Content>
-        <syncfusion:SfSchedule x:Name="schedule" ScheduleView="MonthView"  HeaderHeight="50" DataSource="{Binding Appuntamento}">
-            <syncfusion:SfSchedule.MonthViewSettings>
-                <syncfusion:MonthViewSettings ShowAgendaView="true"/>
-            </syncfusion:SfSchedule.MonthViewSettings>
-        </syncfusion:SfSchedule>
+        <StackLayout>
+            <Picker Title="Seleziona data" ItemsSource="{Binding DateDisponibili}" ItemDisplayBinding="{Binding dataSessione}"></Picker>
+            <Picker ItemsSource="{Binding DateDisponibili}" ItemDisplayBinding="{Binding sessioni}"></Picker>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

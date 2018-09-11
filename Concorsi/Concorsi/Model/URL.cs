@@ -63,8 +63,8 @@ namespace Concorsi.Model
         public const string statisticheURL =
             "https://amorosoconcorsi.ak12srl.it/services/statistiche/homes.html?username=";
 
-        public const string cronologia =
-            "https://amorosoconcorsi.ak12srl.it/services/servizioapp/cronologia";
+        public const string cronologia = "http://192.168.125.97/amorosoNew/servizioapp/cronologia";
+        // "https://amorosoconcorsi.ak12srl.it/services/servizioapp/cronologia";
 
         public const string commenti =
             "https://amorosoconcorsi.ak12srl.it/services/servizioapp/commenti";
