@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Concorsi.Model
+﻿namespace Concorsi.Model
 {
     public class VideoLezioni
     {
@@ -15,5 +11,5 @@ namespace Concorsi.Model
     public class MaterieVideo
     {
         public string Materia { set; get; }
-    }
+    }    
 }

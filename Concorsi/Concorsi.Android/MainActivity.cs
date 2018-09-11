@@ -7,6 +7,10 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using static Concorsi.Droid.MainActivity;
 using Xfx;
+using Android.Media;
+using System.Collections.Generic;
+using Android.Graphics;
+using System.IO;
 
 [assembly: ExportRenderer(typeof(WebView), typeof(ScrollableWebViewRendererAndroid))]
 

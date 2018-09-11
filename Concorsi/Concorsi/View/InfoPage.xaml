@@ -13,17 +13,14 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <StackLayout BackgroundColor="#1C4164">
+                <StackLayout BackgroundColor="#1b2776">
                     <StackLayout  HorizontalOptions="StartAndExpand" >
 
                         <StackLayout Orientation="Horizontal">
                             <controls:CircleImage Source="amorosoLogo.png"
-                                                      HeightRequest="110"   
-                                                      WidthRequest="110" 
-                                                      Aspect="AspectFill" 
-                                                      VerticalOptions="Center" 
-                                                      HorizontalOptions="Start"
-                                                      Margin="4">
+                                                  HeightRequest="110" WidthRequest="110" Aspect="AspectFill" 
+                                                  VerticalOptions="Center" HorizontalOptions="Start"
+                                                  Margin="4">
                             </controls:CircleImage>
                             <StackLayout Padding="10">
                                 <Label x:Name="labelBenvenuto" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="Large" FontAttributes="Italic"></Label>
@@ -107,13 +104,13 @@
                     <StackLayout HorizontalOptions="StartAndExpand"></StackLayout>
                     <Frame>
                         <Frame.BackgroundColor>
-                            <OnPlatform x:TypeArguments="Color" WinPhone="White" Android="#1C4164" iOS="#1C4164"/>
+                            <OnPlatform x:TypeArguments="Color" WinPhone="White" Android="#1b2776" iOS="#1b2776"/>
                         </Frame.BackgroundColor>
                         <StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Powered by " YAlign="End" FontAttributes="Italic">
                                     <Label.TextColor>
-                                        <OnPlatform x:TypeArguments="Color" WinPhone="Black" Android="White" iOS="#f30100"/>
+                                        <OnPlatform x:TypeArguments="Color" WinPhone="Black" Android="White" iOS="White"/>
                                     </Label.TextColor>
                                 </Label>
                                 <Image x:Name="logoFooter" Source="cerchietto_ak12.png"  HeightRequest="25">

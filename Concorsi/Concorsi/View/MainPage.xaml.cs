@@ -1,5 +1,6 @@
 ﻿using Concorsi.Model;
 using Concorsi.ModelView;
+using Concorsi.Service;
 using Xamarin.Forms;
 
 namespace Concorsi
@@ -8,10 +9,10 @@ namespace Concorsi
     {
 
         private MainPageModelView z;
-        public MainPage(Utente utente)
+        public MainPage(ResponseLogin response, Utente utente)
         {
             InitializeComponent();
-            labelReminder.Text = "Gentile " + utente.username + " ti invitiamo ad effettuare l'operazione di Log Out " +
+            labelReminder.Text = "Gentile " + response.message.nome + " ti invitiamo ad effettuare l'operazione di Log Out " +
                 "al termine dell'utilizzo dell'applicazione.";
             z = new MainPageModelView(this, utente);
             BindingContext = z; //Questa pagina utilizza l'MWWM ed effettua il binding con la classe LoginModelView
