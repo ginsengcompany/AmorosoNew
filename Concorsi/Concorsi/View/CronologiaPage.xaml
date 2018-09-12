@@ -4,7 +4,15 @@
              x:Class="Concorsi.View.CronologiaPage">
     <ContentPage.Content>
         <StackLayout>
-            <Picker Title="Seleziona data" ItemsSource="{Binding DateDisponibili}" ItemDisplayBinding="{Binding dataSessione}" SelectedIndexChanged="Picker_SelectedIndexChanged"></Picker>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                
+                <Image x:Name="Calendario" Source="calendario.png"  HeightRequest="35">
+                </Image>
+                <Picker Title="Seleziona data" ItemsSource="{Binding DateDisponibili}" ItemDisplayBinding="{Binding dataSessione}" SelectedIndexChanged="Picker_SelectedIndexChanged"></Picker>
+                
+            </StackLayout>
+            
             <ListView HasUnevenRows="True" ItemsSource="{Binding SessioneDisponibile}" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
