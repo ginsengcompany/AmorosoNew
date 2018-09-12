@@ -76,9 +76,8 @@
                                HorizontalOptions="Center">
 
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer NumberOfTapsRequired="1"/>
+                                <TapGestureRecognizer Command="{Binding VaiPaginaCronologia}" NumberOfTapsRequired="1"/>
                             </Image.GestureRecognizers>
-
                         </Image>
                     </StackLayout>
 

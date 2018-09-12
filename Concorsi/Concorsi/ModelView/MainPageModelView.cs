@@ -13,6 +13,7 @@ namespace Concorsi.ModelView
         public ICommand visualizzaInfo { protected set; get; }
         public ICommand VaiPaginaCronologiaStatistiche { protected set; get; }
         public ICommand VaiPaginaListaMaterieVideolezioni { protected set; get; }
+        public ICommand VaiPaginaCronologia { protected set; get; }
 
         private MainPage mainPage;
         public event PropertyChangedEventHandler PropertyChanged;
@@ -39,11 +40,15 @@ namespace Concorsi.ModelView
             });
             VaiPaginaCronologiaStatistiche = new Command(async () =>
             {
-                await App.Current.MainPage.Navigation.PushAsync(new CronologiaPage());
+                await App.Current.MainPage.Navigation.PushAsync(new Statistiche());
             });
             VaiPaginaListaMaterieVideolezioni = new Command(async () =>
             {
                 await App.Current.MainPage.Navigation.PushAsync(new ListaMaterieVideolezioniPage());
+            });
+            VaiPaginaCronologia = new Command(async () =>
+            {
+                await App.Current.MainPage.Navigation.PushAsync(new CronologiaPage());
             });
         }
     }
