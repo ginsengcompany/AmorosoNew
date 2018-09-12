@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Syncfusion.Xamarin.Core" Version="16.2.0.50" />
     <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="16.2.0.50" />
     <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="16.2.0.50" />
     <PackageReference Include="Syncfusion.Xamarin.SfSchedule" Version="16.2.0.50" />
@@ -35,13 +36,22 @@
     <Compile Update="View\InfoPage.xaml.cs">
       <DependentUpon>InfoPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="View\SezioneLezioniPage.xaml.cs">
+      <DependentUpon>SezioneLezioniPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="View\ListaMaterieVideolezioniPage.xaml.cs">
       <DependentUpon>ListaMaterieVideolezioniPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="View\ApprendimentoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="View\InfoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\SezioneLezioniPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\ListaArgomentiVideolezioniPage.xaml">

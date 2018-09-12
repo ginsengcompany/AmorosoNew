@@ -11,11 +11,11 @@ namespace Concorsi.ModelView
 {
     public class ResocontoModelView:INotifyPropertyChanged
     {
-        private List<Domande> listaDomande = new List<Domande>();
+        private List<RisultatoDomande> listaDomande = new List<RisultatoDomande>();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public List<Domande> ListaDomande
+        public List<RisultatoDomande> ListaDomande
         {
             get { return listaDomande; }
             set
@@ -24,7 +24,7 @@ namespace Concorsi.ModelView
                 listaDomande = value;
             }
         }
-        public ResocontoModelView(Resoconto ResocontoPage,List<Domande>listaDomande)
+        public ResocontoModelView(Resoconto ResocontoPage,List<RisultatoDomande>listaDomande)
         {
             foreach( var domanda in listaDomande)
             {

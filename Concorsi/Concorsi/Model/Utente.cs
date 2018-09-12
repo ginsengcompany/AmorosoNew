@@ -18,6 +18,7 @@ namespace Concorsi.Model
         public string devDescrizione { get; set; }
         public string nome { get; set; }
         public string attivo { get; set; }
+        public string materia { get; set; }
 
 
         public Utente(Utente utente)
@@ -29,6 +30,7 @@ namespace Concorsi.Model
             this.nome = utente.nome;
             this.cognome = utente.cognome;
             this.attivo = utente.attivo;
+            this.materia = utente.materia;
         }
 
         public Utente()
@@ -40,6 +42,7 @@ namespace Concorsi.Model
             this.nome = string.Empty;
             this.cognome = string.Empty;
             this.attivo = string.Empty;
+            this.materia = string.Empty;
         }
 
         public async Task Login()
@@ -58,6 +61,8 @@ namespace Concorsi.Model
         public async Task Logout()
         {
             REST<Utente, Response<Utente>> connessioneLogout = new REST<Utente, Response<Utente>>();
+            this.devDescrizione = GestioneUtente.Instance.getDevDescrizione;
+            this.devInfo = GestioneUtente.Instance.getDevInfo;
             var respone = await connessioneLogout.PostJson(URL.logout, this);
             if (connessioneLogout.responseMessage != HttpStatusCode.OK)
             {
@@ -65,7 +70,7 @@ namespace Concorsi.Model
             }
             else
             {
-                App.Current.MainPage = new LoginPage();
+                App.Current.MainPage = new NavigationPage(new LoginPage());
             }
         }
 

@@ -22,18 +22,6 @@ namespace Concorsi.View
             BindingContext = modelView;
         }
 
-        private void Picker_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Picker picker = sender as Picker;
-            if (picker.SelectedIndex > 0)
-            {
-                string materia = picker.SelectedItem as string;
-              //  modelView.getStatistiche(materia);
-            }
-            else if (picker.SelectedIndex == 0)
-            {
-               // modelView.getStatistiche("");
-            }
-        }
+      
     }
 }

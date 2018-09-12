@@ -8,8 +8,8 @@ namespace Concorsi.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CronologiaPage : ContentPage
     {
-        private bool flaglogin = false;
         private CronologiaModelView z;
+
         public CronologiaPage()
         {
             InitializeComponent();

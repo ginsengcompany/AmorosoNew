@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace Concorsi.Model
 {
-    public class Domande
+    public class RisultatoDomande
     {
         public string domanda { get; set; }
         public string risposta { get; set; }
@@ -22,7 +22,7 @@ namespace Concorsi.Model
         public string corpoConcorso { get; set; }
         public string codiceConcorso { get; set; }
         public string nomeSet { get; set; }
-        public List<Domande> domande { get; set; }
+        public List<RisultatoDomande> domande { get; set; }
     }
 
     public class Cronologia
