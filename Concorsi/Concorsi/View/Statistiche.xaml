@@ -16,6 +16,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Orientation="Vertical" >
+                <Picker ItemsSource="{Binding ListaMaterie}" Title="Seleziona Materia" SelectedIndexChanged="Picker_SelectedIndexChanged"/>
                 <Grid BackgroundColor="Transparent" Padding="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>

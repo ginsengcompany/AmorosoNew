@@ -25,7 +25,8 @@
         <StackLayout>
             
             <ScrollView>
-                <StackLayout x:Name="stackPrincipale" 
+                <StackLayout>
+                    <StackLayout x:Name="stackPrincipale" 
                              VerticalOptions="Start"
                              HorizontalOptions="Center" 
                              Margin="0,0,0,30"
@@ -112,13 +113,15 @@
                     </Grid>
 
                 </StackLayout>
-            </ScrollView>
 
-            <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" Padding="15,15,15,15">
+            <StackLayout VerticalOptions="EndAndExpand" Padding="5">
                 <Label x:Name ="labelReminder"  HorizontalOptions="CenterAndExpand">
                 </Label>
             </StackLayout>
-            
+</StackLayout>
+            </ScrollView>
+
+
             <StackLayout VerticalOptions="End">
                 <StackLayout.IsVisible>
                     <OnPlatform x:TypeArguments="x:Boolean" WinPhone="true" Android="true" iOS="false"/>

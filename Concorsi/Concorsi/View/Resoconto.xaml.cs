@@ -15,7 +15,7 @@ namespace Concorsi.View
 	public partial class Resoconto : ContentPage
 	{
         ResocontoModelView z;
-		public Resoconto (List<Domande> listaDomande)
+		public Resoconto (List<RisultatoDomande> listaDomande)
 		{
 			InitializeComponent ();
             z = new ResocontoModelView(this,listaDomande);

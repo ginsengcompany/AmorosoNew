@@ -47,7 +47,7 @@ namespace Concorsi.ModelView
             });
             VaiPaginaCronologia = new Command(async () =>
             {
-                await App.Current.MainPage.Navigation.PushAsync(new ApprendimentoPage());
+                await App.Current.MainPage.Navigation.PushAsync(new CronologiaPage());
             });
         }
     }

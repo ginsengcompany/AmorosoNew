@@ -22,6 +22,11 @@ namespace Concorsi.View
             BindingContext = modelView;
         }
 
-      
+        private void Picker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var a = sender as Picker;
+            var b = a.SelectedItem as string;
+            modelView.RicezioneStatistiche(b);
+        }
     }
 }

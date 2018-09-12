@@ -12,6 +12,7 @@ using Concorsi.Model;
 using Concorsi.Service;
 using Concorsi.View;
 using Newtonsoft.Json;
+using Xamarin.Forms;
 
 #endregion
 
@@ -91,13 +92,21 @@ namespace Concorsi.ModelView
 
         #region Metodi
 
-        public async Task connessioneCronologia()
+        public async void connessioneCronologia()
         {
             REST<Utente,Response<List<Cronologia>>> connectHistory = new REST<Utente, Response<List<Cronologia>>>();
             Utente utenteUsername = new Utente();
             utenteUsername.username = GestioneUtente.Instance.getUserName.ToUpper();
             var response = await connectHistory.PostJson(URL.cronologia, utenteUsername);
-            DateDisponibili = response.message;
+            if(connectHistory.responseMessage!=System.Net.HttpStatusCode.OK)
+            {
+               await App.Current.MainPage.DisplayAlert("Attenzione " + (int)connectHistory.responseMessage, connectHistory.warning, "OK");
+               await App.Current.MainPage.Navigation.PopAsync();
+            }
+            else
+                DateDisponibili = response.message;
+
+
         }
 
         public void SessioneDataSelezionata(List<Sessione> sessioneSelezionata)

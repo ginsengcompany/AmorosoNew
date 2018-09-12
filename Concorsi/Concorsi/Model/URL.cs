@@ -69,8 +69,8 @@ namespace Concorsi.Model
         public const string commenti =
             "https://amorosoconcorsi.ak12srl.it/services/servizioapp/commenti";
 
-        public const string materietotali =
-            "https://amorosoconcorsi.ak12srl.it/services/servizioapp/materietotali";
+        public const string materie =
+            "http://192.168.125.97/amorosoNew/servizioapp/materie";
 
         public const string domconcorsorandomtotaliNew =
             // "http://192.168.125.97/servizioApp/domandeconcorsorandomtotaliNew.php";
