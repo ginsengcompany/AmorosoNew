@@ -56,10 +56,9 @@ namespace Concorsi.iOS
 
             LoadApplication(new App());
             ImageCircleRenderer.Init();
+            Syncfusion.SfChart.XForms.iOS.Renderers.SfChartRenderer.Init();
             // Serve per non far andare l'applicazione in onSleep automaticamente
             UIApplication.SharedApplication.IdleTimerDisabled = true;
-            SfScheduleRenderer.Init();
-            new SfCalendarRenderer();
             return base.FinishedLaunching(app, options);
         }
 

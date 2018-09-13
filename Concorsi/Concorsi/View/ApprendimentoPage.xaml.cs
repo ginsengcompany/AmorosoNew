@@ -1,6 +1,7 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Concorsi.ModelView;
+using Concorsi.Model;
 
 namespace Concorsi.View
 {
@@ -17,8 +18,21 @@ namespace Concorsi.View
             modelView = new ApprendimentoModelView();
             BindingContext = modelView;
         }
-     
-    }
+
+        private void Picker_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            var a = sender as Picker;
+            var b = a.SelectedItem as PianiFormativi;
+            modelView.PianoSelezionato(b);
+
+        }
+
+	    private void ListView_OnItemTapped(object sender, ItemTappedEventArgs e)
+	    {
+	        var a = e.Item as Set;
+	        Navigation.PushAsync(new PaginaApprendimentoDetails());
+        }
+	}
 }
 
 

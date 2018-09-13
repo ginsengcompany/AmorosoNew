@@ -26,22 +26,14 @@
             
                 <ScrollView>
                     <StackLayout>
-                        <StackLayout x:Name="stackPrincipale" 
+                    <StackLayout x:Name="stackPrincipale" 
                                      VerticalOptions="Start"
                                      HorizontalOptions="Center" 
                                      Margin="0,0,0,30"
                                      Orientation="Vertical"
                                      Padding="0, 40, 0, 0">
 
-                            <Image Source="LogoAmorosoSenzaSfondo.png"
-                                   WidthRequest="300"
-                                   HeightRequest="185"
-                                   VerticalOptions="Center"
-                                   HorizontalOptions="CenterAndExpand">
-                            </Image>
-
-
-                            <Grid Padding="10,0,0,0" 
+                        <Grid Padding="10,0,0,0" 
                                   HorizontalOptions="FillAndExpand"
                                   VerticalOptions="FillAndExpand" RowSpacing="20">
 
