@@ -11,6 +11,7 @@ namespace Concorsi.ModelView
     public class ApprendimentoModelView: INotifyPropertyChanged
     {
         private List<PianiFormativi> piani = new List<PianiFormativi>();
+        private List<Set> listaSetDomande = new List<Set>();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -20,6 +21,16 @@ namespace Concorsi.ModelView
             set {
                 OnPropertyChanged();
                 piani = value;
+            }
+        }
+
+        public List<Set> ListaSetDomande
+        {
+            get { return listaSetDomande; }
+            set
+            {
+                OnPropertyChanged();
+                listaSetDomande = value;
             }
         }
         public ApprendimentoModelView()
@@ -34,6 +45,11 @@ namespace Concorsi.ModelView
             REST<Utente, Response<List<PianiFormativi>>> connessionePianiFormativi = new REST<Utente, Response<List<PianiFormativi>>>();
             var response = await connessionePianiFormativi.PostJson(URL.Apprendimento, utente);
             Piani = response.message;
+        }
+
+        public async void PianoSelezionato(PianiFormativi pianoSelezionato)
+        {
+            ListaSetDomande = pianoSelezionato.set;
         }
         protected virtual void OnPropertyChanged([CallerMemberName] string name = "")
         {

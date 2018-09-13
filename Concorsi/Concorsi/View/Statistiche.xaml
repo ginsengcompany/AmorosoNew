@@ -50,7 +50,7 @@
                         </chart:ChartLegend>
                     </chart:SfChart.Legend>
 
-                    <chart:DoughnutSeries ExplodeAll="True" ExplodeIndex="1" SelectedDataPointColor="#49C3CD" EnableAnimation="True" AnimationDuration="2" EnableDataPointSelection="True" CircularCoefficient="0.5" ItemsSource="{Binding DatiPieChart}" XBindingPath="Name" YBindingPath="Value"
+                    <chart:DoughnutSeries ExplodeAll="True" ExplodeIndex="1" SelectedDataPointColor="#49C3CD" EnableAnimation="True" AnimationDuration="2" EnableDataPointSelection="True"  ItemsSource="{Binding DatiPieChart}" XBindingPath="Name" YBindingPath="Value"
                                  EnableSmartLabels="True" ConnectorLineType="Bezier" DataMarkerPosition="OutsideExtended" LegendIcon="Diamond" ExplodeOnTouch="True">
                         <chart:DoughnutSeries.ColorModel>
                             <chart:ChartColorModel Palette="Custom" CustomBrushes="{StaticResource Colors}"/>

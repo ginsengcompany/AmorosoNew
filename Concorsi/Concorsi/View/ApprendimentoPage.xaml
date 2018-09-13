@@ -6,8 +6,19 @@
     
     <ContentPage.Content>
         <StackLayout>
-            <Picker ItemsSource="{Binding Piani}" Title="Seleziona Piano formativo" ItemDisplayBinding="{Binding pianoFormativo}"></Picker>
-            <ListView></ListView>
+            <Picker ItemsSource="{Binding Piani}" Title="Seleziona Piano formativo" ItemDisplayBinding="{Binding pianoFormativo}" SelectedIndexChanged="Picker_SelectedIndexChanged"></Picker>
+            <ListView ItemsSource="{Binding ListaSetDomande}" ItemTapped="ListView_OnItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding nome_set}"></Label>
+                                <Label Text="{Binding Descrizione}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
         </StackLayout>
     </ContentPage.Content>
