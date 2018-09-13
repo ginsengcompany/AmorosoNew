@@ -98,9 +98,6 @@
                 </StackLayout>
 
                 <StackLayout VerticalOptions="End">
-                    <StackLayout.IsVisible>
-                        <OnPlatform x:TypeArguments="x:Boolean" WinPhone="true" Android="true" iOS="false"/>
-                    </StackLayout.IsVisible>
                     <StackLayout HorizontalOptions="StartAndExpand"></StackLayout>
                     <Frame>
                         <Frame.BackgroundColor>
