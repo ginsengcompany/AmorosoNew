@@ -5,8 +5,10 @@ using System.Text;
 namespace Concorsi.ModelView
 {
     public class ApprendimentoModelView
+    {
+        public ApprendimentoModelView()
         {
 
-
         }
+    }
 }
