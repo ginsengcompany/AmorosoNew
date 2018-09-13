@@ -1,149 +1,150 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Concorsi"
-             x:Class="Concorsi.MainPage"
-             Title="Amoroso Concorsi">
+    <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:local="clr-namespace:Concorsi"
+                 x:Class="Concorsi.MainPage"
+                 Title="Amoroso Concorsi">
 
-    <ContentPage.ToolbarItems>
+        <ContentPage.ToolbarItems>
 
-        <ToolbarItem Name="terminiduso" 
-                     Text="Informazioni"
-                     Order="Secondary"
-                     Command="{Binding visualizzaInfo}"
-                     Priority="0"/>
+            <ToolbarItem Name="terminiduso" 
+                         Text="Informazioni"
+                         Order="Secondary"
+                         Command="{Binding visualizzaInfo}"
+                         Priority="0"/>
 
-        <ToolbarItem Name="logout" 
-                     Text="Logout"
-                     Order="Secondary"
-                     Command="{Binding effettuaLogout}"
-                     Priority="1"/>
+            <ToolbarItem Name="logout" 
+                         Text="Logout"
+                         Order="Secondary"
+                         Command="{Binding effettuaLogout}"
+                         Priority="1"/>
 
-    </ContentPage.ToolbarItems>
+        </ContentPage.ToolbarItems>
 
-    <ContentPage.Content>
-        <StackLayout>
+        <ContentPage.Content>
+            <StackLayout>
             
-            <ScrollView>
-                <StackLayout>
-                    <StackLayout x:Name="stackPrincipale" 
-                             VerticalOptions="Start"
-                             HorizontalOptions="Center" 
-                             Margin="0,0,0,30"
-                             Orientation="Vertical"
-                             Padding="0, 40, 0, 0">
-
-                    <Image Source="LogoAmorosoSenzaSfondo.png"
-                           WidthRequest="300"
-                           HeightRequest="185"
-                           VerticalOptions="Center"
-                           HorizontalOptions="CenterAndExpand">
-                    </Image>
-
-
-                    <Grid Padding="10,0,0,0" 
-                          HorizontalOptions="FillAndExpand"
-                          VerticalOptions="FillAndExpand" RowSpacing="20">
-
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                        </Grid.RowDefinitions>
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-
-                        <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="Center">
-                            <Image x:Name="tapIconaEsercitazione" 
-                                   Source="esercitazione.png" 
-                                   WidthRequest="100"
-                                   HeightRequest="100"
-                                   HorizontalOptions="Center">
-
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer NumberOfTapsRequired="1"/>
-                                </Image.GestureRecognizers>
-
-                            </Image>
-                        </StackLayout>
-
-                        <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
-                            <Image x:Name="tapIconaRisultati" 
-                                   Source="risultati.png" 
-                                   WidthRequest="100"
-                                   HeightRequest="100"
-                                   HorizontalOptions="Center">
-
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding VaiPaginaCronologia}"/>
-                                </Image.GestureRecognizers>
-
-                            </Image>
-                        </StackLayout>
-
-                        <StackLayout  Grid.Row="1" Grid.Column="0"  HorizontalOptions="Center" >
-                            <Image x:Name="tapIconaStatistiche" 
-                                   Source="statistiche.png" 
-                                   WidthRequest="100"
-                                   HeightRequest="100"
-                                   HorizontalOptions="Center" >
-
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding VaiPaginaCronologiaStatistiche}" NumberOfTapsRequired="1"/>
-                                </Image.GestureRecognizers>
-
-                            </Image>
-                        </StackLayout>
-
-                        <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="Center">
-                            <Image x:Name="tapIconaVideolezioni" 
-                                   Source="lezioni.png" 
-                                   WidthRequest="100"
-                                   HeightRequest="100"
-                                   HorizontalOptions="Center">
-
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding VaiPaginaLezioni}"/>
-                                </Image.GestureRecognizers>
-
-                            </Image>
-                        </StackLayout>
-                    </Grid>
-
-                </StackLayout>
-
-            <StackLayout VerticalOptions="EndAndExpand" Padding="5">
-                <Label x:Name ="labelReminder"  HorizontalOptions="CenterAndExpand">
-                </Label>
-            </StackLayout>
-</StackLayout>
-            </ScrollView>
-
-
-            <StackLayout VerticalOptions="End">
-                <StackLayout.IsVisible>
-                    <OnPlatform x:TypeArguments="x:Boolean" WinPhone="true" Android="true" iOS="false"/>
-                </StackLayout.IsVisible>
-                <StackLayout HorizontalOptions="StartAndExpand"></StackLayout>
-                <Frame>
-                    <Frame.BackgroundColor>
-                        <OnPlatform x:TypeArguments="Color" WinPhone="White" Android="#1b2776" iOS="#1b2776"/>
-                    </Frame.BackgroundColor>
+                <ScrollView>
                     <StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Powered by " YAlign="End" FontAttributes="Italic">
-                                <Label.TextColor>
-                                    <OnPlatform x:TypeArguments="Color" WinPhone="Black" Android="White" iOS="White"/>
-                                </Label.TextColor>
-                            </Label>
-                            <Image x:Name="logoFooter" Source="cerchietto_ak12.png"  HeightRequest="25">
+                        <StackLayout x:Name="stackPrincipale" 
+                                     VerticalOptions="Start"
+                                     HorizontalOptions="Center" 
+                                     Margin="0,0,0,30"
+                                     Orientation="Vertical"
+                                     Padding="0, 40, 0, 0">
+
+                            <Image Source="LogoAmorosoSenzaSfondo.png"
+                                   WidthRequest="300"
+                                   HeightRequest="185"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="CenterAndExpand">
                             </Image>
+
+
+                            <Grid Padding="10,0,0,0" 
+                                  HorizontalOptions="FillAndExpand"
+                                  VerticalOptions="FillAndExpand" RowSpacing="20">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="Center">
+                                    <Image x:Name="tapIconaEsercitazione" 
+                                           Source="esercitazione.png" 
+                                           WidthRequest="100"
+                                           HeightRequest="100"
+                                           HorizontalOptions="Center">
+
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer NumberOfTapsRequired="1"/>
+                                        </Image.GestureRecognizers>
+
+                                    </Image>
+                                </StackLayout>
+
+                                <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
+                                    <Image x:Name="tapIconaRisultati" 
+                                           Source="risultati.png" 
+                                           WidthRequest="100"
+                                           HeightRequest="100"
+                                           HorizontalOptions="Center">
+
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding VaiPaginaCronologia}"/>
+                                        </Image.GestureRecognizers>
+
+                                    </Image>
+                                </StackLayout>
+
+                                <StackLayout  Grid.Row="1" Grid.Column="0"  HorizontalOptions="Center" >
+                                    <Image x:Name="tapIconaStatistiche" 
+                                           Source="statistiche.png" 
+                                           WidthRequest="100"
+                                           HeightRequest="100"
+                                           HorizontalOptions="Center" >
+
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding VaiPaginaCronologiaStatistiche}" NumberOfTapsRequired="1"/>
+                                        </Image.GestureRecognizers>
+
+                                    </Image>
+                                </StackLayout>
+
+                                <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="Center">
+                                    <Image x:Name="tapIconaVideolezioni" 
+                                           Source="lezioni.png" 
+                                           WidthRequest="100"
+                                           HeightRequest="100"
+                                           HorizontalOptions="Center">
+
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding VaiPaginaLezioni}"/>
+                                        </Image.GestureRecognizers>
+
+                                    </Image>
+                                </StackLayout>
+                            </Grid>
+
                         </StackLayout>
+
+            
                     </StackLayout>
-                </Frame>
+                </ScrollView>
+
+                <StackLayout VerticalOptions="EndAndExpand" Padding="5">
+                    <Label x:Name ="labelReminder"  HorizontalOptions="CenterAndExpand">
+                    </Label>
+                </StackLayout>
+            
+                <StackLayout VerticalOptions="End">
+                    <StackLayout.IsVisible>
+                        <OnPlatform x:TypeArguments="x:Boolean" WinPhone="true" Android="true" iOS="false"/>
+                    </StackLayout.IsVisible>
+                    <StackLayout HorizontalOptions="StartAndExpand"></StackLayout>
+                    <Frame>
+                        <Frame.BackgroundColor>
+                            <OnPlatform x:TypeArguments="Color" WinPhone="White" Android="#1b2776" iOS="#1b2776"/>
+                        </Frame.BackgroundColor>
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Powered by " YAlign="End" FontAttributes="Italic">
+                                    <Label.TextColor>
+                                        <OnPlatform x:TypeArguments="Color" WinPhone="Black" Android="White" iOS="White"/>
+                                    </Label.TextColor>
+                                </Label>
+                                <Image x:Name="logoFooter" Source="cerchietto_ak12.png"  HeightRequest="25">
+                                </Image>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
             </StackLayout>
-        </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+        </ContentPage.Content>
+    </ContentPage>

@@ -31,7 +31,7 @@ namespace Concorsi.ModelView
             VaiPaginaApprendimento = new Command(async () =>
             {
                 // modificare
-                await App.Current.MainPage.Navigation.PushAsync(new CronologiaPage());
+                await App.Current.MainPage.Navigation.PushAsync(new ApprendimentoPage());
             });
         }
     }
