@@ -4,27 +4,9 @@
              x:Class="Concorsi.View.ApprendimentoDetailsPage">
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" x:Name="StackHistoryDomande">
-            <ListView x:Name="lstCronologiaDomande"
-                      ItemsSource="{Binding ListaDomande}"
-                      HasUnevenRows="True" 
-                      SeparatorColor="Black"
-                      >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Vertical">
-                                <Label Text="{Binding Domanda}"
-                                       TextColor="Black"
-                                       HorizontalTextAlignment="Center"
-                                       VerticalTextAlignment="Start"
-                                       FontAttributes="Bold"/>
-                                <Grid BindingContext="{Binding test}"/>
-
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <ScrollView>
+                <Grid x:Name="gridDetails"/>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
