@@ -36,6 +36,9 @@
     <Compile Update="View\InfoPage.xaml.cs">
       <DependentUpon>InfoPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="View\SelezionaModalitaQuizPage.xaml.cs">
+      <DependentUpon>SelezionaModalitaQuizPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="View\SezioneLezioniPage.xaml.cs">
       <DependentUpon>SezioneLezioniPage.xaml</DependentUpon>
     </Compile>
@@ -49,6 +52,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\InfoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\SelezionaModalitaQuizPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\SezioneLezioniPage.xaml">
