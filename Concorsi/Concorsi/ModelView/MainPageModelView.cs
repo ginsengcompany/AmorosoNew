@@ -14,6 +14,7 @@ namespace Concorsi.ModelView
         public ICommand VaiPaginaCronologiaStatistiche { protected set; get; }
         public ICommand VaiPaginaLezioni { protected set; get; }
         public ICommand VaiPaginaCronologia { protected set; get; }
+        public ICommand VaiPaginaSelezioneModalitaQuiz { protected set; get; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -37,17 +38,25 @@ namespace Concorsi.ModelView
             {
                 await App.Current.MainPage.Navigation.PushAsync(new InfoPage());
             });
+
             VaiPaginaCronologiaStatistiche = new Command(async () =>
             {
                 await App.Current.MainPage.Navigation.PushAsync(new Statistiche());
             });
+
             VaiPaginaLezioni = new Command(async () =>
             {
                 await App.Current.MainPage.Navigation.PushAsync(new SezioneLezioniPage());// era listamaterie videolezioni
             });
+
             VaiPaginaCronologia = new Command(async () =>
             {
                 await App.Current.MainPage.Navigation.PushAsync(new CronologiaPage());
+            });
+
+            VaiPaginaSelezioneModalitaQuiz = new Command(async () =>
+            {
+                await App.Current.MainPage.Navigation.PushAsync(new SelezionaModalitaQuizPage());
             });
         }
     }

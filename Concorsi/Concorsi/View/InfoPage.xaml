@@ -11,26 +11,18 @@
     </ContentPage.Padding>
 
     <ContentPage.Content>
-        <ScrollView>
+      
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <StackLayout BackgroundColor="#1b2776">
-                    <StackLayout  HorizontalOptions="StartAndExpand" >
+                <StackLayout BackgroundColor="#1b2776" HeightRequest="300">
 
-                        <StackLayout Orientation="Horizontal">
-                            <controls:CircleImage Source="amorosoLogo.png"
+                    <controls:CircleImage Source="amorosoLogo.png" 
                                                   HeightRequest="110" WidthRequest="110" Aspect="AspectFill" 
-                                                  VerticalOptions="Center" HorizontalOptions="Start"
+                                                  VerticalOptions="Center" HorizontalOptions="CenterAndExpand"
                                                   Margin="4">
-                            </controls:CircleImage>
-                            <StackLayout Padding="10">
-                                <Label x:Name="labelBenvenuto" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="Large" FontAttributes="Italic"></Label>
-                                <Label x:Name="LabelInformazioneLog" TextColor="White"  HorizontalOptions="Center" VerticalOptions="Center" FontSize="Small" FontAttributes="Italic"></Label>
+                    </controls:CircleImage>
 
-                            </StackLayout>
-                        </StackLayout>
-
-                        <StackLayout Orientation="Horizontal" BackgroundColor="Transparent">
-                            <Label Text=" Amoroso Concorsi" FontSize="30" TextColor="White" FontAttributes="Italic" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                        <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand">
+                            <Label  Text=" Amoroso Concorsi" FontSize="30" TextColor="White" FontAttributes="Italic" VerticalOptions="Center" HorizontalOptions="Center"></Label>
                             <StackLayout HorizontalOptions="CenterAndExpand"></StackLayout>
                             <controls:CircleImage x:Name="facebook" 
                                                       Source="facebookIcon.png" 
@@ -46,20 +38,20 @@
                             </controls:CircleImage>
                         </StackLayout>
 
-                    </StackLayout>
                 </StackLayout>
 
-                <Label HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold" TextColor="#275B8C" FormattedText="INFO:"></Label>
-                <StackLayout Padding="10" VerticalOptions="CenterAndExpand">
-                    <Grid ColumnSpacing="15" RowSpacing="15" HorizontalOptions="FillAndExpand">
+                <ScrollView>
+                <!-- <Label HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold" TextColor="#275B8C" FormattedText="INFO:"></Label>-->
+                <StackLayout Padding="10" HorizontalOptions="CenterAndExpand">
+                    <Grid  HorizontalOptions="CenterAndExpand" >
                         <Grid.RowDefinitions >
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <StackLayout Grid.Row="0" Grid.Column="0" VerticalOptions="Center">
@@ -96,8 +88,9 @@
                         </StackLayout>
                     </Grid>
                 </StackLayout>
+                </ScrollView>
 
-                <StackLayout VerticalOptions="End">
+                <StackLayout VerticalOptions="EndAndExpand">
                     <StackLayout HorizontalOptions="StartAndExpand"></StackLayout>
                     <Frame>
                         <Frame.BackgroundColor>
@@ -118,6 +111,5 @@
                 </StackLayout>
 
             </StackLayout>
-        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
