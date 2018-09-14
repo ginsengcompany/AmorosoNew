@@ -11,24 +11,22 @@
                 <StackLayout>
 
                     <xfx:XfxCardView CornerRadius="20" Elevation="15" HeightRequest="150">
-                    <StackLayout HorizontalOptions="Center">
+                    <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
                             <Image x:Name="tapIconaModalitaClassica" 
                                    Source="modalitaClassica.png" 
-                                   WidthRequest="150"
-                                   HeightRequest="150"
+                                   WidthRequest="120"
+                                   HeightRequest="120"
                                    HorizontalOptions="Center">
 
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding VaiPaginaModalitaClassicaPage}"/>
-                                </Image.GestureRecognizers>
                             </Image>
-                        <StackLayout  HorizontalOptions="Center">
-                            <Label x:Name="LabelModalitaClassica" Text="{Binding TestoModalitaClassica}">
+                            <Label x:Name="LabelModalitaClassica" VerticalOptions="CenterAndExpand" Text="{Binding TestoModalitaClassica}">
                             </Label>
                         </StackLayout>
-                        </StackLayout>
 
-                    
+                        <xfx:XfxCardView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding VaiPaginaModalitaClassicaPage}"/>
+                        </xfx:XfxCardView.GestureRecognizers>
+
                     </xfx:XfxCardView>
                         <StackLayout  HorizontalOptions="Center" >
                             <Image x:Name="tapIconaModalitaVeloce" 
