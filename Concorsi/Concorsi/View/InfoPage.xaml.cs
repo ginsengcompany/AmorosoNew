@@ -19,8 +19,8 @@ namespace Concorsi.View
         {
             InitializeComponent();
             labelLuogo.FormattedText = "Viale Italia n° 53" + "\n" + "San Nicola La Strada (CE)";
-            labelBenvenuto.FormattedText = GestioneUtente.Instance.getNomeDiBattesimo;
-            LabelInformazioneLog.Text = " Sei connesso con il dispositivo " + GestioneUtente.Instance.getDevDescrizione;
+          //  labelBenvenuto.FormattedText = GestioneUtente.Instance.getNomeDiBattesimo;
+           // LabelInformazioneLog.Text = " Sei connesso con il dispositivo " + GestioneUtente.Instance.getDevDescrizione;
 
             var tapGestureLuogo = new TapGestureRecognizer();
             tapGestureLuogo.Tapped += (s, e) =>
