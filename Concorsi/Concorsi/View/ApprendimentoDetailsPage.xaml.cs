@@ -15,33 +15,15 @@ namespace Concorsi.View
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ApprendimentoDetailsPage : ContentPage
     {
-        private List<Answers> listaDomande = new List<Answers>();
-        private Set set = new Set();
+        ApprendimentoDetailsPageModelView modelView;
         public ApprendimentoDetailsPage(Set set)
         {
            
             InitializeComponent();
-            this.set = set;
-            ingressoPagina();
+            modelView = new ApprendimentoDetailsPageModelView(set);
+            BindingContext = modelView;
         }
-        public async void ingressoPagina()
-        {
-            await prelevaAnswers();
-            await creatable();
-        }
-        public async Task prelevaAnswers()
-        {
-            REST<Set, Response<List<Answers>>> riceviVideo = new REST<Set, Response<List<Answers>>>();
-            var response = await riceviVideo.PostJson(URL.DomandeApprendimento, set);
-            if (riceviVideo.responseMessage != HttpStatusCode.OK)
-            {
-                await App.Current.MainPage.DisplayAlert("Attenzione " + (int)riceviVideo.responseMessage, riceviVideo.warning, "OK");
-            }
-            else
-            {
-                listaDomande = response.message;
-            }
-        }
+        /*
         public async Task creatable()
         {
             int i = 0;
@@ -96,6 +78,6 @@ namespace Concorsi.View
                 i++;
             }
             return grid;
-        }
+        }*/
     }
 }
