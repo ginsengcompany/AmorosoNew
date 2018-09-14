@@ -23,8 +23,8 @@ namespace Concorsi.Model
             "https://amorosoconcorsi.ak12srl.it/services/";
 
         public const string domandeNew =
-          //"http://192.168.125.97/servizioApp/domandeNew.php";
-          "https://amorosoconcorsi.ak12srl.it/services/servizioapp/domandeNew";
+          "http://192.168.125.97/servizioApp/domandeNew.php";
+          //"https://amorosoconcorsi.ak12srl.it/services/servizioapp/domandeNew";
 
         public const string login =
             //"https://amorosoconcorsi.ak12srl.it/services/servizioapp/login";
