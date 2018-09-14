@@ -84,6 +84,10 @@ namespace Concorsi.Model
         public const string ListaLezioniVideo =
             "https://amorosoconcorsi.ak12srl.it/services/servizioapp/listaLezioniVideo";
 
+        public const string Apprendimento = "http://192.168.125.97/amorosoNew/servizioapp/apprendimento";
+        public const string DomandeApprendimento = "http://192.168.125.97/amorosoNew/servizioapp/domande";
+
+
         /**
          * Costanti di servizio
          * */
