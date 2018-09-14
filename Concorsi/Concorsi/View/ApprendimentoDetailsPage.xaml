@@ -4,9 +4,114 @@
              x:Class="Concorsi.View.ApprendimentoDetailsPage">
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" x:Name="StackHistoryDomande">
-            <ScrollView>
-                <Grid x:Name="gridDetails"/>
-            </ScrollView>
+            <ListView x:Name="lstApprendimento" CachingStrategy="RecycleElement" HasUnevenRows="True" SeparatorColor="Black" IsVisible="True" ItemsSource="{Binding ListaDomande}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="{Binding Domanda}"
+                                       TextColor="Black"
+                                       FontSize="Medium"
+                                       HorizontalTextAlignment="Center"
+                                       YAlign="Start"
+                                       XAlign="Center"/>
+                                <StackLayout Orientation="Vertical" Spacing = "10" HorizontalOptions = "StartAndExpand" >
+
+                                    <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Start" IsVisible="{Binding Quesiti[0].visible}">
+                                        <Label  Text="{Binding Quesiti[0].lettera}"
+                                                TextColor="Black"
+                                                HorizontalOptions="Start"
+                                                FontSize="Small"/>
+                                        <Label Text="{Binding Quesiti[0].quesito}"
+                                               FontSize="Small"
+                                               TextColor="{Binding Quesiti[0].colore}"
+                                               HorizontalOptions="End"
+                                               FontAttributes="{Binding Quesiti[0].attribute}" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Start" IsVisible="{Binding Quesiti[1].visible}">
+                                        <Label  Text="{Binding Quesiti[1].lettera}"
+                                                TextColor="Black"
+                                                HorizontalOptions="Start"
+                                                FontSize="Small"/>
+                                        <Label Text="{Binding Quesiti[1].quesito}"
+                                               FontSize="Small"
+                                               TextColor="{Binding Quesiti[1].colore}"
+                                               HorizontalOptions="End"
+                                               FontAttributes="{Binding Quesiti[1].attribute}" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Start" IsVisible="{Binding Quesiti[2].visible}">
+                                        <Label  Text="{Binding Quesiti[2].lettera}"
+                                                TextColor="Black"
+                                                HorizontalOptions="Start"
+                                                FontSize="Small"/>
+                                        <Label Text="{Binding Quesiti[2].quesito}"
+                                               FontSize="Small"
+                                               TextColor="{Binding Quesiti[2].colore}"
+                                               HorizontalOptions="End"
+                                               FontAttributes="{Binding Quesiti[2].attribute}" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Start" IsVisible="{Binding Quesiti[3].visible}">
+                                        <Label  Text="{Binding Quesiti[3].lettera}"
+                                                TextColor="Black"
+                                                HorizontalOptions="Start"
+                                                FontSize="Small"/>
+                                        <Label Text="{Binding Quesiti[3].quesito}"
+                                               FontSize="Small"
+                                               TextColor="{Binding Quesiti[3].colore}"
+                                               HorizontalOptions="End"
+                                               FontAttributes="{Binding Quesiti[3].attribute}" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Start" IsVisible="{Binding Quesiti[4].visible}">
+                                        <Label  Text="{Binding Quesiti[4].lettera}"
+                                                TextColor="Black"
+                                                HorizontalOptions="Start"
+                                                FontSize="Small"/>
+                                        <Label Text="{Binding Quesiti[4].quesito}"
+                                               FontSize="Small"
+                                               TextColor="{Binding Quesiti[4].colore}"
+                                               HorizontalOptions="End"
+                                               FontAttributes="{Binding Quesiti[4].attribute}" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Start" IsVisible="{Binding Quesiti[5].visible}">
+                                        <Label  Text="{Binding Quesiti[5].lettera}"
+                                                TextColor="Black"
+                                                HorizontalOptions="Start"
+                                                FontSize="Small"/>
+                                        <Label Text="{Binding Quesiti[5].quesito}"
+                                               FontSize="Small"
+                                               TextColor="{Binding Quesiti[5].colore}"
+                                               HorizontalOptions="End"
+                                               FontAttributes="{Binding Quesiti[5].attribute}" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Start" IsVisible="{Binding Quesiti[6].visible}">
+                                        <Label  Text="{Binding Quesiti[6].lettera}"
+                                                TextColor="Black"
+                                                HorizontalOptions="Start"
+                                                FontSize="Small"/>
+                                        <Label Text="{Binding Quesiti[6].quesito}"
+                                               FontSize="Small"
+                                               TextColor="{Binding Quesiti[6].colore}"
+                                               HorizontalOptions="End"
+                                               FontAttributes="{Binding Quesiti[6].attribute}" />
+                                    </StackLayout>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                    <Label Text="Risposta esatta:"
+                                           TextColor="Black"
+                                           XAlign="Start"
+                                           FontAttributes="Bold">
+                                    </Label>
+                                    <Label Text="{Binding Risposta}"
+                                           TextColor="Black"
+                                           FontSize="Medium"
+                                           FontAttributes="Italic"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

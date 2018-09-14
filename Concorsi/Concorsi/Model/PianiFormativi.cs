@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Xamarin.Forms;
 
 namespace Concorsi.Model
 {
@@ -30,6 +32,8 @@ namespace Concorsi.Model
     {
         public string quesito { get; set; }
         public string lettera { get; set; }
-
+        public Color colore { get; set; } = Color.Black;
+        public FontAttributes attribute { get; set; } = FontAttributes.None;
+        public string visible { get; set; } = "true";
     }
 }
