@@ -2,106 +2,53 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Concorsi.View.SezioneLezioniPage"
+             xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls"
              Title="Lezioni">
     <ContentPage.Content>
         <StackLayout>
-
             <ScrollView>
-                <StackLayout x:Name="stackPrincipale" 
-                             VerticalOptions="Start"
-                             HorizontalOptions="Center" 
-                             Margin="20, 20, 20, 20"
-                             Orientation="Vertical"
-                             Padding="0, 40, 0, 0">
+                <StackLayout Padding="20,0,20,0" >
 
-
-
-                    <Grid Padding="10,0,0,0" 
-                          HorizontalOptions="FillAndExpand"
-                          VerticalOptions="FillAndExpand" RowSpacing="20">
-
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                        </Grid.RowDefinitions>
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-
-                        <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="Center">
-                            <Image x:Name="tapIconaVideolezioni" 
-                                   Source="videolezioni.png" 
-                                   WidthRequest="100"
-                                   HeightRequest="100"
-                                   HorizontalOptions="Center">
-
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding VaiPaginaListaMaterieVideolezioniPage}"/>
-                                </Image.GestureRecognizers>
-
+                    <xfx:XfxCardView CornerRadius="20" Elevation="15" HeightRequest="150">
+                        <StackLayout Orientation="Horizontal"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Padding="10">
+                            <Image 
+                                       VerticalOptions="CenterAndExpand"
+                                       Source="videolezioni.png" 
+                                       WidthRequest="120"
+                                       HeightRequest="120">
                             </Image>
-                        </StackLayout>
-
-                        <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
-                            <Label x:Name="LabelVideolezioni"
-                                   Text="Consulta le tantissime videolezioni disponibili, tenute dai nostri docenti esperti.">
+                            <Label
+                                FontSize="Medium"
+                                VerticalOptions="CenterAndExpand"
+                                Text="{Binding VideoLezioni}">
                             </Label>
                         </StackLayout>
+                        <xfx:XfxCardView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding VaiPaginaListaMaterieVideolezioniPage}"/>
+                        </xfx:XfxCardView.GestureRecognizers>
+                    </xfx:XfxCardView>
 
-                        <StackLayout  Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" >
-                            <Image x:Name="tapIconaApprendimento" 
+
+                    <xfx:XfxCardView CornerRadius="20" Elevation="15" HeightRequest="150" >
+                        <StackLayout Orientation="Horizontal"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Padding="10">
+                            <Image 
                                    Source="apprendimento.png" 
-                                   WidthRequest="100"
-                                   HeightRequest="100"
-                                   HorizontalOptions="Center" >
-
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding VaiPaginaApprendimento}"/>
-                                </Image.GestureRecognizers>
-
+                                   WidthRequest="120"
+                                   VerticalOptions="CenterAndExpand"
+                                   HeightRequest="120">
                             </Image>
-                        </StackLayout>
-
-                        <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="Center">
-                            <Label x:Name="LabelApprendimento"
-                                   Text="Prova a sfogliare tutte le domande della nostra banca dati ed apprendi le relative risposte. La risposta esatta sarà evidenziata in verde.">
+                            <Label 
+                                   FontSize="Medium"
+                                 VerticalOptions="CenterAndExpand"
+                                   Text="{Binding TestoApprendimento}">
                             </Label>
                         </StackLayout>
-
-                    </Grid>
-
+                        <xfx:XfxCardView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding VaiPaginaApprendimento}"/>
+                        </xfx:XfxCardView.GestureRecognizers>
+                    </xfx:XfxCardView>
                 </StackLayout>
             </ScrollView>
-
-            <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" Padding="15,15,15,15">
-                <Label x:Name ="labelReminder"  HorizontalOptions="CenterAndExpand">
-                </Label>
-            </StackLayout>
-
-            <StackLayout VerticalOptions="End">
-                <StackLayout.IsVisible>
-                    <OnPlatform x:TypeArguments="x:Boolean" WinPhone="true" Android="true" iOS="false"/>
-                </StackLayout.IsVisible>
-                <StackLayout HorizontalOptions="StartAndExpand"></StackLayout>
-                <Frame>
-                    <Frame.BackgroundColor>
-                        <OnPlatform x:TypeArguments="Color" WinPhone="White" Android="#1b2776" iOS="#1b2776"/>
-                    </Frame.BackgroundColor>
-                    <StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Powered by " YAlign="End" FontAttributes="Italic">
-                                <Label.TextColor>
-                                    <OnPlatform x:TypeArguments="Color" WinPhone="Black" Android="White" iOS="White"/>
-                                </Label.TextColor>
-                            </Label>
-                            <Image x:Name="logoFooter" Source="cerchietto_ak12.png"  HeightRequest="25">
-                            </Image>
-                        </StackLayout>
-                    </StackLayout>
-                </Frame>
-            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

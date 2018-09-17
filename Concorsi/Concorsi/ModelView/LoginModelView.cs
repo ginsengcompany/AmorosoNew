@@ -200,7 +200,7 @@ namespace Concorsi.ModelView
                     LoginIsVisible = false;
                     IsVisible = true; //L'activity indicator è visibile
                     IsBusy = true; //L'activity indicator è in stato IsRunning
-                    utente.username = Username;
+                    utente.username = Username.ToUpper();
                     utente.password = passWord;
                     utente.devDescrizione = GestioneUtente.Instance.getDevDescrizione;
                     utente.devInfo = GestioneUtente.Instance.getDevInfo;

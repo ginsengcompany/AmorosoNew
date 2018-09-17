@@ -30,10 +30,7 @@ namespace Concorsi.Droid
             LoadApplication(new App());
         }
 
-        public override void OnBackPressed()
-        {
-
-        }
+       
 
         public class ScrollableWebViewRendererAndroid : WebViewRenderer
         {
