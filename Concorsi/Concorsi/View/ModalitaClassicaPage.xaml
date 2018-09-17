@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Concorsi.View.ModalitaClassicaPage">
+             x:Class="Concorsi.View.ModalitaClassicaPage"
+             Title="Modalita classica">
     <ContentPage.Content>
         <StackLayout>
             <Picker ItemsSource="{Binding Piani}" Title="Seleziona Piano formativo" ItemDisplayBinding="{Binding pianoFormativo}" SelectedIndexChanged="Picker_SelectedIndexChanged"></Picker>

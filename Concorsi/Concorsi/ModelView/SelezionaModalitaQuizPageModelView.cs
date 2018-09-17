@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Windows.Input;
+using Concorsi.View;
+using Xamarin.Forms;
 
 namespace Concorsi.ModelView
 {
@@ -10,6 +13,8 @@ namespace Concorsi.ModelView
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private string testoModalitaClassica, testoModalitaVeloce;
+
+        public ICommand VaiPaginaModalitaClassica { protected set; get; }
 
         public string TestoModalitaClassica
         {
@@ -49,6 +54,13 @@ namespace Concorsi.ModelView
 
         public SelezionaModalitaQuizPageModelView()
         {
+            VaiPaginaModalitaClassica = new Command(async () =>
+                {
+                    await App.Current.MainPage.Navigation.PushAsync(new ModalitaClassicaPage());
+                });
+
+
+
             TestoModalitaClassica = "In questa modalità di esercitazione avrai la possibilità " +
                                     "di eseguire una Simulazione d'esame sia in modalità Classica che in modalità Assistita. ";
             TestoModalitaVeloce= "In questa modalità avrai la possibilità di eseguire un test sfruttando le " +

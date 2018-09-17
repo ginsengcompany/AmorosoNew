@@ -24,7 +24,7 @@
                         </StackLayout>
 
                         <xfx:XfxCardView.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding VaiPaginaModalitaClassicaPage}"/>
+                            <TapGestureRecognizer Command="{Binding VaiPaginaModalitaClassica}"/>
                         </xfx:XfxCardView.GestureRecognizers>
 
                     </xfx:XfxCardView>

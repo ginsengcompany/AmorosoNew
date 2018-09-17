@@ -48,6 +48,7 @@ namespace Concorsi.Model
         public async Task Login()
         {
             REST<Utente, Response<Utente>> connessioneLogin = new REST<Utente, Response<Utente>>();
+            this.username.ToUpper();
             var respone = await connessioneLogin.PostJson(URL.login, this);
             if (connessioneLogin.responseMessage != HttpStatusCode.OK)
             {
