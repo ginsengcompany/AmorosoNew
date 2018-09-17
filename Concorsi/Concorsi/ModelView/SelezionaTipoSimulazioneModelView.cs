@@ -28,12 +28,12 @@ namespace Concorsi.ModelView
         {
             VaiSimulazioneAssistita = new Command(async () =>
             {
-                await App.Current.MainPage.Navigation.PushAsync(new QuizPage());
+                await App.Current.MainPage.Navigation.PushAsync(new QuizPage(null));
             });
 
             VaiSimulazione = new Command(async () =>
             {
-                await App.Current.MainPage.Navigation.PushAsync(new QuizPage());
+                await App.Current.MainPage.Navigation.PushAsync(new QuizPage(null));
             });
         }
     }
