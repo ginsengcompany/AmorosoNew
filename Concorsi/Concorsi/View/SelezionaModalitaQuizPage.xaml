@@ -2,67 +2,48 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Concorsi.View.SelezionaModalitaQuizPage"
-            Title="Seleziona Modalità">
+             xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls"
+             Title="Seleziona Modalità">
     <ContentPage.Content>
 
         <StackLayout>
             <ScrollView>
                 <StackLayout>
-                    <Grid Padding="10,0,0,0" 
-                          Margin="10"
-                          HorizontalOptions="FillAndExpand"
-                          VerticalOptions="CenterAndExpand"
-                          RowSpacing="20">
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                        </Grid.RowDefinitions>
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.5*"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-
-                        <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="Center">
+                    <xfx:XfxCardView CornerRadius="20" Elevation="15" HeightRequest="150">
+                    <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
                             <Image x:Name="tapIconaModalitaClassica" 
                                    Source="modalitaClassica.png" 
-                                   WidthRequest="150"
-                                   HeightRequest="150"
+                                   WidthRequest="120"
+                                   HeightRequest="120"
                                    HorizontalOptions="Center">
 
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding VaiPaginaModalitaClassicaPage}"/>
-                                </Image.GestureRecognizers>
                             </Image>
-                        </StackLayout>
-
-                        <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
-                            <Label x:Name="LabelModalitaClassica">
+                            <Label VerticalOptions="CenterAndExpand" Text="{Binding TestoModalitaClassica}">
                             </Label>
                         </StackLayout>
 
-                        <StackLayout  Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" >
+                        <xfx:XfxCardView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding VaiPaginaModalitaClassicaPage}"/>
+                        </xfx:XfxCardView.GestureRecognizers>
+
+                    </xfx:XfxCardView>
+                    <xfx:XfxCardView  CornerRadius="20" Elevation="15" HeightRequest="150">
+                        <StackLayout   HorizontalOptions="Center" Orientation="Horizontal">
                             <Image x:Name="tapIconaModalitaVeloce" 
                                    Source="modalitaVeloce.png" 
-                                   WidthRequest="150"
-                                   HeightRequest="150"
+                                   WidthRequest="120"
+                                   HeightRequest="120"
                                    HorizontalOptions="Center">
-
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding VaiPaginaModalitaVelocePage}"/>
-                                </Image.GestureRecognizers>
-
                             </Image>
-                        </StackLayout>
-
-                        <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="Center">
-                            <Label x:Name="LabelModalitaQuizVeloce">
+                            <Label VerticalOptions="CenterAndExpand" Text="{Binding TestoModalitaVeloce}">
                             </Label>
                         </StackLayout>
-
-                    </Grid>
-
+                        <xfx:XfxCardView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding VaiPaginaModalitaVelocePage}"/>
+                        </xfx:XfxCardView.GestureRecognizers>
+                    </xfx:XfxCardView>
+                
                 </StackLayout>
             </ScrollView>
         </StackLayout>

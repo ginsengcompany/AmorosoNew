@@ -1,30 +1,31 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Concorsi.ModelView;
 
 namespace Concorsi.View
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SelezionaTipoSimulazione : ContentPage
 	{
-        private SezioneTipoSimulazioneModelView sezioneTipoSimulazioneModelView;
+        private SelezionaTipoSimulazioneModelView selezionaTipoSimulazioneModelView;
         public SelezionaTipoSimulazione ()
 		{
 			InitializeComponent ();
             setTestoLabel();
-            sezioneTipoSimulazioneModelView = new SezioneTipoSimulazioneModelView();
-            BindingContext = sezioneTipoSimulazioneModelView;
+            selezionaTipoSimulazioneModelView = new SelezionaTipoSimulazioneModelView();
+            BindingContext = selezionaTipoSimulazioneModelView;
         }
 
         public void setTestoLabel()
         {
             LabelSimulazione.Text = "In questa modalità è possibile eseguire una simulazione d'esame del test, " +
-                "pertanto selezionata una risposta automaticamente si passa alla successiva. *Nota: premendo il " +
-                "tasto back in alto a sinistra le statistiche saranno contate. " +
-                "NOTA: In questa modalità è previsto una misura cronometrica dei tempi di risposta";
+                                    "pertanto selezionata una risposta automaticamente si passa alla successiva. *Nota: premendo il " +
+                                    "tasto back in alto a sinistra le statistiche saranno contate. ";
             LabelSimulazioneAssistita.Text = "In questa modalità è possibile eseguire una simulazione d'esame " +
-                "del test. Rispetto alla modalità Simulazione, in caso di errore, si avrà il vantaggio di vedere " +
-                "indicata la risposta esatta. " +
-                "NOTA: In questa modalità è prevista una misurazione del tempo totale di risposta";
+                                             "del test. Rispetto alla modalità Simulazione, in caso di errore, si avrà il vantaggio di vedere " +
+                                             "indicata la risposta esatta. ";
+            LabelNotaSimulazione.Text = "NOTA: In queste modalità è prevista una misurazione del tempo totale di risposta";
+
         }
-	}
+    }
 }

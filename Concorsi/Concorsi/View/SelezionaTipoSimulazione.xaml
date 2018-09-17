@@ -24,6 +24,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>
                             <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
 
                         <Grid.ColumnDefinitions>
@@ -65,6 +66,10 @@
 
                         <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="Center">
                             <Label x:Name="LabelSimulazioneAssistita"></Label>
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" HorizontalOptions="Center">
+                            <Label x:Name="LabelNotaSimulazione"></Label>
                         </StackLayout>
 
                     </Grid>
