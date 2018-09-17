@@ -4,9 +4,7 @@
              x:Class="Concorsi.View.QuizPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Grid x:Name="GrigliaDomanda"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
