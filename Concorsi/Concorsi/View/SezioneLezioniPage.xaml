@@ -19,6 +19,7 @@
                             </Image>
                             <Label
                                 FontSize="Medium"
+                                VerticalOptions="CenterAndExpand"
                                 Text="{Binding VideoLezioni}">
                             </Label>
                         </StackLayout>
@@ -38,6 +39,7 @@
                             </Image>
                             <Label 
                                    FontSize="Medium"
+                                 VerticalOptions="CenterAndExpand"
                                    Text="{Binding TestoApprendimento}">
                             </Label>
                         </StackLayout>
