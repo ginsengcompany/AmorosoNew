@@ -21,8 +21,11 @@ namespace Concorsi.iOS
     // User Interface of the application, as well as listening (and optionally responding) to 
     // application events from iOS.
     [Register("AppDelegate")]
-    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate, IUIApplicationDelegate
     {
+        // Variabile necessaria per notificare nel caso vengano eseguiti screenshot
+        NSObject _screenshotNotification = null;
+
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
         // method you should instantiate the window, load the UI into it and then make the window
@@ -39,6 +42,22 @@ namespace Concorsi.iOS
             };
             Window.AddSubview(view);
             Window.BringSubviewToFront(view);
+
+            // Rimuovi se necessario
+            try
+            {
+                // Stop observer
+                if (_screenshotNotification != null)
+                {
+                    NSNotificationCenter.DefaultCenter.RemoveObserver(_screenshotNotification);
+                    _screenshotNotification.Dispose();
+                    _screenshotNotification = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                //Do something
+            }
         }
 
         // Remove window hiding app content when app is resumed
@@ -46,6 +65,26 @@ namespace Concorsi.iOS
         {
             var view = Window.ViewWithTag(new nint(101));
             view?.RemoveFromSuperview();
+
+            // Start observing screenshot notification
+            // Rimuovi tutto se necessario
+            try
+            {
+                // Start observing screenshot notification
+                if (_screenshotNotification == null)
+                {
+                    _screenshotNotification = NSNotificationCenter.DefaultCenter.AddObserver(
+                        UIApplication.UserDidTakeScreenshotNotification,
+                                (NSNotification n) => {
+                                    Console.WriteLine("UserDidTakeScreenshotNotification");
+                                    n.Dispose();
+                                });
+                }
+            }
+            catch (Exception ex)
+            {
+                //Do something
+            }
         }
 
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
