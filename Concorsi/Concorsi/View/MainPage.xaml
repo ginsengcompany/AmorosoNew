@@ -25,16 +25,16 @@
         <ContentPage.Content>
         <StackLayout>
             <ScrollView>
-                <StackLayout Margin="30">
-                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180">
+                <StackLayout Margin="10">
+                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180" Padding="5">
                         <StackLayout Orientation="Horizontal">
                             <Image x:Name="tapIconaEsercitazione" 
                                    Source="esercitazione.png" 
-                                   WidthRequest="150"
-                                   Margin="10,0,0,0"
+                                   WidthRequest="130"
+                                   Margin="5,0,0,0"
                                    VerticalOptions="CenterAndExpand"
                                    HorizontalOptions="StartAndExpand"
-                                   HeightRequest="150">
+                                   HeightRequest="130">
                                 
                             </Image>
                             <Label VerticalOptions="CenterAndExpand" Text="{Binding TestoEsercitazione}">
@@ -44,13 +44,13 @@
                                     <TapGestureRecognizer Command="{Binding VaiPaginaSelezioneModalitaQuiz}"/>
                                 </xfx:XfxCardView.GestureRecognizers></xfx:XfxCardView>
 
-                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180">
+                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180" Padding="5">
                         <StackLayout Orientation="Horizontal">
                             <Image x:Name="tapIconaRisultati" 
                                            Source="risultati.png" 
-                                           WidthRequest="150"
-                                           HeightRequest="150"
-                                   Margin="10,0,0,0"
+                                           WidthRequest="130"
+                                           HeightRequest="130"
+                                   Margin="5,0,0,0"
                                    VerticalOptions="CenterAndExpand"
                                    HorizontalOptions="StartAndExpand">
                                 
@@ -62,13 +62,13 @@
                             <TapGestureRecognizer Command="{Binding VaiPaginaCronologia}"/>
                         </xfx:XfxCardView.GestureRecognizers>
                         </xfx:XfxCardView>
-                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180">
+                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180" Padding="5" >
                         <StackLayout Orientation="Horizontal">
                             <Image x:Name="tapIconaStatistiche" 
                                            Source="statistiche.png" 
-                                           WidthRequest="150"
-                                           HeightRequest="150"
-                                   Margin="10,0,0,0"
+                                           WidthRequest="130"
+                                           HeightRequest="130"
+                                   Margin="5,0,0,0"
                                    VerticalOptions="CenterAndExpand"
                                    HorizontalOptions="StartAndExpand" >
                             </Image>
@@ -80,13 +80,13 @@
                         </xfx:XfxCardView.GestureRecognizers>
                         </xfx:XfxCardView>
 
-                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180">
+                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180" Padding="5">
                         <StackLayout Orientation="Horizontal">
                             <Image x:Name="tapIconaVideolezioni" 
                                            Source="lezioni.png" 
-                                           WidthRequest="150"
-                                           HeightRequest="150"
-                                   Margin="10,0,0,0"
+                                           WidthRequest="130"
+                                           HeightRequest="130"
+                                   Margin="5,0,0,0"
                                    VerticalOptions="CenterAndExpand"
                                    HorizontalOptions="StartAndExpand">
                             </Image>

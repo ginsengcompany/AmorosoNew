@@ -8,8 +8,8 @@
         <StackLayout>
                 <StackLayout Padding="20,0,20,0" >
 
-                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="150">
-                        <StackLayout Orientation="Horizontal"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Padding="10">
+                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180" Padding="5">
+                        <StackLayout Orientation="Horizontal"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" >
                             <Image 
                                        VerticalOptions="CenterAndExpand"
                                        Source="videolezioni.png" 
@@ -28,8 +28,8 @@
                     </xfx:XfxCardView>
 
 
-                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="150" >
-                        <StackLayout Orientation="Horizontal"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Padding="10">
+                <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180" Padding="10">
+                        <StackLayout Orientation="Horizontal"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" >
                             <Image 
                                    Source="apprendimento.png" 
                                    WidthRequest="120"

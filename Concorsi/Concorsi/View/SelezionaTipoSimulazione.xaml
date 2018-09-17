@@ -10,7 +10,7 @@
 
             <ScrollView>
                 <StackLayout>
-                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="150">
+                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="150" Padding="5">
                         <StackLayout Orientation="Horizontal">
                             <Image x:Name="tapIconaSimulazione" 
                                    Source="simulazione.png" 
@@ -33,7 +33,7 @@
 
 
 
-                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="150">
+                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="150" Padding="5">
                         <StackLayout Orientation="Horizontal">
                             <Image x:Name="tapIconaSimulazioneAssistita" 
                                    Source="simulazioneAssistita.png" 

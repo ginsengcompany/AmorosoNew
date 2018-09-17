@@ -348,4 +348,22 @@
   <ItemGroup>
     <BundleResource Include="Resources\amorosoLogo%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\facebookIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\modalitaClassica.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\modalitaVeloce.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\simulazione.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\simulazioneAssistita.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sitoWeb.png" />
+  </ItemGroup>
 </Project>
