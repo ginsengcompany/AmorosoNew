@@ -2,87 +2,63 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Concorsi.View.SelezionaTipoSimulazione"
+             xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls"
              Title="Seleziona Simulazione">
 
     <ContentPage.Content>
         <StackLayout>
 
             <ScrollView>
-                <StackLayout x:Name="stackPrincipale" 
-                             VerticalOptions="Start"
-                             HorizontalOptions="Center" 
-                             Margin="20, 20, 20, 20"
-                             Orientation="Vertical"
-                             Padding="0, 40, 0, 0">
-
-
-
-                    <Grid Padding="10,0,0,0" 
-                          HorizontalOptions="FillAndExpand"
-                          VerticalOptions="FillAndExpand" RowSpacing="20">
-
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                        </Grid.RowDefinitions>
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-
-                        <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="Center">
+                <StackLayout>
+                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="150">
+                        <StackLayout Orientation="Horizontal">
                             <Image x:Name="tapIconaSimulazione" 
                                    Source="simulazione.png" 
-                                   WidthRequest="100"
-                                   HeightRequest="100"
-                                   HorizontalOptions="Center">
+                                   WidthRequest="120"
+                                   HeightRequest="120"
+                                   Margin="10,0,0,0"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="StartAndExpand">
 
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding VaiSimulazione}"/>
                                 </Image.GestureRecognizers>
 
                             </Image>
+                            <StackLayout >
+                                <Label x:Name="LabelSimulazione" VerticalOptions="CenterAndExpand"></Label>
+                            </StackLayout>
                         </StackLayout>
+                    </xfx:XfxCardView>
 
-                        <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
-                            <Label x:Name="LabelSimulazione"></Label>
-                        </StackLayout>
 
-                        <StackLayout  Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" >
+
+                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="150">
+                        <StackLayout Orientation="Horizontal">
                             <Image x:Name="tapIconaSimulazioneAssistita" 
                                    Source="simulazioneAssistita.png" 
-                                   WidthRequest="100"
-                                   HeightRequest="100"
-                                   HorizontalOptions="Center" >
-
+                                   WidthRequest="120"
+                                   HeightRequest="120" 
+                                   Margin="10,0,0,0"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="StartAndExpand">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding VaiSimulazioneAssistita}"/>
                                 </Image.GestureRecognizers>
-
                             </Image>
+                            <StackLayout>
+                                <Label x:Name="LabelSimulazioneAssistita" VerticalOptions="CenterAndExpand"></Label>
+                            </StackLayout>
                         </StackLayout>
+                    </xfx:XfxCardView>
 
-                        <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="Center">
-                            <Label x:Name="LabelSimulazioneAssistita"></Label>
-                        </StackLayout>
-
-                        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" HorizontalOptions="Center">
-                            <Label x:Name="LabelNotaSimulazione"></Label>
-                        </StackLayout>
-
-                    </Grid>
-
+                    <StackLayout Grid.Row="2" Grid.ColumnSpan="2" HorizontalOptions="Center">
+                        <Label x:Name="LabelNotaSimulazione"></Label>
+                    </StackLayout>
                 </StackLayout>
             </ScrollView>
 
-            <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" Padding="15,15,15,15">
-                <Label x:Name ="labelReminder"  HorizontalOptions="CenterAndExpand">
-                </Label>
-            </StackLayout>
-
-            <StackLayout VerticalOptions="End">
+            <StackLayout VerticalOptions="EndAndExpand">
                 <StackLayout.IsVisible>
                     <OnPlatform x:TypeArguments="x:Boolean" WinPhone="true" Android="true" iOS="false"/>
                 </StackLayout.IsVisible>

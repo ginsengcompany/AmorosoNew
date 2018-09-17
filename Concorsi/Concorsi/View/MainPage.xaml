@@ -2,6 +2,7 @@
     <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                  xmlns:local="clr-namespace:Concorsi"
+                 xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls"
                  x:Class="Concorsi.MainPage"
                  Title="Amoroso Concorsi">
 
@@ -25,67 +26,73 @@
         <StackLayout>
             <ScrollView>
                 <StackLayout Margin="30">
-                    <Grid 
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="CenterAndExpand" 
-                            RowSpacing="35">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <StackLayout Grid.Row="0" 
-                                             Grid.Column="0" 
-                                             HorizontalOptions="Center">
+                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180">
+                        <StackLayout>
                             <Image x:Name="tapIconaEsercitazione" 
-                                           Source="esercitazione.png" 
-                                           WidthRequest="150"
-                                           HeightRequest="150"
-                                           HorizontalOptions="Center">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding VaiPaginaSelezioneModalitaQuiz}"/>
-                                </Image.GestureRecognizers>
+                                   Source="esercitazione.png" 
+                                   WidthRequest="150"
+                                   Margin="10,0,0,0"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="StartAndExpand"
+                                   HeightRequest="150">
+                                
                             </Image>
                         </StackLayout>
-                        <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
+                        <xfx:XfxCardView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding VaiPaginaSelezioneModalitaQuiz}"/>
+                                </xfx:XfxCardView.GestureRecognizers></xfx:XfxCardView>
+
+                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180">
+                        <StackLayout>
                             <Image x:Name="tapIconaRisultati" 
                                            Source="risultati.png" 
                                            WidthRequest="150"
                                            HeightRequest="150"
-                                           HorizontalOptions="Center">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding VaiPaginaCronologia}"/>
-                                </Image.GestureRecognizers>
+                                   Margin="10,0,0,0"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="StartAndExpand">
+                                
                             </Image>
                         </StackLayout>
-                        <StackLayout  Grid.Row="1" Grid.Column="0"  HorizontalOptions="Center" >
+                        <xfx:XfxCardView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding VaiPaginaCronologia}"/>
+                        </xfx:XfxCardView.GestureRecognizers>
+                        </xfx:XfxCardView>
+                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180">
+                        <StackLayout>
                             <Image x:Name="tapIconaStatistiche" 
                                            Source="statistiche.png" 
                                            WidthRequest="150"
                                            HeightRequest="150"
-                                           HorizontalOptions="Center" >
+                                   Margin="10,0,0,0"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="StartAndExpand" >
 
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding VaiPaginaCronologiaStatistiche}" NumberOfTapsRequired="1"/>
-                                </Image.GestureRecognizers>
+                            
                             </Image>
                         </StackLayout>
+                        <xfx:XfxCardView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding VaiPaginaCronologiaStatistiche}" NumberOfTapsRequired="1"/>
+                        </xfx:XfxCardView.GestureRecognizers>
+                        </xfx:XfxCardView>
+
+                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180">
                         <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="Center">
                             <Image x:Name="tapIconaVideolezioni" 
                                            Source="lezioni.png" 
                                            WidthRequest="150"
                                            HeightRequest="150"
-                                           HorizontalOptions="Center">
+                                   Margin="10,0,0,0"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="StartAndExpand">
 
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding VaiPaginaLezioni}"/>
-                                </Image.GestureRecognizers>
+                                
                             </Image>
                         </StackLayout>
-                    </Grid>
+                        <xfx:XfxCardView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding VaiPaginaLezioni}"/>
+                        </xfx:XfxCardView.GestureRecognizers>
+                    </xfx:XfxCardView>
                 </StackLayout>
             </ScrollView>
             <StackLayout VerticalOptions="EndAndExpand" Padding="5">
