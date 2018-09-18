@@ -15,8 +15,9 @@ namespace Concorsi
             InitializeComponent();
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjIwMDdAMzEzNjJlMzIyZTMwazRsNDhKcTdvNVZYS082MUI2dnFCNjAyb0lyRUxOcnJqMjJYdkp6bzJrYz0=");
 
+
             MainPage = new NavigationPage(new LoginPage());
-            //MainPage = new NavigationPage(new SelezionaTipoSimulazione());
+            //MainPage = new NavigationPage(new RisultatoQuizPage());
         }
 
         protected override void OnStart()

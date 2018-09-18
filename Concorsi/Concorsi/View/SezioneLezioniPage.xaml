@@ -9,15 +9,16 @@
                 <StackLayout Padding="20,0,20,0" >
 
                     <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180" Padding="5">
-                        <StackLayout Orientation="Horizontal"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" >
+                        <StackLayout Orientation="Horizontal" >
                             <Image 
-                                       VerticalOptions="CenterAndExpand"
                                        Source="videolezioni.png" 
                                        WidthRequest="120"
+                                Margin="5,0,0,0"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="StartAndExpand"
                                        HeightRequest="120">
                             </Image>
                             <Label
-                                FontSize="Medium"
                                 VerticalOptions="CenterAndExpand"
                                 Text="{Binding VideoLezioni}">
                             </Label>
@@ -29,15 +30,16 @@
 
 
                 <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180" Padding="10">
-                        <StackLayout Orientation="Horizontal"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" >
-                            <Image 
-                                   Source="apprendimento.png" 
-                                   WidthRequest="120"
-                                   VerticalOptions="CenterAndExpand"
-                                   HeightRequest="120">
+                        <StackLayout Orientation="Horizontal">
+                            <Image  
+                                Source="apprendimento.png" 
+                                WidthRequest="120"
+                                Margin="5,0,0,0"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="StartAndExpand"
+                                HeightRequest="120">
                             </Image>
                             <Label 
-                                   FontSize="Medium"
                                  VerticalOptions="CenterAndExpand"
                                    Text="{Binding TestoApprendimento}">
                             </Label>
