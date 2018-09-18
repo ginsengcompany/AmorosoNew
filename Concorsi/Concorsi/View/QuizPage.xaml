@@ -4,7 +4,49 @@
              x:Class="Concorsi.View.QuizPage">
     <ContentPage.Content>
         <StackLayout>
-            <Grid x:Name="GrigliaDomanda"/>
+            <StackLayout>
+                <Grid x:Name="GrigliaDomanda"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
+                <Grid HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Button 
+                        Grid.Row="0" 
+                        Grid.Column="0" 
+                        Clicked="ButtonClickedIndietro" 
+                        HorizontalOptions="Center"
+                        x:Name="btnIndietro" 
+                        TextColor="White"
+                        Text="Indietro"  
+                        IsVisible="False"/>
+
+                    <Label Grid.Row="0"  
+                           Grid.Column="1" 
+                           Text="Tempo" 
+                           x:Name="lblTimer" 
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" 
+                           FontSize="Medium"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"/>
+                    <Button 
+                        Grid.Row="0"  
+                        Grid.Column="2" 
+                        Clicked="ButtonClickedAvanti" 
+                        HorizontalOptions="Center" 
+                        TextColor="White"
+                        x:Name="btnAvanti" 
+                        Text="Avanti" />
+                </Grid>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

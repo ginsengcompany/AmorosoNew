@@ -32,7 +32,7 @@ namespace Concorsi.View
 	    private void ListView_OnItemTapped(object sender, ItemTappedEventArgs e)
 	    {
 	        var a = e.Item as Set;
-	        Navigation.PushAsync(new SelezionaTipoSimulazione());
+	        Navigation.PushAsync(new SelezionaTipoSimulazione(a));
 	    }
     }
 }

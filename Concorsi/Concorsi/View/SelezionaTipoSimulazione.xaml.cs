@@ -1,6 +1,7 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Concorsi.ModelView;
+using Concorsi.Model;
 
 namespace Concorsi.View
 {
@@ -8,11 +9,11 @@ namespace Concorsi.View
 	public partial class SelezionaTipoSimulazione : ContentPage
 	{
         private SelezionaTipoSimulazioneModelView selezionaTipoSimulazioneModelView;
-        public SelezionaTipoSimulazione ()
+        public SelezionaTipoSimulazione (Set set)
 		{
 			InitializeComponent ();
             setTestoLabel();
-            selezionaTipoSimulazioneModelView = new SelezionaTipoSimulazioneModelView();
+            selezionaTipoSimulazioneModelView = new SelezionaTipoSimulazioneModelView(set);
             BindingContext = selezionaTipoSimulazioneModelView;
         }
 
