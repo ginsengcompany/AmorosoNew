@@ -49,7 +49,7 @@ namespace Concorsi.View
                 posizioneCorrente = 0;
                 Title = set.Descrizione + " " + (posizioneCorrente + 1) + "/" + listaDomande.quiz.Count;
                 listaDomande.nome_set = set.nome_set;
-
+                listaDomande.numeroDomande = respone.message.Count;
                 listaDomande.data_sessione = string.Format("{0:dd/MM/yyyy}", DateTime.Today);
                 listaDomande.ora_sessione = String.Format("{0:HH:mm}", DateTime.Now);
                 await creaGriglia();
@@ -83,7 +83,9 @@ namespace Concorsi.View
             else
             {
                 tempo.FermaTempo();
-
+                listaDomande.tempoTotale = tempo.tempoTotale;
+                listaDomande.risposteNonDate = listaDomande.numeroDomande - listaDomande.risposteGiuste - listaDomande.risposteSbagliate;
+                await Navigation.PushAsync(new RisultatoQuizPage(listaDomande));
             }
                 
         }
@@ -161,6 +163,12 @@ namespace Concorsi.View
                 {
                     lettera.BackgroundColor = Color.Red;
                     detalies.TextColor = Color.Red;
+
+                    if (lettera.Text == risposta)
+                        listaDomande.risposteGiuste = listaDomande.risposteGiuste + 1;
+                    else
+                        listaDomande.risposteSbagliate = listaDomande.risposteSbagliate + 1;
+
                     bool flag = false;
                     foreach(var y in grid.Children)
                     {
