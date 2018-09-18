@@ -15,7 +15,7 @@ namespace Concorsi.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class QuizPage : ContentPage
     {
-        List<Answers> listaDomande = new List<Answers>();
+       invioQuiz listaDomande = new invioQuiz();
         List<Grid> gridDomande = new List<Grid>();
         int posizioneCorrente = 0;
         Set set = new Set();
@@ -37,7 +37,7 @@ namespace Concorsi.View
         }
         private async Task connessioneDomande()
         {
-            REST<Set, Response<List<Answers>>> connessioneDomande = new REST<Set, Response<List<Answers>>>();
+            REST<Set, Response<List<Quiz>>> connessioneDomande = new REST<Set, Response<List<Quiz>>>();
             var respone = await connessioneDomande.PostJson(URL.DomandeApprendimento, set);
             if (connessioneDomande.responseMessage != HttpStatusCode.OK)
             {
@@ -45,22 +45,26 @@ namespace Concorsi.View
             }
             else
             {
-                listaDomande = respone.message;
+                listaDomande.quiz = respone.message;
                 posizioneCorrente = 0;
-                Title = set.Descrizione + " " + (posizioneCorrente + 1) + "/" + listaDomande.Count;
+                Title = set.Descrizione + " " + (posizioneCorrente + 1) + "/" + listaDomande.quiz.Count;
+                listaDomande.nome_set = set.nome_set;
+
+                listaDomande.data_sessione = string.Format("{0:dd/MM/yyyy}", DateTime.Today);
+                listaDomande.ora_sessione = String.Format("{0:HH:mm}", DateTime.Now);
                 await creaGriglia();
             }
         }
         private async Task avanti()
         {
-            Title = "Domanda: " + (posizioneCorrente + 1) + "/" + listaDomande.Count;
+            Title = "Domanda: " + (posizioneCorrente + 1) + "/" + listaDomande.quiz.Count;
             if (posizioneCorrente == 0)
                 btnIndietro.IsVisible = false;
             else
                 btnIndietro.IsVisible = true;
             btnAvanti.Clicked -= ButtonClickedFine;
             btnAvanti.Clicked -= ButtonClickedAvanti;
-            if (posizioneCorrente < listaDomande.Count - 1)
+            if (posizioneCorrente < listaDomande.quiz.Count - 1)
             {
                 btnAvanti.Text = "Avanti";
                 btnAvanti.Clicked += ButtonClickedAvanti;
@@ -71,7 +75,7 @@ namespace Concorsi.View
                 btnAvanti.Clicked += ButtonClickedFine;
 
             }
-            if (posizioneCorrente < listaDomande.Count - 1)
+            if (posizioneCorrente < listaDomande.quiz.Count - 1)
             {
                 GrigliaDomanda.Children.Clear();
                 GrigliaDomanda.Children.Add(gridDomande[posizioneCorrente]);
@@ -85,7 +89,7 @@ namespace Concorsi.View
 
         private async Task creaGriglia()
         {
-            foreach(var quesito in listaDomande)
+            foreach(var quesito in listaDomande.quiz)
             {
                 Grid grid = new Grid();
                 grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
@@ -101,6 +105,31 @@ namespace Concorsi.View
                 quesiti = await gridQuesiti(quesito.Quesiti, quesito.Risposta);
                 grid.Children.Add(domanda, 0, 0);
                 grid.Children.Add(quesiti, 0, 1);
+                if (quesito.tipo == "pdf")
+                {
+                    Button pdf = new Button
+                    {
+                        Text = "apri documento",
+                        TextColor = Color.Black,
+                    };
+                    pdf.Clicked += async delegate (object sender, EventArgs e)
+                    {
+                        Device.OpenUri(new Uri(URL.urlBase + quesito.link));
+                    };
+                    grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
+                    grid.Children.Add(pdf, 0, 2);
+                }
+                else if (quesito.tipo == "img")
+                {
+                    var urlRisorsa = URL.urlBase + quesito.link;
+                    var urlProva = new System.Uri(urlRisorsa);
+                    Task<ImageSource> result = Task<ImageSource>.Factory.StartNew(() => ImageSource.FromUri(urlProva));
+                    Image img = new Image();
+                    img.Source = await result;
+                    img.HorizontalOptions = LayoutOptions.Center;
+                    grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
+                    grid.Children.Add(img, 0, 2);
+                }
                 gridDomande.Add(grid);
             }
 
