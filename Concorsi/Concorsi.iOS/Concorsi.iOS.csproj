@@ -366,4 +366,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\sitoWeb.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\risposteSbagliate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\risposteEsatte.png" />
+  </ItemGroup>
 </Project>
