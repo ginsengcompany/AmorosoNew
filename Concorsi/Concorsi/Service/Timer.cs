@@ -17,9 +17,10 @@ namespace Concorsi.Service
         public void Tempo(bool start,Label tempolbl)
         {
             avviaTempo = start;
+            tempoGlobale.Start();
+
             Device.StartTimer(TimeSpan.FromSeconds(0), () =>
             {
-                tempoGlobale.Start();
                 tempo = tempoGlobale.Elapsed;
                 tempoTotale = string.Format("{0:00}:{1:00}:{2:00}", tempo.Hours, tempo.Minutes, tempo.Seconds);
                 tempolbl.Text = tempoTotale;

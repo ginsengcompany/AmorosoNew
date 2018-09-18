@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Concorsi.Model;
+using Concorsi.ModelView;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,10 +13,14 @@ namespace Concorsi.View
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class RisultatoQuizPage : ContentPage
-	{
-		public RisultatoQuizPage ()
+    {
+        RisultatoQuizPageModelView modelView;
+        public RisultatoQuizPage (invioQuiz datiquiz)
 		{
-			InitializeComponent ();
-		}
+
+            InitializeComponent();
+            modelView = new RisultatoQuizPageModelView(datiquiz);
+            BindingContext = modelView;
+        }
 	}
 }

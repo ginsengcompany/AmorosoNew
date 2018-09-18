@@ -49,6 +49,12 @@ namespace Concorsi.Model
         public string data_sessione { get; set; }
         public string ora_sessione { get; set; }
         public string nome_set { get; set; }
+        public int numeroDomande { get; set; }
+        public string tempoTotale { get; set; }
+        public string punteggio { get; set; }
+        public int risposteGiuste { get; set; } = 0;
+        public int risposteSbagliate { get; set; } = 0;
+        public int risposteNonDate { get; set; } = 0;
         public List<Quiz> quiz { get; set; }
     }
 }
