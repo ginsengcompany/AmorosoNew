@@ -1,4 +1,5 @@
-﻿using Concorsi.View;
+﻿using Concorsi.Model;
+using Concorsi.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,16 +25,16 @@ namespace Concorsi.ModelView
 
         #endregion
 
-        public SelezionaTipoSimulazioneModelView()
+        public SelezionaTipoSimulazioneModelView(Set set)
         {
             VaiSimulazioneAssistita = new Command(async () =>
             {
-                await App.Current.MainPage.Navigation.PushAsync(new QuizPage(null));
+                await App.Current.MainPage.Navigation.PushAsync(new QuizPage(set));
             });
 
             VaiSimulazione = new Command(async () =>
             {
-                await App.Current.MainPage.Navigation.PushAsync(new QuizPage(null));
+                await App.Current.MainPage.Navigation.PushAsync(new QuizPage(set));
             });
         }
     }

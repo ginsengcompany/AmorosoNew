@@ -24,8 +24,8 @@ namespace Concorsi.Model
         public string Domanda { get; set; }
         public List<Quesiti> Quesiti { get; set; }
         public string Risposta { get; set; }
-        public object tipo { get; set; }
-        public object link { get; set; }
+        public string tipo { get; set; }
+        public string link { get; set; }
         public string urlVideo { get; set; }
     }
     public class Quesiti
@@ -35,5 +35,20 @@ namespace Concorsi.Model
         public Color colore { get; set; } = Color.Black;
         public FontAttributes attribute { get; set; } = FontAttributes.None;
         public string visible { get; set; } = "true";
+    }
+
+    public class Quiz : Answers
+    {
+        public string risposta_esatta { get; set; }
+        public string tempo_risposta { get; set; }
+        public string risposta_utente { get; set; }
+    }
+    public class invioQuiz
+    {
+        public string username { get; set; }
+        public string data_sessione { get; set; }
+        public string ora_sessione { get; set; }
+        public string nome_set { get; set; }
+        public List<Quiz> quiz { get; set; }
     }
 }

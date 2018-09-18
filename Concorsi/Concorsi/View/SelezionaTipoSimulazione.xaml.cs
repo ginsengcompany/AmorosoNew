@@ -9,11 +9,11 @@ namespace Concorsi.View
 	public partial class SelezionaTipoSimulazione : ContentPage
 	{
         private SelezionaTipoSimulazioneModelView selezionaTipoSimulazioneModelView;
-        public SelezionaTipoSimulazione (Set setSelezionato)
+        public SelezionaTipoSimulazione (Set set)
 		{
 			InitializeComponent ();
             setTestoLabel();
-            selezionaTipoSimulazioneModelView = new SelezionaTipoSimulazioneModelView();
+            selezionaTipoSimulazioneModelView = new SelezionaTipoSimulazioneModelView(set);
             BindingContext = selezionaTipoSimulazioneModelView;
         }
 
