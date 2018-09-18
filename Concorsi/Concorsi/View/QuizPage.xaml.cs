@@ -82,9 +82,10 @@ namespace Concorsi.View
             }
             else
             {
-               await DisplayAlert("fine", "finone", "ok");
+                tempo.FermaTempo();
+
             }
-               
+                
         }
 
         private async Task creaGriglia()
