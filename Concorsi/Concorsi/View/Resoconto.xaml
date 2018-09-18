@@ -15,14 +15,16 @@
                             <StackLayout Orientation="Vertical">
                                 <Label Text="{Binding domanda}"
                                            TextColor="Black"
+                                       FontSize="Medium"
                                            HorizontalTextAlignment="Center"
                                            VerticalTextAlignment="Start"
                                            FontAttributes="Bold"/>
-                                <Label Text="Tua Risposta" 
-                                       FontAttributes="Bold"
-                                           HorizontalOptions="Center"
-                                           IsVisible="{Binding lbl_RispostaUtente}"
-                                           TextColor="Black">
+                                <Label 
+                                    Text="Tua Risposta" 
+                                    FontAttributes="Bold"
+                                    HorizontalOptions="Center"
+                                    IsVisible="{Binding lbl_RispostaUtente}"
+                                    TextColor="Black">
                                 </Label>
                                 <Label Text="{Binding risposta_utente}"
                                            TextColor="Black"

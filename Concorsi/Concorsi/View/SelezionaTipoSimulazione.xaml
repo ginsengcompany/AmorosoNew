@@ -52,7 +52,7 @@
                         </StackLayout>
                     </xfx:XfxCardView>
 
-                    <StackLayout Grid.Row="2" Grid.ColumnSpan="2" HorizontalOptions="Center">
+                    <StackLayout  HorizontalOptions="Center" Padding="5">
                         <Label x:Name="LabelNotaSimulazione"></Label>
                     </StackLayout>
                 </StackLayout>

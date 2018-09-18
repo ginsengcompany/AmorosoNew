@@ -7,7 +7,8 @@
         <ScrollView>
             <StackLayout BackgroundColor="#37637F">
 
-                <xfx:XfxCardView VerticalOptions="Start" HeightRequest="300" CornerRadius="20" Elevation="10" BackgroundColor="White">
+                <xfx:XfxCardView 
+                    VerticalOptions="Start" HeightRequest="300" CornerRadius="20" Elevation="10" BackgroundColor="White">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
