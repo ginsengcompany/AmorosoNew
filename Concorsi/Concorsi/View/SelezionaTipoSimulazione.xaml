@@ -32,7 +32,6 @@
                     </xfx:XfxCardView>
 
 
-
                     <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="150" Padding="5">
                         <StackLayout Orientation="Horizontal">
                             <Image x:Name="tapIconaSimulazioneAssistita" 
