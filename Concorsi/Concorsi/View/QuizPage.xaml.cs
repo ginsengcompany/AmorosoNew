@@ -182,7 +182,7 @@ namespace Concorsi.View
                     else
                     {
                         lettera.BackgroundColor = Color.DarkBlue;
-                        detalies.FontAttributes = FontAttributes.Bold
+                        detalies.FontAttributes = FontAttributes.Bold;
                         posizioneCorrente++;
                         await avanti();
                     }
