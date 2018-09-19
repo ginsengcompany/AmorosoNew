@@ -21,7 +21,8 @@ namespace Concorsi.View
         Set set = new Set();
         Timer tempototale = new Timer();
         Timer tempodomanda = new Timer();
-        public QuizPage(Set set)
+        Boolean simulazioneAssistita;
+        public QuizPage(Set set, Boolean simulazioneAssistita)
         {
             InitializeComponent();
             this.set = set;
@@ -29,6 +30,7 @@ namespace Concorsi.View
             GrigliaDomanda.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
             GrigliaDomanda.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
             GrigliaDomanda.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
+            this.simulazioneAssistita = simulazioneAssistita;
             ingessoPagina();
         }
         public async Task ingessoPagina()
@@ -165,38 +167,25 @@ namespace Concorsi.View
                 };
                 lettera.Clicked += async delegate (object sender, EventArgs e)
                 {
-                    lettera.BackgroundColor = Color.Red;
-                    detalies.TextColor = Color.Red;
                     tempoRisposta = tempodomanda.tempoTotale;
                     
                     if (lettera.Text == risposta)
                         listaDomande.risposteGiuste = listaDomande.risposteGiuste + 1;
                     else
                         listaDomande.risposteSbagliate = listaDomande.risposteSbagliate + 1;
-
-                    bool flag = false;
-                    foreach(var y in grid.Children)
+                    if (simulazioneAssistita)
                     {
-                        if (y.GetType() == detalies.GetType())
-                            if (flag)
-                            {
-                            flag = false;
-                            var a = y as Label;
-                            a.TextColor = Color.Green;
-                            }
-                        if (y.GetType() == lettera.GetType())
-                        {
-                            y.IsEnabled = false;
-                            var a = y as Button;
-                            if (a.Text == risposta)
-                            {
-                                flag = true;
-                                a.BackgroundColor = Color.Green;
-                            }
-                        }
+                        lettera.BackgroundColor = Color.Red;
+                        detalies.TextColor = Color.Red;
+                        await SimulazioneAssistitaClick(grid,risposta);
                     }
-                    posizioneCorrente++;
-                    await avanti();
+                    else
+                    {
+                        lettera.BackgroundColor = Color.DarkBlue;
+                        detalies.FontAttributes = FontAttributes.Bold
+                        posizioneCorrente++;
+                        await avanti();
+                    }
                 };               
                 grid.Children.Add(lettera, 0, i);
                 grid.Children.Add(detalies, 1, i);
@@ -225,5 +214,33 @@ namespace Concorsi.View
         {
            await DisplayAlert("FINE", "FINEEEEEE", "OK");
         }
+
+        private async Task SimulazioneAssistitaClick(Grid grid,String risposta)
+        {
+            Label label = new Label();
+            Button button = new Button();
+            bool flag = false;
+            foreach (var y in grid.Children)
+            {
+                if (y.GetType() == label.GetType())
+                    if (flag)
+                    {
+                        flag = false;
+                        var a = y as Label;
+                        a.TextColor = Color.Green;
+                    }
+                if (y.GetType() == button.GetType())
+                {
+                    y.IsEnabled = false;
+                    var a = y as Button;
+                    if (a.Text == risposta)
+                    {
+                        flag = true;
+                        a.BackgroundColor = Color.Green;
+                    }
+                }
+            }
+        }
+
     }
 }
