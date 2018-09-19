@@ -180,6 +180,14 @@ namespace Concorsi.ModelView
             IsEnabled = true;
             IsVisible = false; //L'activity indicator non è visibile
             IsBusy = false; //L'activity indicator non si trova nello stato IsRunning
+            if (GestioneUtente.Instance.recuperaUserName() == null)
+            {
+                Username = "";
+            }
+            else
+            {
+                Username = GestioneUtente.Instance.recuperaUserName();
+            }
 
             effettuaLogin = new Command(async () => //Definisce il metodo del Command effettuaLogin che gestisce il tentativo di login da parte dell'utente
             {
@@ -200,8 +208,8 @@ namespace Concorsi.ModelView
                     LoginIsVisible = false;
                     IsVisible = true; //L'activity indicator è visibile
                     IsBusy = true; //L'activity indicator è in stato IsRunning
+                    GestioneUtente.Instance.cancellaEdAggiornaUsername(Username);
                     utente.username = Username.ToUpper();
-                    GestioneUtente.Instance.salvaCredenzialiAccesso(Username);
                     utente.password = passWord;
                     utente.devDescrizione = GestioneUtente.Instance.getDevDescrizione;
                     utente.devInfo = GestioneUtente.Instance.getDevInfo;

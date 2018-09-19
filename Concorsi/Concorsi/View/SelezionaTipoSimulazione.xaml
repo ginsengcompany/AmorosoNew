@@ -19,16 +19,14 @@
                                    Margin="10,0,0,0"
                                    VerticalOptions="CenterAndExpand"
                                    HorizontalOptions="StartAndExpand">
-
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding VaiSimulazione}"/>
-                                </Image.GestureRecognizers>
-
                             </Image>
                             <StackLayout >
                                 <Label x:Name="LabelSimulazione" VerticalOptions="CenterAndExpand"></Label>
                             </StackLayout>
                         </StackLayout>
+                        <xfx:XfxCardView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding VaiSimulazione}"/>
+                        </xfx:XfxCardView.GestureRecognizers>
                     </xfx:XfxCardView>
 
 
@@ -41,14 +39,15 @@
                                    Margin="10,0,0,0"
                                    VerticalOptions="CenterAndExpand"
                                    HorizontalOptions="StartAndExpand">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding VaiSimulazioneAssistita}"/>
-                                </Image.GestureRecognizers>
+                               
                             </Image>
                             <StackLayout>
                                 <Label x:Name="LabelSimulazioneAssistita" VerticalOptions="CenterAndExpand"></Label>
                             </StackLayout>
                         </StackLayout>
+                        <xfx:XfxCardView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding VaiSimulazioneAssistita}"/>
+                        </xfx:XfxCardView.GestureRecognizers>
                     </xfx:XfxCardView>
 
                     <StackLayout  HorizontalOptions="Center" Padding="5">

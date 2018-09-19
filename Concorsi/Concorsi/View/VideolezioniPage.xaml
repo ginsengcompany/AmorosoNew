@@ -4,6 +4,7 @@
              xmlns:forms="clr-namespace:Plugin.MediaManager.Forms;assembly=Plugin.MediaManager.Forms"
              xmlns:video="clr-namespace:FormsVideoLibrary"
              x:Class="Concorsi.View.VideolezioniPage"
+             BackgroundColor="Black"
              Title="Video Lezioni">
 
     <video:VideoPlayer VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="videoView"/>

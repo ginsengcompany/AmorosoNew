@@ -1,5 +1,6 @@
 ﻿using Concorsi.Model;
 using Concorsi.Service;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xfx;
 
 namespace Concorsi.View
 {
@@ -22,6 +24,29 @@ namespace Concorsi.View
         Timer tempototale = new Timer();
         Timer tempodomanda = new Timer();
         Boolean simulazioneAssistita;
+
+        protected override bool OnBackButtonPressed()
+        {
+            FineQuiz();
+            return true;
+        }
+
+        public async void FineQuiz()
+        {
+            var responseAlert = await DisplayAlert("Attenzione", "sei sicuro di voler terminare il test?", "SI", "NO");
+            if (responseAlert)
+            {
+                REST<invioQuiz, Response<string>> connessioneInvioStatistiche = new REST<invioQuiz, Response<string>>();
+                tempototale.FermaTempo();
+                listaDomande.tempoTotale = tempototale.tempoTotale;
+                listaDomande.risposteNonDate = listaDomande.numeroDomande - listaDomande.risposteGiuste - listaDomande.risposteSbagliate;
+                var response = await connessioneInvioStatistiche.PostJson(URL.salvataggioStatistiche, listaDomande);
+                await Navigation.PushAsync(new RisultatoQuizPage(listaDomande));
+                Navigation.RemovePage(this);
+            }
+        }
+
+
         public QuizPage(Set set, Boolean simulazioneAssistita)
         {
             InitializeComponent();
@@ -52,6 +77,7 @@ namespace Concorsi.View
                 listaDomande.quiz = respone.message;
                 posizioneCorrente = 0;
                 Title = set.Descrizione + " " + (posizioneCorrente + 1) + "/" + listaDomande.quiz.Count;
+                listaDomande.username = GestioneUtente.Instance.getUserName;
                 listaDomande.nome_set = set.nome_set;
                 listaDomande.numeroDomande = respone.message.Count;
                 listaDomande.data_sessione = string.Format("{0:dd/MM/yyyy}", DateTime.Today);
@@ -59,6 +85,7 @@ namespace Concorsi.View
                 await creaGriglia();
             }
         }
+        
         private async Task avanti()
         {
             tempodomanda.ResetTempo();
@@ -95,7 +122,6 @@ namespace Concorsi.View
             }
                 
         }
-
         private async Task creaGriglia()
         {
             foreach(var quesito in listaDomande.quiz)
@@ -104,6 +130,12 @@ namespace Concorsi.View
                 grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
                 grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
                 grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
+                XfxCardView cardDomanda = new XfxCardView
+                {
+                    CornerRadius = 10,
+                    Elevation = 10,
+                    
+                };
                 Label domanda = new Label
                 {
                     Text = quesito.Domanda,
@@ -119,8 +151,12 @@ namespace Concorsi.View
                     Button pdf = new Button
                     {
                         Text = "apri documento",
-                        TextColor = Color.Black,
-                    };
+                        WidthRequest = 20,
+                        HeightRequest = 15,
+                        BackgroundColor = Color.FromHex("#275B8C"),
+                        TextColor = Color.White
+                    
+                };
                     pdf.Clicked += async delegate (object sender, EventArgs e)
                     {
                         Device.OpenUri(new Uri(URL.urlBase + quesito.link));
@@ -157,7 +193,10 @@ namespace Concorsi.View
                 Button lettera = new Button
                 {
                     Text = quesito.lettera,
-                    TextColor = Color.Black,
+                    WidthRequest = 60,
+                    HeightRequest = 40,
+                    BackgroundColor = Color.FromHex("#275B8C"),
+                    TextColor = Color.White
                 };
 
                 Label detalies = new Label
@@ -242,5 +281,9 @@ namespace Concorsi.View
             }
         }
 
+        private void MenuItem_OnClicked(object sender, EventArgs e)
+        {
+            FineQuiz();
+        }
     }
 }
