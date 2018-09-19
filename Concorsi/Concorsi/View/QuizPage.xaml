@@ -17,7 +17,6 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="70"></RowDefinition>
                     </Grid.RowDefinitions>
-
                     <Button 
                         Grid.Row="0" 
                         Grid.Column="0" 

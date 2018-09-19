@@ -19,8 +19,10 @@ namespace Concorsi.View
         List<Grid> gridDomande = new List<Grid>();
         int posizioneCorrente = 0;
         Set set = new Set();
-        Timer tempo = new Timer();
-        public QuizPage(Set set)
+        Timer tempototale = new Timer();
+        Timer tempodomanda = new Timer();
+        Boolean simulazioneAssistita;
+        public QuizPage(Set set, Boolean simulazioneAssistita)
         {
             InitializeComponent();
             this.set = set;
@@ -28,11 +30,13 @@ namespace Concorsi.View
             GrigliaDomanda.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
             GrigliaDomanda.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
             GrigliaDomanda.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
+            this.simulazioneAssistita = simulazioneAssistita;
             ingessoPagina();
         }
         public async Task ingessoPagina()
         {
-            tempo.Tempo(true, lblTimer);
+            tempototale.Tempo(true, lblTimer);
+            tempodomanda.Tempo(true);
             await connessioneDomande();
         }
         private async Task connessioneDomande()
@@ -57,6 +61,8 @@ namespace Concorsi.View
         }
         private async Task avanti()
         {
+            tempodomanda.ResetTempo();
+            tempodomanda.RestartTempo();
             Title = "Domanda: " + (posizioneCorrente + 1) + "/" + listaDomande.quiz.Count;
             if (posizioneCorrente == 0)
                 btnIndietro.IsVisible = false;
@@ -82,8 +88,8 @@ namespace Concorsi.View
             }
             else
             {
-                tempo.FermaTempo();
-                listaDomande.tempoTotale = tempo.tempoTotale;
+                tempototale.FermaTempo();
+                listaDomande.tempoTotale = tempototale.tempoTotale;
                 listaDomande.risposteNonDate = listaDomande.numeroDomande - listaDomande.risposteGiuste - listaDomande.risposteSbagliate;
                 await Navigation.PushAsync(new RisultatoQuizPage(listaDomande));
             }
@@ -105,7 +111,7 @@ namespace Concorsi.View
                     FontAttributes = FontAttributes.Bold
                 };
                 Grid quesiti = new Grid();
-                quesiti = await gridQuesiti(quesito.Quesiti, quesito.Risposta);
+                quesiti = await gridQuesiti(quesito.Quesiti, quesito.Risposta,quesito.tempo_risposta);
                 grid.Children.Add(domanda, 0, 0);
                 grid.Children.Add(quesiti, 0, 1);
                 if (quesito.tipo == "pdf")
@@ -139,7 +145,7 @@ namespace Concorsi.View
             GrigliaDomanda.Children.Clear();
             GrigliaDomanda.Children.Add(gridDomande[posizioneCorrente]);
         }
-        private async Task<Grid> gridQuesiti(List<Quesiti> quesiti, String risposta)
+        private async Task<Grid> gridQuesiti(List<Quesiti> quesiti, String risposta,String tempoRisposta)
         {
             Grid grid = new Grid();
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
@@ -161,37 +167,25 @@ namespace Concorsi.View
                 };
                 lettera.Clicked += async delegate (object sender, EventArgs e)
                 {
-                    lettera.BackgroundColor = Color.Red;
-                    detalies.TextColor = Color.Red;
-
+                    tempoRisposta = tempodomanda.tempoTotale;
+                    
                     if (lettera.Text == risposta)
                         listaDomande.risposteGiuste = listaDomande.risposteGiuste + 1;
                     else
                         listaDomande.risposteSbagliate = listaDomande.risposteSbagliate + 1;
-
-                    bool flag = false;
-                    foreach(var y in grid.Children)
+                    if (simulazioneAssistita)
                     {
-                        if (y.GetType() == detalies.GetType())
-                            if (flag)
-                            {
-                            flag = false;
-                            var a = y as Label;
-                            a.TextColor = Color.Green;
-                            }
-                        if (y.GetType() == lettera.GetType())
-                        {
-                            y.IsEnabled = false;
-                            var a = y as Button;
-                            if (a.Text == risposta)
-                            {
-                                flag = true;
-                                a.BackgroundColor = Color.Green;
-                            }
-                        }
+                        lettera.BackgroundColor = Color.Red;
+                        detalies.TextColor = Color.Red;
+                        await SimulazioneAssistitaClick(grid,risposta);
                     }
-                    posizioneCorrente++;
-                    await avanti();
+                    else
+                    {
+                        lettera.BackgroundColor = Color.DarkBlue;
+                        detalies.FontAttributes = FontAttributes.Bold;
+                        posizioneCorrente++;
+                        await avanti();
+                    }
                 };               
                 grid.Children.Add(lettera, 0, i);
                 grid.Children.Add(detalies, 1, i);
@@ -220,5 +214,33 @@ namespace Concorsi.View
         {
            await DisplayAlert("FINE", "FINEEEEEE", "OK");
         }
+
+        private async Task SimulazioneAssistitaClick(Grid grid,String risposta)
+        {
+            Label label = new Label();
+            Button button = new Button();
+            bool flag = false;
+            foreach (var y in grid.Children)
+            {
+                if (y.GetType() == label.GetType())
+                    if (flag)
+                    {
+                        flag = false;
+                        var a = y as Label;
+                        a.TextColor = Color.Green;
+                    }
+                if (y.GetType() == button.GetType())
+                {
+                    y.IsEnabled = false;
+                    var a = y as Button;
+                    if (a.Text == risposta)
+                    {
+                        flag = true;
+                        a.BackgroundColor = Color.Green;
+                    }
+                }
+            }
+        }
+
     }
 }

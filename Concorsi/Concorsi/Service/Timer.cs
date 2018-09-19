@@ -22,8 +22,20 @@ namespace Concorsi.Service
             Device.StartTimer(TimeSpan.FromSeconds(0), () =>
             {
                 tempo = tempoGlobale.Elapsed;
-                tempoTotale = string.Format("{0:00}:{1:00}:{2:00}", tempo.Hours, tempo.Minutes, tempo.Seconds);
-                tempolbl.Text = tempoTotale;
+                tempoTotale = string.Format("{0:00}:{1:00}:{2:00}:{3:000}", tempo.Hours, tempo.Minutes, tempo.Seconds, tempo.Milliseconds);
+                tempolbl.Text = string.Format("{0:00}:{1:00}:{2:00}", tempo.Hours, tempo.Minutes, tempo.Seconds);
+                return avviaTempo;
+            });
+        }
+        public void Tempo(bool start)
+        {
+            avviaTempo = start;
+            tempoGlobale.Start();
+
+            Device.StartTimer(TimeSpan.FromSeconds(0), () =>
+            {
+                tempo = tempoGlobale.Elapsed;
+                tempoTotale = string.Format("{0:00}:{1:00}:{2:00}:{3:000}", tempo.Hours, tempo.Minutes, tempo.Seconds,tempo.Milliseconds);
                 return avviaTempo;
             });
         }
