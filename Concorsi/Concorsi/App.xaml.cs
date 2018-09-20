@@ -17,7 +17,7 @@ namespace Concorsi
 
 
             MainPage = new NavigationPage(new LoginPage());
-            //MainPage = new NavigationPage(new RisultatoQuizPage());
+            //MainPage = new NavigationPage(new GestioneSimulazioneVeloce());
         }
 
         protected override void OnStart()

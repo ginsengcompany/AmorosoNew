@@ -15,6 +15,8 @@ namespace Concorsi.ModelView
         private string testoModalitaClassica, testoModalitaVeloce;
 
         public ICommand VaiPaginaModalitaClassica { protected set; get; }
+        public ICommand VaiPaginaModalitaVeloce { protected set; get; }
+
 
         public string TestoModalitaClassica
         {
@@ -58,6 +60,10 @@ namespace Concorsi.ModelView
                 {
                     await App.Current.MainPage.Navigation.PushAsync(new ModalitaClassicaPage());
                 });
+            VaiPaginaModalitaVeloce = new Command(async () =>
+            {
+                await App.Current.MainPage.Navigation.PushAsync(new GestioneSimulazioneVeloce());
+            });
 
 
 

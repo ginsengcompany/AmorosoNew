@@ -1,13 +1,9 @@
 ﻿using Concorsi.Model;
 using Concorsi.Service;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xfx;
@@ -40,7 +36,6 @@ namespace Concorsi.View
                 tempototale.FermaTempo();
                 listaDomande.tempoTotale = tempototale.tempoTotale;
                 listaDomande.risposteNonDate = listaDomande.numeroDomande - listaDomande.risposteGiuste - listaDomande.risposteSbagliate;
-                string json = JsonConvert.SerializeObject(listaDomande);
                 var response = await connessioneInvioStatistiche.PostJson(URL.salvataggioStatistiche, listaDomande);
                 await Navigation.PushAsync(new RisultatoQuizPage(listaDomande));
                 Navigation.RemovePage(this);
@@ -257,7 +252,7 @@ namespace Concorsi.View
         }
         private async void ButtonClickedFine(object sender, EventArgs e)
         {
-           await DisplayAlert("FINE", "FINEEEEEE", "OK");
+             FineQuiz();
         }
 
         private async Task SimulazioneAssistitaClick(Grid grid,String risposta)

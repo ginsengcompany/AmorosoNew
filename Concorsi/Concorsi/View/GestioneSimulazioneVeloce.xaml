@@ -4,7 +4,23 @@
              x:Class="Concorsi.View.GestioneSimulazioneVeloce">
     <ContentPage.Content>
         <StackLayout>
-
+            <Picker Title="Seleziona Concorso" x:Name="concorsi" ItemsSource="{Binding ListaConcorsi}" ItemDisplayBinding="{Binding Corpo}" SelectedIndexChanged="Concorsi_OnSelectedIndexChanged"></Picker>
+            <Picker IsEnabled="{Binding IsEnabled}" Title="Seleziona Materia" ItemsSource="{Binding ListaMaterie}" ItemDisplayBinding="{Binding materia}" SelectedIndexChanged="Materie_OnSelectedIndexChanged"></Picker>
+            <Grid Padding="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="ciao" Grid.Column="0"></Label>
+                <Slider Maximum="50" x:Name="SliderNumeroDomande" ValueChanged="SliderNumeroDomande_OnValueChanged" ThumbColor="Black" MinimumTrackColor="Black" Grid.Column="1" MaximumTrackColor="Black"></Slider>
+                <Label Text="ciao" Grid.Column="2"></Label>
+                <Label x:Name="label" Text="ciao" Grid.Column="1" Grid.Row="1" HorizontalOptions="CenterAndExpand"></Label>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
