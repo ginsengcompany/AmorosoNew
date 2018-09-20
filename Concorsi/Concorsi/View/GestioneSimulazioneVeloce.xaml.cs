@@ -30,8 +30,12 @@ namespace Concorsi.View
 
 	    private void Materie_OnSelectedIndexChanged(object sender, EventArgs e)
 	    {
+	        if (pickermaterie.SelectedIndex == -1)
+	            return;
+
 	        var a = sender as Picker;
 	        var b = a.SelectedItem as Materie;
+	        
             modelView.SelezionaMateria(b);
         }
 

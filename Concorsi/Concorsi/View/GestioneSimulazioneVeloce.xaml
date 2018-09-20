@@ -5,7 +5,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Picker Title="Seleziona Concorso" x:Name="concorsi" ItemsSource="{Binding ListaConcorsi}" ItemDisplayBinding="{Binding Corpo}" SelectedIndexChanged="Concorsi_OnSelectedIndexChanged"></Picker>
-            <Picker IsEnabled="{Binding IsEnabled}" Title="Seleziona Materia" ItemsSource="{Binding ListaMaterie}" ItemDisplayBinding="{Binding materia}" SelectedIndexChanged="Materie_OnSelectedIndexChanged"></Picker>
+            <Picker x:Name="pickermaterie" IsEnabled="{Binding IsEnabled}" Title="Seleziona Materia" ItemsSource="{Binding ListaMaterie}" ItemDisplayBinding="{Binding materia}" SelectedIndexChanged="Materie_OnSelectedIndexChanged"></Picker>
             <Grid Padding="5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"></RowDefinition>
