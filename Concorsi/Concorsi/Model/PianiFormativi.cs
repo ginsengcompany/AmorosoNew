@@ -51,6 +51,7 @@ namespace Concorsi.Model
         public string nome_set { get; set; }
         public int numeroDomande { get; set; }
         public string tempoTotale { get; set; }
+        public string id_concorso { get; set;  }
         public string punteggio { get; set; }
         public int risposteGiuste { get; set; } = 0;
         public int risposteSbagliate { get; set; } = 0;
