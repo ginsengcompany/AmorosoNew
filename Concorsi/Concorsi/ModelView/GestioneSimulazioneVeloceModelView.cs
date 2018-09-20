@@ -16,7 +16,7 @@ namespace Concorsi.ModelView
         private List<Materie> listaMaterie = new List<Materie>();
         private String maxDomande = "";
         private String domandaSelezionata = "";
-        private Double valoreSlider = 100;
+        private Double valoreSlider = 10;
         private bool isEnabled = false;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -100,15 +100,23 @@ namespace Concorsi.ModelView
 
        public void RicezioneMaterie(Concorso materiaSelezionata)
        {
+          
             MaxDomande = materiaSelezionata.domandemax;
             ValoreSlider = Int32.Parse(materiaSelezionata.numerodomande);
             IsEnabled = true;
-            ListaMaterie = materiaSelezionata.materie;
+           if (ListaMaterie.Count != 0)
+               ListaMaterie= new List<Materie>();
+
+           ListaMaterie = materiaSelezionata.materie;
        }
         public void ModificaSlider(ValueChangedEventArgs e)
         {
             var newStep = Math.Round(e.NewValue / 5);
             ValoreSlider = newStep * 5;
+            if (ValoreSlider > Int32.Parse(MaxDomande))
+            {
+                ValoreSlider = Int32.Parse(MaxDomande);
+            }
             DomandaSelezionata = ValoreSlider.ToString();
         }
         public void SelezionaMateria(Materie a)
