@@ -32,13 +32,12 @@ namespace Concorsi.View
 	    {
 	        var a = sender as Picker;
 	        var b = a.SelectedItem as Materie;
+            modelView.SelezionaMateria(b);
         }
 
 	    private void SliderNumeroDomande_OnValueChanged(object sender, ValueChangedEventArgs e)
 	    {
-	        var newStep = Math.Round(e.NewValue / 5);
-	        SliderNumeroDomande.Value = newStep * 5;
-	        label.Text = SliderNumeroDomande.Value.ToString();
-	    }
+            modelView.ModificaSlider(e);
+        }
 	}
 }

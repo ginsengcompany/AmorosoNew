@@ -16,10 +16,10 @@
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="0.1*"/>
                 </Grid.ColumnDefinitions>
-                <Label Text="ciao" Grid.Column="0"></Label>
-                <Slider Maximum="50" x:Name="SliderNumeroDomande" ValueChanged="SliderNumeroDomande_OnValueChanged" ThumbColor="Black" MinimumTrackColor="Black" Grid.Column="1" MaximumTrackColor="Black"></Slider>
-                <Label Text="ciao" Grid.Column="2"></Label>
-                <Label x:Name="label" Text="ciao" Grid.Column="1" Grid.Row="1" HorizontalOptions="CenterAndExpand"></Label>
+                <Label Text="0" Grid.Column="0"></Label>
+                <Slider Maximum="{Binding MaxDomande}" x:Name="SliderNumeroDomande" ValueChanged="SliderNumeroDomande_OnValueChanged" Value="{Binding ValoreSlider}" ThumbColor="Black" MinimumTrackColor="Black" Grid.Column="1" MaximumTrackColor="Black"></Slider>
+                <Label Text="{Binding MaxDomande}" Grid.Column="2"></Label>
+                <Label  Text="{Binding DomandaSelezionata}" Grid.Column="1" Grid.Row="1" HorizontalOptions="CenterAndExpand"></Label>
             </Grid>
         </StackLayout>
     </ContentPage.Content>
