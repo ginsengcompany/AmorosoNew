@@ -40,6 +40,7 @@ namespace Concorsi.View
                 tempototale.FermaTempo();
                 listaDomande.tempoTotale = tempototale.tempoTotale;
                 listaDomande.risposteNonDate = listaDomande.numeroDomande - listaDomande.risposteGiuste - listaDomande.risposteSbagliate;
+                string json = JsonConvert.SerializeObject(listaDomande);
                 var response = await connessioneInvioStatistiche.PostJson(URL.salvataggioStatistiche, listaDomande);
                 await Navigation.PushAsync(new RisultatoQuizPage(listaDomande));
                 Navigation.RemovePage(this);
@@ -115,15 +116,13 @@ namespace Concorsi.View
             }
             else
             {
-                tempototale.FermaTempo();
-                listaDomande.tempoTotale = tempototale.tempoTotale;
-                listaDomande.risposteNonDate = listaDomande.numeroDomande - listaDomande.risposteGiuste - listaDomande.risposteSbagliate;
-                await Navigation.PushAsync(new RisultatoQuizPage(listaDomande));
+                 FineQuiz();
             }
                 
         }
         private async Task creaGriglia()
         {
+            int index = 0;
             foreach(var quesito in listaDomande.quiz)
             {
                 Grid grid = new Grid();
@@ -143,7 +142,7 @@ namespace Concorsi.View
                     FontAttributes = FontAttributes.Bold
                 };
                 Grid quesiti = new Grid();
-                quesiti = await gridQuesiti(quesito.Quesiti, quesito.Risposta,quesito.tempo_risposta);
+                quesiti = await gridQuesiti(quesito.Quesiti, quesito.Risposta, index);
                 grid.Children.Add(domanda, 0, 0);
                 grid.Children.Add(quesiti, 0, 1);
                 if (quesito.tipo == "pdf")
@@ -176,12 +175,13 @@ namespace Concorsi.View
                     grid.Children.Add(img, 0, 2);
                 }
                 gridDomande.Add(grid);
+                index++;
             }
 
             GrigliaDomanda.Children.Clear();
             GrigliaDomanda.Children.Add(gridDomande[posizioneCorrente]);
         }
-        private async Task<Grid> gridQuesiti(List<Quesiti> quesiti, String risposta,String tempoRisposta)
+        private async Task<Grid> gridQuesiti(List<Quesiti> quesiti, String risposta, int y)
         {
             Grid grid = new Grid();
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
@@ -206,12 +206,18 @@ namespace Concorsi.View
                 };
                 lettera.Clicked += async delegate (object sender, EventArgs e)
                 {
-                    tempoRisposta = tempodomanda.tempoTotale;
-                    
+                    listaDomande.quiz[y].tempo_risposta = tempodomanda.tempoTotale;
+                    listaDomande.quiz[y].risposta_utente = quesito.quesito;
                     if (lettera.Text == risposta)
+                    {
                         listaDomande.risposteGiuste = listaDomande.risposteGiuste + 1;
+                        listaDomande.quiz[y].risposta_esatta  = "1";
+                    }
                     else
+                    {
+                        listaDomande.quiz[y].risposta_esatta = "0";
                         listaDomande.risposteSbagliate = listaDomande.risposteSbagliate + 1;
+                    }
                     if (simulazioneAssistita)
                     {
                         lettera.BackgroundColor = Color.Red;
