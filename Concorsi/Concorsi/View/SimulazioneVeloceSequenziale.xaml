@@ -9,7 +9,7 @@
             <Picker Title="Seleziona Concorso" x:Name="concorsi" ItemsSource="{Binding ListaConcorsi}" ItemDisplayBinding="{Binding Corpo}" SelectedIndexChanged="Concorsi_OnSelectedIndexChanged"></Picker>
             <Picker x:Name="pickermaterie" IsEnabled="{Binding IsEnabled}" Title="Seleziona Materia" ItemsSource="{Binding ListaMaterie}" ItemDisplayBinding="{Binding materia}" SelectedIndexChanged="Materie_OnSelectedIndexChanged"></Picker>
        
-
+            <Label Text="Seleziona il numero di domande che desideri per ogni blocco"></Label>
             <buttons:SfSegmentedControl
                 SelectionTextColor = "White"
                 HeightRequest="80"
@@ -17,11 +17,10 @@
                 Color="Transparent" 
                 BorderColor="#929292"
                 IsEnabled="{Binding IsEnabledMateria}"
-                SelectedIndex="1"
                 SelectionChanged="SfSegmentedControl_OnSelectionChanged"
                 FontColor="#929292"
                 BackgroundColor="Transparent" >
-                <segmentCollection:List x:TypeArguments="x:String" >
+                <segmentCollection:List x:TypeArguments="x:String">
                     <x:String>20</x:String>
                     <x:String>40</x:String>
                     <x:String>60</x:String>
@@ -30,11 +29,23 @@
                 </segmentCollection:List>
             </buttons:SfSegmentedControl>
 
-         <ListView ItemsSource="{Binding Pacchetti}">
+         <ListView ItemsSource="{Binding Pacchetti}" IsVisible="{Binding VisibleListaPacchetti}" HasUnevenRows="True" ItemTapped="VaiQuiz">
              <ListView.ItemTemplate>
                  <DataTemplate>
                      <ViewCell>
-                         <Label></Label>
+                         <Frame BackgroundColor="#275B8C"  
+                                HasShadow="True" 
+                                CornerRadius="10" 
+                                WidthRequest="300" 
+                                Margin="5">
+                             <StackLayout>
+                                    <Label Text="{Binding pacchetto}"
+                                           TextColor="White"
+                                           FontAttributes="Bold"
+                                           HorizontalTextAlignment="Center"
+                                           HorizontalOptions="Center"/>
+                                 </StackLayout>
+                             </Frame>
                      </ViewCell>
                  </DataTemplate>
              </ListView.ItemTemplate>

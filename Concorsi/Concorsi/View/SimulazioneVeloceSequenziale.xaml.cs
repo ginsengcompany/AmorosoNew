@@ -45,5 +45,11 @@ namespace Concorsi.View
             modelView.MateriaSelezionata(b);
 
 	    }
-    }
+
+	    private void VaiQuiz(object sender, ItemTappedEventArgs e)
+	    {
+	        var a = e.Item as Pacchetti;
+           
+	    }
+	}
 }

@@ -14,7 +14,7 @@ namespace Concorsi.Model
 
     public class Pacchetti
     {
-        public int pacchetto { get; set; }
+        public string pacchetto { get; set; }
         public List<Answers> domande { get; set; }
     }
 

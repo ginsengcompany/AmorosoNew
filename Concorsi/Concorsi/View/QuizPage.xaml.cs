@@ -42,6 +42,10 @@ namespace Concorsi.View
             }
         }
 
+        public QuizPage(string id_concorso, List<Answers> domande)
+        {
+            InitializeComponent();
+        }
 
         public QuizPage(Set set, Boolean simulazioneAssistita)
         {
