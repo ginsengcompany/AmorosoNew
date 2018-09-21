@@ -108,6 +108,8 @@ namespace Concorsi.ModelView
             if (ListaMaterie.Count != 0)
                 ListaMaterie = new List<Materie>();
             quiz.concorso = concorsoSelezionato.id_concorso;
+            quiz.valoreGiusta = Int32.Parse(concorsoSelezionato.rispostaesatta);
+            quiz.valoreSbagliata = Int32.Parse(concorsoSelezionato.rispostaerrata);
             ListaMaterie = concorsoSelezionato.materie;
         }
 
@@ -160,7 +162,7 @@ namespace Concorsi.ModelView
 
         public async void VaiPaginaQuiz(Pacchetti pacchettoSelezionato)
         {
-          await  App.Current.MainPage.Navigation.PushAsync(new QuizPage(quiz.concorso, pacchettoSelezionato.domande));
+          await  App.Current.MainPage.Navigation.PushAsync(new QuizPage(quiz, pacchettoSelezionato.domande));
         }
     }
 }

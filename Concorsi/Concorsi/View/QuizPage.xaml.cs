@@ -17,6 +17,7 @@ namespace Concorsi.View
         List<Grid> gridDomande = new List<Grid>();
         int posizioneCorrente = 0;
         Set set = new Set();
+        SpeedQuiz concorso;
         Timer tempototale = new Timer();
         Timer tempodomanda = new Timer();
         Boolean simulazioneAssistita;
@@ -35,6 +36,8 @@ namespace Concorsi.View
                 REST<invioQuiz, Response<string>> connessioneInvioStatistiche = new REST<invioQuiz, Response<string>>();
                 tempototale.FermaTempo();
                 listaDomande.tempoTotale = tempototale.tempoTotale;
+                if (listaDomande.id_concorso != null)
+                    listaDomande.punteggio = ((listaDomande.risposteGiuste * concorso.valoreGiusta) - (listaDomande.risposteSbagliate * concorso.valoreSbagliata)).ToString();
                 listaDomande.risposteNonDate = listaDomande.numeroDomande - listaDomande.risposteGiuste - listaDomande.risposteSbagliate;
                 var response = await connessioneInvioStatistiche.PostJson(URL.salvataggioStatistiche, listaDomande);
                 await Navigation.PushAsync(new RisultatoQuizPage(listaDomande));
@@ -42,9 +45,15 @@ namespace Concorsi.View
             }
         }
 
-        public QuizPage(string id_concorso, List<Answers> domande)
+        public QuizPage(SpeedQuiz id_concorso, List<Quiz> domande)
         {
-            InitializeComponent();
+            InitializeComponent();           
+            concorso = id_concorso;
+            Title = "QUIZ";
+            GrigliaDomanda.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
+            GrigliaDomanda.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
+            GrigliaDomanda.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
+            ingessoPagina(domande);
         }
 
         public QuizPage(Set set, Boolean simulazioneAssistita)
@@ -57,6 +66,20 @@ namespace Concorsi.View
             GrigliaDomanda.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
             this.simulazioneAssistita = simulazioneAssistita;
             ingessoPagina();
+        }
+        public async Task ingessoPagina(List<Quiz> domande)
+        {
+            tempototale.Tempo(true, lblTimer);
+            tempodomanda.Tempo(true);
+            listaDomande.quiz = domande;
+            posizioneCorrente = 0;
+            Title = set.Descrizione + " " + (posizioneCorrente + 1) + "/" + listaDomande.quiz.Count;
+            listaDomande.username = GestioneUtente.Instance.getUserName;
+            listaDomande.id_concorso = concorso.concorso;
+            listaDomande.numeroDomande = domande.Count;
+            listaDomande.data_sessione = string.Format("{0:dd/MM/yyyy}", DateTime.Today);
+            listaDomande.ora_sessione = String.Format("{0:HH:mm}", DateTime.Now);
+            await creaGriglia();
         }
         public async Task ingessoPagina()
         {

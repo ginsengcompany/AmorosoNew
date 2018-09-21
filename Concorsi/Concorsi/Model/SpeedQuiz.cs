@@ -7,6 +7,8 @@ namespace Concorsi.Model
     public class SpeedQuiz
     {
         public string concorso { get; set; }
+        public int valoreGiusta { get; set; } = 0;
+        public int valoreSbagliata { get; set; } = 0;
         public string materia { get; set; }
         public int intervallo { get; set; }
 
@@ -15,7 +17,7 @@ namespace Concorsi.Model
     public class Pacchetti
     {
         public string pacchetto { get; set; }
-        public List<Answers> domande { get; set; }
+        public List<Quiz> domande { get; set; }
     }
 
 }
