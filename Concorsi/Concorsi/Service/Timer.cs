@@ -11,6 +11,8 @@ namespace Concorsi.Service
         private TimeSpan tempo;
         public string tempoTotale;
         private bool avviaTempo;
+
+        public string tipoTempo;
         /**
          * TEMPO TRASCORSO
          * */

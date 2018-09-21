@@ -88,6 +88,7 @@ namespace Concorsi.Model
         public const string DomandeApprendimento = "http://192.168.125.97/amorosoNew/servizioapp/domande";
         public const string salvataggioStatistiche = "http://192.168.125.97/amorosoNew/servizioapp/salvaSessione";
         public const string speedQuiz = "http://192.168.125.97/amorosoNew/servizioapp/datiSpeedQuiz";
+        public const string pacchetti = "http://192.168.125.97/amorosoNew/servizioapp/domandePacchetti";
 
 
         /**

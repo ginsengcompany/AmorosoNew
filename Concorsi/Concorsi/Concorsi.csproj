@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="16.2.0.50" />
     <PackageReference Include="Syncfusion.Xamarin.Core" Version="16.2.0.50" />
     <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="16.2.0.50" />
     <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="16.2.0.50" />
@@ -91,6 +92,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Resoconto.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\SimulazioneVeloceRandom.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\SimulazioneVeloceSequenziale.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Statistiche.xaml">

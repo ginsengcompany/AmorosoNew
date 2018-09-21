@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:segmentCollection="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+             x:Class="Concorsi.View.SimulazioneVeloceSequenziale">
+    <ContentPage.Content>
+        <StackLayout>
+            <Picker Title="Seleziona Concorso" x:Name="concorsi" ItemsSource="{Binding ListaConcorsi}" ItemDisplayBinding="{Binding Corpo}" SelectedIndexChanged="Concorsi_OnSelectedIndexChanged"></Picker>
+            <Picker x:Name="pickermaterie" IsEnabled="{Binding IsEnabled}" Title="Seleziona Materia" ItemsSource="{Binding ListaMaterie}" ItemDisplayBinding="{Binding materia}" SelectedIndexChanged="Materie_OnSelectedIndexChanged"></Picker>
+       
+
+            <buttons:SfSegmentedControl
+                SelectionTextColor = "White"
+                HeightRequest="80"
+                VisibleSegmentsCount="5"
+                Color="Transparent" 
+                BorderColor="#929292"
+                IsEnabled="{Binding IsEnabledMateria}"
+                SelectedIndex="1"
+                SelectionChanged="SfSegmentedControl_OnSelectionChanged"
+                FontColor="#929292"
+                BackgroundColor="Transparent" >
+                <segmentCollection:List x:TypeArguments="x:String" >
+                    <x:String>20</x:String>
+                    <x:String>40</x:String>
+                    <x:String>60</x:String>
+                    <x:String>80</x:String>
+                    <x:String>100</x:String>
+                </segmentCollection:List>
+            </buttons:SfSegmentedControl>
+
+         <ListView ItemsSource="{Binding Pacchetti}">
+             <ListView.ItemTemplate>
+                 <DataTemplate>
+                     <ViewCell>
+                         <Label></Label>
+                     </ViewCell>
+                 </DataTemplate>
+             </ListView.ItemTemplate>
+         </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

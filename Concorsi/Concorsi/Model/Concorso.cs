@@ -21,4 +21,6 @@ namespace Concorsi.Model
         public string codice_concorso { get; set; }
         public List<Materie> materie { get; set; }
     }
+
+
 }
