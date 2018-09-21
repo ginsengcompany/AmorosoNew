@@ -13,7 +13,7 @@
                 <Picker Title="Seleziona data" ItemsSource="{Binding DateDisponibili}" ItemDisplayBinding="{Binding dataSessione}" SelectedIndexChanged="Picker_SelectedIndexChanged"></Picker>
                 
             </StackLayout>
-            
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"></ActivityIndicator>
             <ListView HasUnevenRows="True" ItemsSource="{Binding SessioneDisponibile}" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>

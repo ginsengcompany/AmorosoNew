@@ -25,6 +25,7 @@ namespace Concorsi.ModelView
 
         public event PropertyChangedEventHandler PropertyChanged; //evento che implementa l'interfaccia INotifyPropertyChanged
         private bool isenabled;//booleano utilizzato per abilitare o meno un elemento nello xaml
+        private bool isBusy = false;
         private CronologiaPage cronologiaPage;//Oggetto del tipo della pagina Login
         public static string risultatoRispostaCronologia;
         private List<Cronologia> dateDisponibili = new List<Cronologia>();
@@ -47,6 +48,15 @@ namespace Concorsi.ModelView
             }
         }
 
+        public bool IsBusy
+        {
+            get { return isBusy; }
+            set
+            {
+                OnPropertyChanged();
+                isBusy = value;
+            }
+        }
         public List<Cronologia>DateDisponibili
         {
             get{return dateDisponibili;}
@@ -111,7 +121,9 @@ namespace Concorsi.ModelView
 
         public void SessioneDataSelezionata(List<Sessione> sessioneSelezionata)
         {
+            IsBusy = true;
             SessioneDisponibile = sessioneSelezionata;
+            isBusy = false;
         }
   
 

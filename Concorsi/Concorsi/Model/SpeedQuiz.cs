@@ -17,6 +17,7 @@ namespace Concorsi.Model
     public class Pacchetti
     {
         public string pacchetto { get; set; }
+        public string intervallo { get; set; }
         public List<Quiz> domande { get; set; }
     }
 

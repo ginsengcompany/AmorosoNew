@@ -15,7 +15,7 @@
                 SelectionTextColor = "White"
                 HeightRequest="80"
                 VisibleSegmentsCount="5"
-                Color="Transparent" 
+                Color="Transparent"
                 BorderColor="#929292"
                 IsEnabled="{Binding IsEnabledMateria}"
                 SelectionChanged="SfSegmentedControl_OnSelectionChanged"
@@ -29,8 +29,8 @@
                     <x:String>100</x:String>
                 </segmentCollection:List>
             </buttons:SfSegmentedControl>
-
-         <ListView ItemsSource="{Binding Pacchetti}" IsVisible="{Binding VisibleListaPacchetti}" HasUnevenRows="True" ItemTapped="VaiQuiz">
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+            <ListView ItemsSource="{Binding Pacchetti}" IsVisible="{Binding VisibleListaPacchetti}" HasUnevenRows="True" ItemTapped="VaiQuiz">
              <ListView.ItemTemplate>
                  <DataTemplate>
                      <ViewCell>
@@ -45,7 +45,12 @@
                                            FontAttributes="Bold"
                                            HorizontalTextAlignment="Center"
                                            HorizontalOptions="Center"/>
-                                 </StackLayout>
+                                 <Label Text="{Binding intervallo}"
+                                        TextColor="White"
+                                        FontAttributes="Italic"
+                                        HorizontalTextAlignment="Center"
+                                        HorizontalOptions="Center"/>
+                                </StackLayout>
                              </Frame>
                      </ViewCell>
                  </DataTemplate>

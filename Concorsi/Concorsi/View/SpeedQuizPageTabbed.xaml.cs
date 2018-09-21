@@ -18,5 +18,14 @@ namespace Concorsi.View
             this.Children.Add(new SimulazioneVeloceRandom());
             this.Children.Add(new SimulazioneVeloceSequenziale());
 		}
-	}
+
+	     protected override void OnDisappearing()
+	    {
+            base.OnDisappearing();
+            this.Children.Clear();
+	        this.Children.Add(new SimulazioneVeloceRandom());
+	        this.Children.Add(new SimulazioneVeloceSequenziale());
+        }
+    }
+    
 }

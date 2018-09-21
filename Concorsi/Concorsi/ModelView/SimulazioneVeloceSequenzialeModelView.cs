@@ -15,6 +15,7 @@ namespace Concorsi.ModelView
         private List<Concorso> listaConcorsi = new List<Concorso>();
         private List<Materie> listaMaterie = new List<Materie>();
         private List<Pacchetti>pacchetti = new List<Pacchetti>();
+        private bool isBusy = false;
         private SpeedQuiz quiz = new SpeedQuiz();
         int numeroDomande = 0;
 
@@ -27,6 +28,15 @@ namespace Concorsi.ModelView
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
+        public bool IsBusy
+        {
+            get { return isBusy; }
+            set
+            {
+                OnPropertyChanged();
+                isBusy = value;
+            }
+        }
 
         public bool IsEnabled
         {
@@ -148,8 +158,10 @@ namespace Concorsi.ModelView
         {
             REST<SpeedQuiz, Response<List<Pacchetti>>> connessionePacchetti = new REST<SpeedQuiz, Response<List<Pacchetti>>>();
             quiz.intervallo = numeroDomande;
+            IsBusy = true;
             var response = await connessionePacchetti.PostJson(URL.pacchetti, quiz);
             Pacchetti = response.message;
+            IsBusy = false;
             VisibleListaPacchetti = true;
         }
 
