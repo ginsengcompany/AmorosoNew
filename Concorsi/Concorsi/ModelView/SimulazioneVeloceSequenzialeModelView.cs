@@ -94,7 +94,7 @@ namespace Concorsi.ModelView
             Utente utente = new Utente();
             REST<Utente, Response<List<Concorso>>> connessioneMaterieConcorsi = new REST<Utente, Response<List<Concorso>>>();
            // utente.username = GestioneUtente.Instance.getUserName;
-            utente.username = "MANUTENZIONE1234";
+            utente.username =GestioneUtente.Instance.getUserName;
             var response = await connessioneMaterieConcorsi.PostJson(URL.speedQuiz, utente);
             ListaConcorsi = response.message;
 

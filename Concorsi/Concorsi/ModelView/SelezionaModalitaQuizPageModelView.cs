@@ -62,7 +62,7 @@ namespace Concorsi.ModelView
                 });
             VaiPaginaModalitaVeloce = new Command(async () =>
             {
-                await App.Current.MainPage.Navigation.PushAsync(new GestioneSimulazioneVeloce());
+                await App.Current.MainPage.Navigation.PushAsync(new SpeedQuizPageTabbed());
             });
 
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Concorsi.Model;
 using Concorsi.ModelView;
 using Syncfusion.XForms.Buttons;
 using Xamarin.Forms;
@@ -20,10 +21,10 @@ namespace Concorsi.View
             modelView= new SimulazioneVeloceRandomModelView();
 		    BindingContext = modelView;
 		}
-
-	    private void SfSegmentedControl_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+	    private void Concorsi_OnSelectedIndexChanged(object sender, EventArgs e)
 	    {
-	        var a = e.Index.ToString();
+	        var a = sender as Picker;
+	        var b = a.SelectedItem as Concorso;
 	    }
-	}
+    }
 }
