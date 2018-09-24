@@ -13,11 +13,12 @@ namespace Concorsi.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class QuizPage : ContentPage
     {
-       invioQuiz listaDomande = new invioQuiz();
+        invioQuiz listaDomande = new invioQuiz();
         List<Grid> gridDomande = new List<Grid>();
         int posizioneCorrente = 0;
         Set set = new Set();
-        SpeedQuiz concorso;
+        SpeedQuiz concorso = new SpeedQuiz();
+        Boolean flagconcorso = false;
         Timer tempototale = new Timer();
         Timer tempodomanda = new Timer();
         Boolean simulazioneAssistita;
@@ -33,6 +34,10 @@ namespace Concorsi.View
             var responseAlert = await DisplayAlert("Attenzione", "sei sicuro di voler terminare il test?", "SI", "NO");
             if (responseAlert)
             {
+                Loader.IsRunning = true;
+                Loader.IsVisible = true;
+                StackDomande.IsVisible = false;
+                StackButtonBot.IsVisible = false;
                 REST<invioQuiz, Response<string>> connessioneInvioStatistiche = new REST<invioQuiz, Response<string>>();
                 tempototale.FermaTempo();
                 listaDomande.tempoTotale = tempototale.tempoTotale;
@@ -41,13 +46,35 @@ namespace Concorsi.View
                 listaDomande.risposteNonDate = listaDomande.numeroDomande - listaDomande.risposteGiuste - listaDomande.risposteSbagliate;
                 var response = await connessioneInvioStatistiche.PostJson(URL.salvataggioStatistiche, listaDomande);
                 await Navigation.PushAsync(new RisultatoQuizPage(listaDomande));
+                Loader.IsRunning = false;
+                Loader.IsVisible = false;
+                StackDomande.IsVisible = true;
+                StackButtonBot.IsVisible = true;
                 Navigation.RemovePage(this);
             }
+        }
+        public QuizPage(Concorso concorsoSelezionato)
+        {
+            InitializeComponent();
+            Loader.IsRunning = true;
+            Loader.IsVisible = true;
+            flagconcorso = true;
+            concorso.concorso = concorsoSelezionato.id_concorso;
+            concorso.valoreGiusta = Int32.Parse(concorsoSelezionato.rispostaesatta);
+            concorso.valoreSbagliata = Int32.Parse(concorsoSelezionato.rispostaerrata);
+            concorso.intervallo = Int32.Parse(concorsoSelezionato.numerodomande);
+            Title = "QUIZ";
+            GrigliaDomanda.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
+            GrigliaDomanda.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
+            GrigliaDomanda.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
+            ingessoPagina();
         }
 
         public QuizPage(SpeedQuiz id_concorso, List<Quiz> domande)
         {
-            InitializeComponent();           
+            InitializeComponent();
+            Loader.IsRunning = true;
+            Loader.IsVisible = true;
             concorso = id_concorso;
             Title = "QUIZ";
             GrigliaDomanda.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
@@ -59,6 +86,8 @@ namespace Concorsi.View
         public QuizPage(Set set, Boolean simulazioneAssistita)
         {
             InitializeComponent();
+            Loader.IsRunning = true;
+            Loader.IsVisible = true;
             this.set = set;
             Title = set.Descrizione;
             GrigliaDomanda.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
@@ -85,7 +114,31 @@ namespace Concorsi.View
         {
             tempototale.Tempo(true, lblTimer);
             tempodomanda.Tempo(true);
-            await connessioneDomande();
+            if (flagconcorso)
+                await connessioneDomandeConcorso();
+            else
+                await connessioneDomande();
+        }
+        private async Task connessioneDomandeConcorso()
+        {
+            REST<SpeedQuiz, Response<List<Quiz>>> connessioneDomande = new REST<SpeedQuiz, Response<List<Quiz>>>();
+            var respone = await connessioneDomande.PostJson(URL.Simulazione, concorso);
+            if (connessioneDomande.responseMessage != HttpStatusCode.OK)
+            {
+                await App.Current.MainPage.DisplayAlert("Attenzione " + (int)connessioneDomande.responseMessage, connessioneDomande.warning, "OK");
+            }
+            else
+            {
+                listaDomande.quiz = respone.message;
+                posizioneCorrente = 0;
+                Title = "Domanda: " + (posizioneCorrente + 1) + "/" + (listaDomande.quiz.Count);
+                listaDomande.username = GestioneUtente.Instance.getUserName;
+                listaDomande.id_concorso = concorso.concorso;
+                listaDomande.numeroDomande = respone.message.Count;
+                listaDomande.data_sessione = string.Format("{0:dd/MM/yyyy}", DateTime.Today);
+                listaDomande.ora_sessione = String.Format("{0:HH:mm}", DateTime.Now);
+                await creaGriglia();
+            }
         }
         private async Task connessioneDomande()
         {
@@ -199,7 +252,10 @@ namespace Concorsi.View
                 gridDomande.Add(grid);
                 index++;
             }
-
+            Loader.IsRunning = false;
+            Loader.IsVisible = false;
+            StackDomande.IsVisible = true;
+            StackButtonBot.IsVisible = true;
             GrigliaDomanda.Children.Clear();
             GrigliaDomanda.Children.Add(gridDomande[posizioneCorrente]);
         }

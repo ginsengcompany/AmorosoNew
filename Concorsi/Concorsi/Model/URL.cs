@@ -29,6 +29,8 @@ namespace Concorsi.Model
         public const string login =
             //"https://amorosoconcorsi.ak12srl.it/services/servizioapp/login";
             "http://192.168.125.97/amorosoNew/servizioapp/login";
+        public const string Simulazione =
+            "http://192.168.125.97/amorosoNew/servizioapp/simulazione";
 
         public const string logout =
             //"https://amorosoconcorsi.ak12srl.it/services/servizioapp/logout";

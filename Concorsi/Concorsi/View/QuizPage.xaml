@@ -14,10 +14,11 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout>
+            <ActivityIndicator x:Name="Loader" HorizontalOptions="Center" VerticalOptions="Center"  />
+            <StackLayout x:Name="StackDomande" IsVisible="False">
                 <Grid x:Name="GrigliaDomanda"/>
             </StackLayout>
-            <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
+            <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" x:Name="StackButtonBot" IsVisible="False">
                 <Grid HorizontalOptions="FillAndExpand">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
