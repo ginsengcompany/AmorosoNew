@@ -29,31 +29,26 @@ namespace Concorsi.View
             return true;
         }
 
-        public async void InvioTempi()
-        {
-
-        }
-
         public async void FineQuiz()
         {
             var responseAlert = await DisplayAlert("Attenzione", "sei sicuro di voler terminare il test?", "SI", "NO");
             if (responseAlert)
             {
+                
                 if (simulazioneAssistita)
                 {
-                    tempototale.tipoTempo = "tempoSimulazioneAssistita";
+                   await tempototale.invioTempi("tempoSimulazioneAssistita");
                 }
                 else
                 {
-                    tempototale.tipoTempo = "tempoSimulazione";
+                    await tempototale.invioTempi("tempoSimulazione");
 
-                }
+                };
                 Loader.IsRunning = true;
                 Loader.IsVisible = true;
                 StackDomande.IsVisible = false;
                 StackButtonBot.IsVisible = false;
                 REST<invioQuiz, Response<string>> connessioneInvioStatistiche = new REST<invioQuiz, Response<string>>();
-                tempototale.FermaTempo();
                 listaDomande.tempoTotale = tempototale.tempoTotale;
                 if (listaDomande.id_concorso != null)
                     listaDomande.punteggio = ((listaDomande.risposteGiuste * concorso.valoreGiusta) - (listaDomande.risposteSbagliate * concorso.valoreSbagliata)).ToString();

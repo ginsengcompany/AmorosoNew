@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Concorsi.Model;
+using System;
 using System.Diagnostics;
+using System.Net;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Concorsi.Service
@@ -11,8 +14,8 @@ namespace Concorsi.Service
         private TimeSpan tempo;
         public string tempoTotale;
         private bool avviaTempo;
-
-        public string tipoTempo;
+        public String tipoTempo;
+        public String username;
         /**
          * TEMPO TRASCORSO
          *
@@ -60,6 +63,18 @@ namespace Concorsi.Service
             tempoGlobale.Restart();
         }
 
+        public async Task invioTempi(String tipoTempo)
+        {
+            REST<Timer, Response<String>> connessioneLogin = new REST<Timer, Response<String>>();
+            this.tipoTempo = tipoTempo;
+            FermaTempo();
+            this.username = GestioneUtente.Instance.getUserName;
+            var respone = await connessioneLogin.PostJson(URL.invioTempi, this);
+            if (connessioneLogin.responseMessage != HttpStatusCode.OK)
+            {
+                await App.Current.MainPage.DisplayAlert("Attenzione " + (int)connessioneLogin.responseMessage, connessioneLogin.warning, "OK");
+            }
+        }
     }
 }
 

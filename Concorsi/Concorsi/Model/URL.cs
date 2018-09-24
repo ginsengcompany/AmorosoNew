@@ -78,8 +78,8 @@ namespace Concorsi.Model
             // "http://192.168.125.97/servizioApp/domandeconcorsorandomtotaliNew.php";
             "https://amorosoconcorsi.ak12srl.it/services/servizioapp/domconcorsorandomtotaliNew";
 
-        public const string invioTempiGlobali =
-            "https://amorosoconcorsi.ak12srl.it/services/servizioapp/invioTempi";
+        public const string invioTempi =
+            "http://192.168.125.97/amorosoNew/servizioapp/salvaTempo";
 
         public const string listaMaterieVideo =
             "https://amorosoconcorsi.ak12srl.it/services/servizioapp/listaMaterieVideo";
