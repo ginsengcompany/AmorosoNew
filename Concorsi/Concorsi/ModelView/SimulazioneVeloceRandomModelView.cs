@@ -6,14 +6,18 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Concorsi.View;
+using Xamarin.Forms;
+using System.Windows.Input;
 
 namespace Concorsi.ModelView
 {
     public class SimulazioneVeloceRandomModelView: INotifyPropertyChanged
     {
         private List<Concorso> listaConcorsi = new List<Concorso>();
+        private Concorso concorso = new Concorso();
         private bool isEnabled = false;
         private bool isBusy = false;
+        public ICommand avviaSimulazione { protected set; get; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -56,7 +60,11 @@ namespace Concorsi.ModelView
 
         public SimulazioneVeloceRandomModelView()
         {
-            RicezioneConcorsiMaterie();
+            avviaSimulazione = new Command(async () =>
+            {
+                await App.Current.MainPage.Navigation.PushAsync(new QuizPage(concorso));
+            });
+        RicezioneConcorsiMaterie();
         }
 
         private async void RicezioneConcorsiMaterie()
@@ -71,8 +79,7 @@ namespace Concorsi.ModelView
         public async void ConcorsoSelezionato(Concorso concorsoSelezionato)
         {
             IsEnabled = true;
-            //App.Current.MainPage.Navigation.PushAsync(new QuizPage());
-
+            concorso = concorsoSelezionato;
         }
 
        

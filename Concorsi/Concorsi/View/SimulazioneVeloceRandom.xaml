@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Picker Title="Seleziona Concorso" x:Name="concorsi" ItemsSource="{Binding ListaConcorsi}" ItemDisplayBinding="{Binding Corpo}" SelectedIndexChanged="Concorsi_OnSelectedIndexChanged"></Picker>
-            <Button Text="Avvia" HorizontalOptions="CenterAndExpand" IsEnabled="{Binding IsEnabled}"></Button>
+            <Button Text="Avvia" HorizontalOptions="CenterAndExpand" IsEnabled="{Binding IsEnabled}" Command="{Binding avviaSimulazione}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
