@@ -6,12 +6,10 @@
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" x:Name="StackHistoryDomande">
 
-            <Label Grid.Row="0"  
-                   Grid.Column="1" 
+            <Label
                    Text="Tempo" 
                    x:Name="lblTimer" 
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" 
+                   HorizontalOptions="EndAndExpand"
                    FontSize="Medium"
                    FontAttributes="Bold"
                    HorizontalTextAlignment="Center"/>
