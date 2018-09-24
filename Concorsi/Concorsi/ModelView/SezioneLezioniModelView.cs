@@ -11,9 +11,20 @@ namespace Concorsi.ModelView
         private string testoApprendimento, videoLezioni;
         public ICommand VaiPaginaListaMaterieVideolezioniPage { protected set; get; }
         public ICommand VaiPaginaApprendimento { protected set; get; }
+        private bool isBusy = false;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+
+        public bool IsBusy
+        {
+            get { return isBusy; }
+            set
+            {
+                OnPropertyChanged();
+                isBusy = value;
+            }
+        }
         public string TestoApprendimento
         {
             get { return testoApprendimento; }

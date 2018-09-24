@@ -12,10 +12,21 @@ namespace Concorsi.ModelView
    {
        private List<PianiFormativi> piani = new List<PianiFormativi>();
        private List<Set> listaSetDomande = new List<Set>();
+       private bool isBusy = false;
 
        public event PropertyChangedEventHandler PropertyChanged;
 
-       public List<PianiFormativi> Piani
+
+       public bool IsBusy
+       {
+           get { return isBusy; }
+           set
+           {
+               OnPropertyChanged();
+               isBusy = value;
+           }
+       }
+        public List<PianiFormativi> Piani
        {
            get { return piani; }
            set

@@ -25,6 +25,7 @@ namespace Concorsi.View
 	    {
 	        var a = sender as Picker;
 	        var b = a.SelectedItem as Concorso;
+	        modelView.ConcorsoSelezionato(b);
 	    }
     }
 }

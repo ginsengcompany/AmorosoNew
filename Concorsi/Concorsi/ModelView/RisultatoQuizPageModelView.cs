@@ -10,11 +10,18 @@ namespace Concorsi.ModelView
     public class RisultatoQuizPageModelView : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged([CallerMemberName] string name = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
         private invioQuiz risultato = new invioQuiz();
+        private bool isBusy = false;
+
+        public bool IsBusy
+        {
+            get { return isBusy; }
+            set
+            {
+                OnPropertyChanged();
+                isBusy = value;
+            }
+        }
         public invioQuiz Risultato
         {
             get { return risultato; }
@@ -27,6 +34,10 @@ namespace Concorsi.ModelView
         public RisultatoQuizPageModelView(invioQuiz risulatoQuiz)
         {
             Risultato = risulatoQuiz;
+        }
+       protected virtual void OnPropertyChanged([CallerMemberName] string name = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }

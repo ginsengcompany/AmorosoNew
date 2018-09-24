@@ -14,6 +14,17 @@ namespace Concorsi.ModelView
         private List<RisultatoDomande> listaDomande = new List<RisultatoDomande>();
 
         public event PropertyChangedEventHandler PropertyChanged;
+        private bool isBusy = false;
+
+        public bool IsBusy
+        {
+            get { return isBusy; }
+            set
+            {
+                OnPropertyChanged();
+                isBusy = value;
+            }
+        }
 
         public List<RisultatoDomande> ListaDomande
         {

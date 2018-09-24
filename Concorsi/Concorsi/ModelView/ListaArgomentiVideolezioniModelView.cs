@@ -12,13 +12,24 @@ namespace Concorsi.ModelView
     {
         public string materieSelezionate = "";
         public event PropertyChangedEventHandler PropertyChanged;
-        private List<VideoLezioni> argomenti;        
+        private List<VideoLezioni> argomenti;
+        private bool isBusy = false;
 
         public ListaArgomentiVideolezioniModelView(string materieSelezionate)
         {
             this.materieSelezionate = materieSelezionate;
             prelevaArgomentiVideolezioni();
             // generaThumbnails();
+        }
+
+        public bool IsBusy
+        {
+            get { return isBusy; }
+            set
+            {
+                OnPropertyChanged();
+                isBusy = value;
+            }
         }
 
         public List<VideoLezioni> Argomenti

@@ -13,11 +13,21 @@ namespace Concorsi.ModelView
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private List<MaterieVideo> materia;
+        private bool isBusy = false;
         
 
         public ListaMaterieVideolezioniModelView()
         {
             prelevaMaterieVideolezioni();
+        }
+        public bool IsBusy
+        {
+            get { return isBusy; }
+            set
+            {
+                OnPropertyChanged();
+                isBusy = value;
+            }
         }
 
         public List<MaterieVideo> Materia

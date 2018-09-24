@@ -18,6 +18,7 @@ namespace Concorsi.ModelView
         private String domandaSelezionata = "";
         private Double valoreSlider = 10;
         private bool isEnabled = false;
+       private bool isBusy = false;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -26,8 +27,17 @@ namespace Concorsi.ModelView
            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
        }
 
+       public bool IsBusy
+       {
+           get { return isBusy; }
+           set
+           {
+               OnPropertyChanged();
+               isBusy = value;
+           }
+       }
 
-       public bool IsEnabled
+        public bool IsEnabled
        {
            get { return isEnabled; }
            set
