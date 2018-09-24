@@ -5,6 +5,17 @@
              Title="Apprendimento">
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" x:Name="StackHistoryDomande">
+
+            <Label Grid.Row="0"  
+                   Grid.Column="1" 
+                   Text="Tempo" 
+                   x:Name="lblTimer" 
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" 
+                   FontSize="Medium"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"/>
+
             <ListView x:Name="lstApprendimento" CachingStrategy="RecycleElement" HasUnevenRows="True" SeparatorColor="Black" IsVisible="True" ItemsSource="{Binding ListaDomande}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
