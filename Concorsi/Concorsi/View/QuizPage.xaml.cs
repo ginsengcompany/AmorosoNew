@@ -21,7 +21,7 @@ namespace Concorsi.View
         Boolean flagconcorso = false;
         Timer tempototale = new Timer();
         Timer tempodomanda = new Timer();
-        Boolean simulazioneAssistita;
+        Boolean simulazioneAssistita=false;
 
         protected override bool OnBackButtonPressed()
         {
@@ -29,11 +29,25 @@ namespace Concorsi.View
             return true;
         }
 
+        public async void InvioTempi()
+        {
+
+        }
+
         public async void FineQuiz()
         {
             var responseAlert = await DisplayAlert("Attenzione", "sei sicuro di voler terminare il test?", "SI", "NO");
             if (responseAlert)
             {
+                if (simulazioneAssistita)
+                {
+                    tempototale.tipoTempo = "tempoSimulazioneAssistita";
+                }
+                else
+                {
+                    tempototale.tipoTempo = "tempoSimulazione";
+
+                }
                 Loader.IsRunning = true;
                 Loader.IsVisible = true;
                 StackDomande.IsVisible = false;

@@ -15,7 +15,8 @@ namespace Concorsi.Service
         public string tipoTempo;
         /**
          * TEMPO TRASCORSO
-         * */
+         *
+         */
         public void Tempo(bool start,Label tempolbl)
         {
             avviaTempo = start;
