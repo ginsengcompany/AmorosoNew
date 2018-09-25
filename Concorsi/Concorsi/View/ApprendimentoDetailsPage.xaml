@@ -2,18 +2,20 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Concorsi.View.ApprendimentoDetailsPage" 
-             Title="Apprendimento">
+             Title="Apprendimento"
+             NavigationPage.HasBackButton="False"
+             NavigationPage.BackButtonTitle="False">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="Fine Sessione"
+            Order="Primary"
+            Clicked="ToolbarItem_Clicked"
+            Priority="0"
+        />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" x:Name="StackHistoryDomande">
-
-            <Label
-                   Text="Tempo" 
-                   x:Name="lblTimer" 
-                   HorizontalOptions="EndAndExpand"
-                   FontSize="Medium"
-                   FontAttributes="Bold"
-                   HorizontalTextAlignment="Center"/>
-
+            <ActivityIndicator  HorizontalOptions="Center" VerticalOptions="Center" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsVisible}"/>
             <ListView x:Name="lstApprendimento" CachingStrategy="RecycleElement" HasUnevenRows="True" SeparatorColor="Black" IsVisible="True" ItemsSource="{Binding ListaDomande}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -119,9 +121,16 @@
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
+            <Label
+                x:Name="lblTempo"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="EndAndExpand"
+                FontSize="Medium"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Center"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
