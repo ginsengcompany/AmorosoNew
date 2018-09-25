@@ -14,6 +14,30 @@ namespace Concorsi.ModelView
     {
         private List<Answers> listaDomande = new List<Answers>();
         private Set set = new Set();
+        private Timer tempo = new Timer();
+        public Boolean responseAlert = false;
+
+        private bool isvisible; //variabile booleana utilizzata per gestire la proprietà IsVisible dell'activity indicator
+        private bool isbusy; //variabile booleana utilizzata per gestire la proprietà IsRunning dell'activity indicator
+        public bool IsVisible
+        {
+            get { return isvisible; }
+            set
+            {
+                OnPropertyChanged();
+                isvisible = value;
+            }
+        }
+        //Proprietà relativa alla variabile isbusy
+        public bool IsBusy
+        {
+            get { return isbusy; }
+            set
+            {
+                OnPropertyChanged();
+                isbusy = value;
+            }
+        }
         public List<Answers> ListaDomande
         {
             get { return listaDomande; }
@@ -23,10 +47,28 @@ namespace Concorsi.ModelView
                 listaDomande = value;
             }
         }
-
-        public ApprendimentoDetailsPageModelView(Set set)
+        public async void fineSessione()
         {
+            if (!responseAlert)
+            {
+                tempo.FermaTempo();
+                responseAlert = await App.Current.MainPage.DisplayAlert("Attenzione", "sei sicuro di voler terminare la sessione", "SI", "NO");
+                if (responseAlert)
+                {
+                    tempo.invioTempi("tempoApprendimento");
+                    App.Current.MainPage.Navigation.PopAsync();
+                }
+                else
+                    tempo.RestartTempo();
+            }
+     
+        }
+        public ApprendimentoDetailsPageModelView(Set set, Label lbltempo)
+        {
+            IsVisible = true;
+            IsBusy = true;
             this.set = set;
+            tempo.Tempo(true, lbltempo);
             prelevaAnswers();
         }
         public event PropertyChangedEventHandler PropertyChanged;
@@ -68,6 +110,8 @@ namespace Concorsi.ModelView
                     }
                 }
                 ListaDomande = response.message;
+                IsBusy = false;
+                IsVisible = false;
             }
         }
 

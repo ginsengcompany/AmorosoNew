@@ -20,64 +20,23 @@ namespace Concorsi.View
         {
            
             InitializeComponent();
-            modelView = new ApprendimentoDetailsPageModelView(set);
+            modelView = new ApprendimentoDetailsPageModelView(set,lblTempo);
             BindingContext = modelView;
         }
-        /*
-        public async Task creatable()
-        {
-            int i = 0;
-
-            gridDetails.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
-            foreach (var quesito in listaDomande)
-            {
-
-                gridDetails.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
-                gridDetails.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
-                Label domanda = new Label
-                {
-                    Text = quesito.Domanda,
-                    TextColor = Color.Black,
-                    FontAttributes = FontAttributes.Bold
-                };
-                Grid quesiti = new Grid();
-                quesiti = await gridQuesiti(quesito.Quesiti, quesito.Risposta);
-                gridDetails.Children.Add(domanda, 0, i);
-                i++;
-                gridDetails.Children.Add(quesiti, 0, i);
-                i++;
-            }            
+        protected override  void OnDisappearing()
+        {           
+                modelView.fineSessione();
+                base.OnDisappearing();
         }
-        private async Task<Grid> gridQuesiti(List<Quesiti> quesiti, String risposta)
+        protected override bool OnBackButtonPressed()
         {
-            Grid grid = new Grid();
-            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
-            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
-            int i = 0;
-            foreach (var quesito in quesiti)
-            {
-                grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
-                Label lettera = new Label
-                {
-                    Text = quesito.lettera,
-                    TextColor = Color.Black,
-                };
-                Label detalies = new Label
-                {
-                    Text = quesito.quesito,
-                    TextColor = Color.Black,
-                };
-                if (quesito.lettera == risposta)
-                {
-                    detalies.TextColor = Color.Green;
-                    detalies.FontAttributes = FontAttributes.Bold;
-                    lettera.FontAttributes = FontAttributes.Bold;
-                }
-                grid.Children.Add(lettera, 0, i);
-                grid.Children.Add(detalies, 1, i);
-                i++;
-            }
-            return grid;
-        }*/
+            modelView.fineSessione();
+            return true;
+        }
+
+        private void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            modelView.fineSessione();
+        }
     }
 }

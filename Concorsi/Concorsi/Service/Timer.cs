@@ -60,7 +60,7 @@ namespace Concorsi.Service
         public void RestartTempo()
         {
             avviaTempo = true;
-            tempoGlobale.Restart();
+            tempoGlobale.Start();
         }
 
         public async Task invioTempi(String tipoTempo)
