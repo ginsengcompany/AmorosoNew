@@ -103,7 +103,7 @@ namespace Concorsi.ModelView
             List<Materie> listappoggio = new List<Materie>();
             REST<Utente,Response<List<Concorso>>> connessioneMaterieConcorsi = new REST<Utente, Response<List<Concorso>>>();
             utente.username = GestioneUtente.Instance.getUserName;
-            var response = await connessioneMaterieConcorsi.PostJson(URL.speedQuiz,utente);
+            var response = await connessioneMaterieConcorsi.PostJson(SingletonURL.Instance.getRotte().datiSpeedQuiz,utente);
             ListaConcorsi = response.message;
             
         }

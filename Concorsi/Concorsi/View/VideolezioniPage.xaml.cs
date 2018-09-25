@@ -17,7 +17,7 @@ namespace Concorsi.View
             InitializeComponent();
             time.Tempo(true);
             var video = urlVideo.Replace(" ", "%20");
-            urlVideo = URL.urlBase + video;
+            urlVideo = SingletonURL.Instance.getRotte().urlBase + video;
             videoView.Source = VideoSource.FromUri(urlVideo);
             
 		}

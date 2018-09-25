@@ -45,9 +45,9 @@ namespace Concorsi.ModelView
 
         public async Task prelevaMaterieVideolezioni()
         {
-            REST<Object, List<MaterieVideo>> riceviMaterie = new REST<Object, List<MaterieVideo>>();
-            var result = await riceviMaterie.GetSingleJson(URL.listaMaterieVideo);
-            Materia = result;
+            REST<Object, Response<List<MaterieVideo>>> riceviMaterie = new REST<Object, Response<List<MaterieVideo>>>();
+            var result = await riceviMaterie.GetSingleJson(SingletonURL.Instance.getRotte().materieVideo);
+            Materia = result.message;
         }
 
         #region OnPropertyChange

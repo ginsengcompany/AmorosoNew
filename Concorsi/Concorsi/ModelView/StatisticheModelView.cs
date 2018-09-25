@@ -67,7 +67,7 @@ namespace Concorsi.ModelView
             utenza.username = GestioneUtente.Instance.getUserName;
             utenza.materia = materiaSelezionata;
             REST<Utente, Response<DatiStatistica>> connessioneStatistiche = new REST<Utente, Response<DatiStatistica>>();
-            var responseStatistiche = await connessioneStatistiche.PostJson(URL.statisticheURL, utenza);
+            var responseStatistiche = await connessioneStatistiche.PostJson(SingletonURL.Instance.getRotte().statistiche, utenza);
             if (connessioneStatistiche.responseMessage != HttpStatusCode.OK)
             {
                 await App.Current.MainPage.DisplayAlert("Attenzione " + (int)connessioneStatistiche.responseMessage, connessioneStatistiche.warning, "OK");
@@ -88,7 +88,7 @@ namespace Concorsi.ModelView
         public async void RicezioneMaterie()
         {
             REST<Utente, Response<List<string>>> connessioneMaterie = new REST<Utente, Response<List<string>>>();
-            var response = await connessioneMaterie.GetSingleJson(URL.materie);
+            var response = await connessioneMaterie.GetSingleJson(SingletonURL.Instance.getRotte().materie);
             if (connessioneMaterie.responseMessage != HttpStatusCode.OK)
             {
                 await App.Current.MainPage.DisplayAlert("Attenzione " + (int)connessioneMaterie.responseMessage, connessioneMaterie.warning, "OK");

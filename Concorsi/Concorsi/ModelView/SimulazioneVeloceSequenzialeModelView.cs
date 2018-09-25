@@ -105,7 +105,7 @@ namespace Concorsi.ModelView
             REST<Utente, Response<List<Concorso>>> connessioneMaterieConcorsi = new REST<Utente, Response<List<Concorso>>>();
            // utente.username = GestioneUtente.Instance.getUserName;
             utente.username =GestioneUtente.Instance.getUserName;
-            var response = await connessioneMaterieConcorsi.PostJson(URL.speedQuiz, utente);
+            var response = await connessioneMaterieConcorsi.PostJson(SingletonURL.Instance.getRotte().datiSpeedQuiz, utente);
             ListaConcorsi = response.message;
 
         }
@@ -159,7 +159,7 @@ namespace Concorsi.ModelView
         {
             REST<SpeedQuiz, Response<List<Pacchetti>>> connessionePacchetti = new REST<SpeedQuiz, Response<List<Pacchetti>>>();
             quiz.intervallo = numeroDomande;
-            var response = await connessionePacchetti.PostJson(URL.pacchetti, quiz);
+            var response = await connessionePacchetti.PostJson(SingletonURL.Instance.getRotte().domandePacchetti, quiz);
             Pacchetti = response.message;
             IsBusy = false;
             VisibleListaPacchetti = true;

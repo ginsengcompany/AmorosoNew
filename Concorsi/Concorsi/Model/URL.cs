@@ -10,9 +10,9 @@ namespace Concorsi.Model
         /**
          * Link ai servizi esposti lato piattaforma
          * */
-        public string sitoAk12 { get; set; }
-        public string paginaFacebook { get; set; }
-        public string urlLocation { get; set; }
+        public  string sitoAk12 { get; set; }
+        public  string paginaFacebook { get; set; }
+        public  string urlLocation { get; set; }
         public string urlBase { get; set; }
         public string login { get; set; }
         public string logout { get; set; }
@@ -27,6 +27,9 @@ namespace Concorsi.Model
         public string domandePacchetti { get; set; }
         public string simulazione { get; set; }
         public string commenti { get; set; }
+        public string materieVideo { get; set; }
+        public string lezioniVideo { get; set; }
+
 
         /**
          * Costanti di servizio

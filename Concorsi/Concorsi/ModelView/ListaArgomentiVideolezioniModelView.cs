@@ -50,7 +50,7 @@ namespace Concorsi.ModelView
             var values = new List<KeyValuePair<string, string>>();
             values.Add(new KeyValuePair<string, string>("materia", materieSelezionate));
             REST<string, List<VideoLezioni>> riceviVideo = new REST<string, List<VideoLezioni>>();
-            var response = await riceviVideo.PostFormURLEncoded(URL.ListaLezioniVideo, values);
+            var response = await riceviVideo.PostFormURLEncoded(SingletonURL.Instance.getRotte().lezioniVideo, values);
             Argomenti = response;
         }
 

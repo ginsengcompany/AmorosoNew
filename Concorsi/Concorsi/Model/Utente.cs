@@ -49,7 +49,7 @@ namespace Concorsi.Model
         {
             REST<Utente, Response<Utente>> connessioneLogin = new REST<Utente, Response<Utente>>();
             this.username.ToUpper();
-            var respone = await connessioneLogin.PostJson(URL.login, this);
+            var respone = await connessioneLogin.PostJson(SingletonURL.Instance.getRotte().login, this);
             if (connessioneLogin.responseMessage != HttpStatusCode.OK)
             {
                 await App.Current.MainPage.DisplayAlert("Attenzione " + (int)connessioneLogin.responseMessage, connessioneLogin.warning, "OK");
@@ -64,7 +64,7 @@ namespace Concorsi.Model
             REST<Utente, Response<Utente>> connessioneLogout = new REST<Utente, Response<Utente>>();
             this.devDescrizione = GestioneUtente.Instance.getDevDescrizione;
             this.devInfo = GestioneUtente.Instance.getDevInfo;
-            var respone = await connessioneLogout.PostJson(URL.logout, this);
+            var respone = await connessioneLogout.PostJson(SingletonURL.Instance.getRotte().logout, this);
             if (connessioneLogout.responseMessage != HttpStatusCode.OK)
             {
                 await App.Current.MainPage.DisplayAlert("Attenzione " + (int)connessioneLogout.responseMessage, connessioneLogout.warning, "OK");

@@ -55,7 +55,7 @@ namespace Concorsi.ModelView
            Utente utente = new Utente();
            utente.username = GestioneUtente.Instance.getUserName;
            REST<Utente, Response<List<PianiFormativi>>> connessionePianiFormativi = new REST<Utente, Response<List<PianiFormativi>>>();
-           var response = await connessionePianiFormativi.PostJson(URL.Apprendimento, utente);
+           var response = await connessionePianiFormativi.PostJson(SingletonURL.Instance.getRotte().apprendimento, utente);
            Piani = response.message;
        }
 

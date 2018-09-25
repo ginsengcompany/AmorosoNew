@@ -25,7 +25,7 @@ namespace Concorsi.View
             var tapGestureLuogo = new TapGestureRecognizer();
             tapGestureLuogo.Tapped += (s, e) =>
             {
-                Device.OpenUri(new Uri(URL.urlLocation));
+                Device.OpenUri(new Uri(SingletonURL.Instance.getRotte().urlLocation));
             };
             labelLuogo.GestureRecognizers.Add(tapGestureLuogo);
 
@@ -57,7 +57,7 @@ namespace Concorsi.View
             /* La variabile tap gesture Facebook ci permetterà di cliccare e navigare sulla pagina facebook del negozio in questione*/
             var tapGestureFacebook = new TapGestureRecognizer();
             tapGestureFacebook.Tapped += (s, e) => {
-                Device.OpenUri(new Uri(URL.paginaFacebook));
+                Device.OpenUri(new Uri(SingletonURL.Instance.getRotte().paginaFacebook));
             };
 
             facebook.GestureRecognizers.Add(tapGestureFacebook);
@@ -76,7 +76,7 @@ namespace Concorsi.View
         {
             var tapGestureLinkSito = new TapGestureRecognizer();
             tapGestureLinkSito.Tapped += (s, e) => {
-                Device.OpenUri(new Uri(URL.sitoAK12));
+                Device.OpenUri(new Uri(SingletonURL.Instance.getRotte().sitoAk12));
             };
             logoFooter.GestureRecognizers.Add(tapGestureLinkSito);
         }

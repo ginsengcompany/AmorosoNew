@@ -69,7 +69,7 @@ namespace Concorsi.Service
             this.tipoTempo = tipoTempo;
             FermaTempo();
             this.username = GestioneUtente.Instance.getUserName;
-            var respone = await connessioneLogin.PostJson(URL.invioTempi, this);
+            var respone = await connessioneLogin.PostJson(SingletonURL.Instance.getRotte().salvaTempo, this);
             if (connessioneLogin.responseMessage != HttpStatusCode.OK)
             {
                 await App.Current.MainPage.DisplayAlert("Attenzione " + (int)connessioneLogin.responseMessage, connessioneLogin.warning, "OK");

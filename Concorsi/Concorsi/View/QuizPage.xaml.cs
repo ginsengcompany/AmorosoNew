@@ -53,7 +53,7 @@ namespace Concorsi.View
                 if (listaDomande.id_concorso != null)
                     listaDomande.punteggio = ((listaDomande.risposteGiuste * concorso.valoreGiusta) - (listaDomande.risposteSbagliate * concorso.valoreSbagliata)).ToString();
                 listaDomande.risposteNonDate = listaDomande.numeroDomande - listaDomande.risposteGiuste - listaDomande.risposteSbagliate;
-                var response = await connessioneInvioStatistiche.PostJson(URL.salvataggioStatistiche, listaDomande);
+                var response = await connessioneInvioStatistiche.PostJson(SingletonURL.Instance.getRotte().salvaSessione, listaDomande);
                 await Navigation.PushAsync(new RisultatoQuizPage(listaDomande));
                 Loader.IsRunning = false;
                 Loader.IsVisible = false;
@@ -131,7 +131,7 @@ namespace Concorsi.View
         private async Task connessioneDomandeConcorso()
         {
             REST<SpeedQuiz, Response<List<Quiz>>> connessioneDomande = new REST<SpeedQuiz, Response<List<Quiz>>>();
-            var respone = await connessioneDomande.PostJson(URL.Simulazione, concorso);
+            var respone = await connessioneDomande.PostJson(SingletonURL.Instance.getRotte().simulazione, concorso);
             if (connessioneDomande.responseMessage != HttpStatusCode.OK)
             {
                 await App.Current.MainPage.DisplayAlert("Attenzione " + (int)connessioneDomande.responseMessage, connessioneDomande.warning, "OK");
@@ -152,7 +152,7 @@ namespace Concorsi.View
         private async Task connessioneDomande()
         {
             REST<Set, Response<List<Quiz>>> connessioneDomande = new REST<Set, Response<List<Quiz>>>();
-            var respone = await connessioneDomande.PostJson(URL.DomandeApprendimento, set);
+            var respone = await connessioneDomande.PostJson(SingletonURL.Instance.getRotte().apprendimento, set);
             if (connessioneDomande.responseMessage != HttpStatusCode.OK)
             {
                 await App.Current.MainPage.DisplayAlert("Attenzione " + (int)connessioneDomande.responseMessage, connessioneDomande.warning, "OK");
@@ -242,14 +242,14 @@ namespace Concorsi.View
                 };
                     pdf.Clicked += async delegate (object sender, EventArgs e)
                     {
-                        Device.OpenUri(new Uri(URL.urlBase + quesito.link));
+                        Device.OpenUri(new Uri(SingletonURL.Instance.getRotte().urlBase + quesito.link));
                     };
                     grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
                     grid.Children.Add(pdf, 0, 2);
                 }
                 else if (quesito.tipo == "img")
                 {
-                    var urlRisorsa = URL.urlBase + quesito.link;
+                    var urlRisorsa = SingletonURL.Instance.getRotte().urlBase + quesito.link;
                     var urlProva = new System.Uri(urlRisorsa);
                     Task<ImageSource> result = Task<ImageSource>.Factory.StartNew(() => ImageSource.FromUri(urlProva));
                     Image img = new Image();

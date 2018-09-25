@@ -107,7 +107,7 @@ namespace Concorsi.ModelView
             REST<Utente,Response<List<Cronologia>>> connectHistory = new REST<Utente, Response<List<Cronologia>>>();
             Utente utenteUsername = new Utente();
             utenteUsername.username = GestioneUtente.Instance.getUserName.ToUpper();
-            var response = await connectHistory.PostJson(URL.cronologia, utenteUsername);
+            var response = await connectHistory.PostJson(SingletonURL.Instance.getRotte().cronologia, utenteUsername);
             if(connectHistory.responseMessage!=System.Net.HttpStatusCode.OK)
             {
                await App.Current.MainPage.DisplayAlert("Attenzione " + (int)connectHistory.responseMessage, connectHistory.warning, "OK");
