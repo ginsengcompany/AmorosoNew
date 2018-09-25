@@ -5,7 +5,17 @@
              xmlns:video="clr-namespace:FormsVideoLibrary"
              x:Class="Concorsi.View.VideolezioniPage"
              BackgroundColor="Black"
-             Title="Video Lezioni">
+             Title="Video Lezioni"
+             NavigationPage.BackButtonTitle="False"
+             NavigationPage.HasBackButton="False">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="Fine Quiz"
+            Order="Primary"
+            Clicked="MenuItem_OnClicked"
+            Priority="0"
+        />
+    </ContentPage.ToolbarItems>
 
     <video:VideoPlayer VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="videoView"/>
 

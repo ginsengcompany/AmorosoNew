@@ -27,7 +27,7 @@
                                        HorizontalTextAlignment="Center"
                                        YAlign="Start"
                                        XAlign="Center"/>
-                                <StackLayout Orientation="Vertical" Spacing = "10" HorizontalOptions = "StartAndExpand" >
+                                <StackLayout Orientation="Vertical" Spacing = "10" HorizontalOptions = "CenterAndExpand" >
 
                                     <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Start" IsVisible="{Binding Quesiti[0].visible}">
                                         <Label  Text="{Binding Quesiti[0].lettera}"
@@ -124,13 +124,16 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Label
-                x:Name="lblTempo"
-                HorizontalOptions="CenterAndExpand"
-                VerticalOptions="EndAndExpand"
-                FontSize="Medium"
-                FontAttributes="Bold"
-                HorizontalTextAlignment="Center"/>
+            <StackLayout VerticalOptions="End"  HorizontalOptions="CenterAndExpand" >
+                <Label
+                    x:Name="lblTempo"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="EndAndExpand"
+                    FontSize="Medium"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"/>
+            </StackLayout>
+           
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
