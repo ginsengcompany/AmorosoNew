@@ -9,9 +9,9 @@
         <StackLayout>
             <Picker Title="Seleziona Concorso" x:Name="concorsi" ItemsSource="{Binding ListaConcorsi}" ItemDisplayBinding="{Binding Corpo}" SelectedIndexChanged="Concorsi_OnSelectedIndexChanged"></Picker>
             <Picker x:Name="pickermaterie" IsEnabled="{Binding IsEnabled}" Title="Seleziona Materia" ItemsSource="{Binding ListaMaterie}" ItemDisplayBinding="{Binding materia}" SelectedIndexChanged="Materie_OnSelectedIndexChanged"></Picker>
-       
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
             <Label Text="Seleziona il numero di domande che desideri per ogni blocco"></Label>
-            <buttons:SfSegmentedControl
+                <buttons:SfSegmentedControl
                 SelectionTextColor = "White"
                 HeightRequest="80"
                 VisibleSegmentsCount="5"
@@ -29,7 +29,6 @@
                     <x:String>100</x:String>
                 </segmentCollection:List>
             </buttons:SfSegmentedControl>
-            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
             <ListView ItemsSource="{Binding Pacchetti}" IsVisible="{Binding VisibleListaPacchetti}" HasUnevenRows="True" ItemTapped="VaiQuiz">
              <ListView.ItemTemplate>
                  <DataTemplate>
@@ -56,6 +55,7 @@
                  </DataTemplate>
              </ListView.ItemTemplate>
          </ListView>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

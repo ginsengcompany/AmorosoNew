@@ -150,19 +150,20 @@ namespace Concorsi.ModelView
                     numeroDomande = 100;
                     break;
             }
+
+            IsBusy = true;
            RiempimentoListaPacchetti();
-            
         }
 
         public async void RiempimentoListaPacchetti()
         {
             REST<SpeedQuiz, Response<List<Pacchetti>>> connessionePacchetti = new REST<SpeedQuiz, Response<List<Pacchetti>>>();
             quiz.intervallo = numeroDomande;
-            IsBusy = true;
             var response = await connessionePacchetti.PostJson(URL.pacchetti, quiz);
             Pacchetti = response.message;
             IsBusy = false;
             VisibleListaPacchetti = true;
+
         }
 
         public async void MateriaSelezionata(Materie materiaSelezionata)
