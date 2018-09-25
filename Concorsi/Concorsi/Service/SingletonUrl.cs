@@ -25,7 +25,7 @@ namespace Concorsi.Service
         public async Task prelevaRotte()
         {
             REST<object, URL> connessione = new REST<object, URL>();
-            var response = await connessione.GetSingleJson("http://ecuptservice.ak12srl.it/urlserviziapp");
+            var response = await connessione.GetSingleJson("http://192.168.125.97/amorosoNew/servizioapp/getrotte");
             if (connessione.responseMessage != System.Net.HttpStatusCode.OK)
             {
                 error = true;
