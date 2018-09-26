@@ -2,6 +2,7 @@
 using Concorsi.Service;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -49,9 +50,16 @@ namespace Concorsi.ModelView
         {
             var values = new List<KeyValuePair<string, string>>();
             values.Add(new KeyValuePair<string, string>("materia", materieSelezionate));
-            REST<string, List<VideoLezioni>> riceviVideo = new REST<string, List<VideoLezioni>>();
+            REST<string, Response<List<VideoLezioni>>> riceviVideo = new REST<string, Response<List<VideoLezioni>>>();
             var response = await riceviVideo.PostFormURLEncoded(SingletonURL.Instance.getRotte().lezioniVideo, values);
-            Argomenti = response;
+            if (riceviVideo.responseMessage != HttpStatusCode.OK)
+            {
+                await App.Current.MainPage.DisplayAlert("Attenzione " + (int)riceviVideo.responseMessage, riceviVideo.warning, "OK");
+            }
+            else
+            {
+                Argomenti = response.message;
+            }
         }
 
         public async void generaThumbnails()

@@ -8,6 +8,7 @@ using System.Text;
 using Concorsi.View;
 using Xamarin.Forms;
 using System.Windows.Input;
+using System.Net;
 
 namespace Concorsi.ModelView
 {
@@ -75,7 +76,14 @@ namespace Concorsi.ModelView
             REST<Utente, Response<List<Concorso>>> connessioneMaterieConcorsi = new REST<Utente, Response<List<Concorso>>>();
             utente.username = GestioneUtente.Instance.getUserName;
             var response = await connessioneMaterieConcorsi.PostJson(SingletonURL.Instance.getRotte().datiSpeedQuiz, utente);
-            ListaConcorsi = response.message;
+            if (connessioneMaterieConcorsi.responseMessage != HttpStatusCode.OK)
+            {
+                await App.Current.MainPage.DisplayAlert("Attenzione " + (int)connessioneMaterieConcorsi.responseMessage, connessioneMaterieConcorsi.warning, "OK");
+            }
+            else
+            {
+                ListaConcorsi = response.message;
+            }
 
             IsEnabled = false;
         }

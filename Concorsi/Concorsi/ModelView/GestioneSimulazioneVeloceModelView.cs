@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Concorsi.Model;
@@ -104,7 +105,15 @@ namespace Concorsi.ModelView
             REST<Utente,Response<List<Concorso>>> connessioneMaterieConcorsi = new REST<Utente, Response<List<Concorso>>>();
             utente.username = GestioneUtente.Instance.getUserName;
             var response = await connessioneMaterieConcorsi.PostJson(SingletonURL.Instance.getRotte().datiSpeedQuiz,utente);
-            ListaConcorsi = response.message;
+            if (connessioneMaterieConcorsi.responseMessage != HttpStatusCode.OK)
+            {
+                await App.Current.MainPage.DisplayAlert("Attenzione " + (int)connessioneMaterieConcorsi.responseMessage, connessioneMaterieConcorsi.warning, "OK");
+            }
+            else
+            {
+                ListaConcorsi = response.message;
+            }
+            
             
         }
 

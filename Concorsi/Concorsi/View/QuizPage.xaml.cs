@@ -220,13 +220,7 @@ namespace Concorsi.View
                 grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
                 grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
                 grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
-                XfxCardView cardDomanda = new XfxCardView
-                {
-                    CornerRadius = 10,
-                    Elevation = 10,
-                    HeightRequest = 100
-                    
-                };
+       
                 Label domanda = new Label
                 {
                     Text = quesito.Domanda,
@@ -234,18 +228,15 @@ namespace Concorsi.View
                     FontAttributes = FontAttributes.Bold
                 };
          
-                cardDomanda.Content = domanda;
                 Grid quesiti = new Grid();
                 quesiti = await gridQuesiti(quesito.Quesiti, quesito.Risposta, index);
-                grid.Children.Add(cardDomanda, 0, 0);
+                grid.Children.Add(domanda, 0, 0);
                 grid.Children.Add(quesiti, 0, 1);
                 if (quesito.tipo == "pdf")
                 {
                     Button pdf = new Button
                     {
                         Text = "apri documento",
-                        WidthRequest = 20,
-                        HeightRequest = 15,
                         BackgroundColor = Color.FromHex("#275B8C"),
                         TextColor = Color.White
                     
