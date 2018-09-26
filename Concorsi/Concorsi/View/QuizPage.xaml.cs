@@ -258,6 +258,24 @@ namespace Concorsi.View
                     grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
                     grid.Children.Add(img, 0, 2);
                 }
+                if (string.IsNullOrEmpty(quesito.urlVideo) && simulazioneAssistita)
+                {
+                    Button video = new Button
+                    {
+                        Text = "apri video",
+                        WidthRequest = 20,
+                        HeightRequest = 15,
+                        BackgroundColor = Color.FromHex("#275B8C"),
+                        TextColor = Color.White
+
+                    };
+                    video.Clicked += async delegate (object sender, EventArgs e)
+                    {
+                        await Navigation.PushAsync(new VideolezioniPage(quesito.urlVideo));
+                    };
+                    grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
+                    grid.Children.Add(video, 0, 3);
+                }
                 gridDomande.Add(grid);
                 index++;
             }
