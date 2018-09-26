@@ -3,7 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Concorsi.View;
 using ImageCircle.Forms.Plugin.Abstractions;
-
+using Concorsi.Service;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Concorsi
@@ -20,9 +20,9 @@ namespace Concorsi
             //MainPage = new NavigationPage(new SimulazioneVeloceSequenziale());
         }
 
-        protected override void OnStart()
+        protected async override void OnStart()
         {
-            // Handle when your app starts
+            await SingletonURL.Instance.prelevaRotte();
         }
 
         protected override void OnSleep()

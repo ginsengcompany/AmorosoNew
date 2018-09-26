@@ -31,6 +31,8 @@ namespace Concorsi.View
 
         public async void FineQuiz()
         {
+            tempodomanda.FermaTempo();
+            tempototale.FermaTempo();
             var responseAlert = await DisplayAlert("Attenzione", "sei sicuro di voler terminare il test?", "SI", "NO");
             if (responseAlert)
             {
@@ -60,6 +62,11 @@ namespace Concorsi.View
                 StackDomande.IsVisible = true;
                 StackButtonBot.IsVisible = true;
                 Navigation.RemovePage(this);
+            }
+            else
+            {
+                tempototale.RestartTempo();
+                tempodomanda.RestartTempo();
             }
         }
         public QuizPage(Concorso concorsoSelezionato)
@@ -107,8 +114,7 @@ namespace Concorsi.View
         }
         public async Task ingessoPagina(List<Quiz> domande)
         {
-            tempototale.Tempo(true, lblTimer);
-            tempodomanda.Tempo(true);
+         
             listaDomande.quiz = domande;
             posizioneCorrente = 0;
             Title = set.Descrizione + " " + (posizioneCorrente + 1) + "/" + listaDomande.quiz.Count;
@@ -121,8 +127,7 @@ namespace Concorsi.View
         }
         public async Task ingessoPagina()
         {
-            tempototale.Tempo(true, lblTimer);
-            tempodomanda.Tempo(true);
+           
             if (flagconcorso)
                 await connessioneDomandeConcorso();
             else
@@ -135,6 +140,7 @@ namespace Concorsi.View
             if (connessioneDomande.responseMessage != HttpStatusCode.OK)
             {
                 await App.Current.MainPage.DisplayAlert("Attenzione " + (int)connessioneDomande.responseMessage, connessioneDomande.warning, "OK");
+                await Navigation.PopAsync();
             }
             else
             {
@@ -152,10 +158,11 @@ namespace Concorsi.View
         private async Task connessioneDomande()
         {
             REST<Set, Response<List<Quiz>>> connessioneDomande = new REST<Set, Response<List<Quiz>>>();
-            var respone = await connessioneDomande.PostJson(SingletonURL.Instance.getRotte().apprendimento, set);
+            var respone = await connessioneDomande.PostJson(SingletonURL.Instance.getRotte().domande, set);
             if (connessioneDomande.responseMessage != HttpStatusCode.OK)
             {
                 await App.Current.MainPage.DisplayAlert("Attenzione " + (int)connessioneDomande.responseMessage, connessioneDomande.warning, "OK");
+               await Navigation.PopAsync();
             }
             else
             {
@@ -217,6 +224,7 @@ namespace Concorsi.View
                 {
                     CornerRadius = 10,
                     Elevation = 10,
+                    HeightRequest = 100
                     
                 };
                 Label domanda = new Label
@@ -225,9 +233,11 @@ namespace Concorsi.View
                     TextColor = Color.Black,
                     FontAttributes = FontAttributes.Bold
                 };
+         
+                cardDomanda.Content = domanda;
                 Grid quesiti = new Grid();
                 quesiti = await gridQuesiti(quesito.Quesiti, quesito.Risposta, index);
-                grid.Children.Add(domanda, 0, 0);
+                grid.Children.Add(cardDomanda, 0, 0);
                 grid.Children.Add(quesiti, 0, 1);
                 if (quesito.tipo == "pdf")
                 {
@@ -263,6 +273,8 @@ namespace Concorsi.View
             }
             Loader.IsRunning = false;
             Loader.IsVisible = false;
+            tempototale.Tempo(true, lblTimer);
+            tempodomanda.Tempo(true);
             StackDomande.IsVisible = true;
             StackButtonBot.IsVisible = true;
             GrigliaDomanda.Children.Clear();

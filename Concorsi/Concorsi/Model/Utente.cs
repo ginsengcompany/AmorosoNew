@@ -49,14 +49,24 @@ namespace Concorsi.Model
         {
             REST<Utente, Response<Utente>> connessioneLogin = new REST<Utente, Response<Utente>>();
             this.username.ToUpper();
-            var respone = await connessioneLogin.PostJson(SingletonURL.Instance.getRotte().login, this);
-            if (connessioneLogin.responseMessage != HttpStatusCode.OK)
+            if (string.IsNullOrEmpty(SingletonURL.Instance.getRotte().login))
             {
-                await App.Current.MainPage.DisplayAlert("Attenzione " + (int)connessioneLogin.responseMessage, connessioneLogin.warning, "OK");
-            } else
-            {
-                App.Current.MainPage = new NavigationPage( new MainPage(respone.message));
+                await App.Current.MainPage.DisplayAlert("Attenzione","Nessuna connessione, riavvia l'applicativo", "OK");
             }
+            else
+            {
+                var respone = await connessioneLogin.PostJson(SingletonURL.Instance.getRotte().login, this);
+
+                if (connessioneLogin.responseMessage != HttpStatusCode.OK)
+                {
+                    await App.Current.MainPage.DisplayAlert("Attenzione " + (int)connessioneLogin.responseMessage, connessioneLogin.warning, "OK");
+                }
+                else
+                {
+                    App.Current.MainPage = new NavigationPage(new MainPage(respone.message));
+                }
+            }
+         
         }
 
         public async Task Logout()

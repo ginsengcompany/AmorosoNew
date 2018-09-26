@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace Concorsi.Service
 {
@@ -29,8 +30,11 @@ namespace Concorsi.Service
             if (connessione.responseMessage != System.Net.HttpStatusCode.OK)
             {
                 error = true;
+                if (string.IsNullOrEmpty(connessione.warning))
+                {
+                    connessione.warning = "Nessuna connessione rilevata o errore di connessione";
+                }
                 await App.Current.MainPage.DisplayAlert("Attenzione", connessione.warning, "OK");
-                rotte = null;
             }
             else
                 rotte = response;
