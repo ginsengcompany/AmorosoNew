@@ -375,4 +375,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\risposteEsatte.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\quizSequenzialeIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\quizRandomIcon.png" />
+  </ItemGroup>
 </Project>

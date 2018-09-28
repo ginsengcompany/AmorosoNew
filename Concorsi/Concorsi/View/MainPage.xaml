@@ -46,6 +46,24 @@
 
                     <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180" Padding="5">
                         <StackLayout Orientation="Horizontal">
+                            <Image x:Name="tapIconaVideolezioni" 
+                                   Source="lezioni.png" 
+                                   WidthRequest="130"
+                                   HeightRequest="130"
+                                   Margin="5,0,0,0"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="StartAndExpand">
+                            </Image>
+                            <Label VerticalOptions="CenterAndExpand" Text="{Binding TestoLezioni}">
+                            </Label>
+                        </StackLayout>
+                        <xfx:XfxCardView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding VaiPaginaLezioni}"/>
+                        </xfx:XfxCardView.GestureRecognizers>
+                    </xfx:XfxCardView>
+
+                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180" Padding="5">
+                        <StackLayout Orientation="Horizontal">
                             <Image x:Name="tapIconaRisultati" 
                                            Source="risultati.png" 
                                            WidthRequest="130"
@@ -80,23 +98,7 @@
                         </xfx:XfxCardView.GestureRecognizers>
                         </xfx:XfxCardView>
 
-                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180" Padding="5">
-                        <StackLayout Orientation="Horizontal">
-                            <Image x:Name="tapIconaVideolezioni" 
-                                           Source="lezioni.png" 
-                                           WidthRequest="130"
-                                           HeightRequest="130"
-                                   Margin="5,0,0,0"
-                                   VerticalOptions="CenterAndExpand"
-                                   HorizontalOptions="StartAndExpand">
-                            </Image>
-                            <Label VerticalOptions="CenterAndExpand" Text="{Binding TestoLezioni}">
-                            </Label>
-                        </StackLayout>
-                        <xfx:XfxCardView.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding VaiPaginaLezioni}"/>
-                        </xfx:XfxCardView.GestureRecognizers>
-                    </xfx:XfxCardView>
+                
                 </StackLayout>
             </ScrollView>
             <StackLayout VerticalOptions="EndAndExpand" Padding="5">
