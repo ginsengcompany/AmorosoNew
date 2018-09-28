@@ -157,19 +157,22 @@
       <Version>11.0.2</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Buttons">
-      <Version>16.2.0.50</Version>
+      <Version>16.3.0.21</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Core">
-      <Version>16.2.0.50</Version>
+      <Version>16.3.0.21</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator">
+      <Version>16.3.0.21</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfCalendar">
-      <Version>16.2.0.50</Version>
+      <Version>16.3.0.21</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfChart">
-      <Version>16.2.0.50</Version>
+      <Version>16.3.0.21</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfSchedule">
-      <Version>16.2.0.50</Version>
+      <Version>16.3.0.21</Version>
     </PackageReference>
     <PackageReference Include="Xam.Plugin.DeviceInfo">
       <Version>4.0.0.13</Version>

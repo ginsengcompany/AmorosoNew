@@ -23,9 +23,7 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.AmorosoConcorsi.restyle</string>
-	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>it.gesan.QuizAmoroso</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
@@ -36,5 +34,7 @@
 	<string>Amoroso Concorsi</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>New Entry</string>
+	<key>CFBundleVersion</key>
+	<string>2.0</string>
 </dict>
 </plist>
