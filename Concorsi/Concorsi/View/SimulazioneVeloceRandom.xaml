@@ -4,11 +4,12 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:segmentCollection="clr-namespace:System.Collections.Generic;assembly=mscorlib"
              x:Class="Concorsi.View.SimulazioneVeloceRandom"
-             Title="Random">
+             Title="Random"
+             Icon="quizRandomIcon.png">
     <ContentPage.Content>
         <StackLayout>
             <Picker Title="Seleziona Concorso" x:Name="concorsi" ItemsSource="{Binding ListaConcorsi}" ItemDisplayBinding="{Binding Corpo}" SelectedIndexChanged="Concorsi_OnSelectedIndexChanged"></Picker>
-            <Button Text="Avvia" HorizontalOptions="CenterAndExpand" WidthRequest="100" IsEnabled="{Binding IsEnabled}" Style="{StaticResource buttonStyle}" Command="{Binding avviaSimulazione}"/>
+            <Button Text="Avvia" HorizontalOptions="CenterAndExpand" WidthRequest="100" IsEnabled="{Binding IsEnabled}" Style="{StaticResource buttonStyle}"  Command="{Binding avviaSimulazione}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

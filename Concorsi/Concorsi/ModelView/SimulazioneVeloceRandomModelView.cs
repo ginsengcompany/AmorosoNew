@@ -8,6 +8,7 @@ using System.Text;
 using Concorsi.View;
 using Xamarin.Forms;
 using System.Windows.Input;
+using System.Net;
 
 namespace Concorsi.ModelView
 {
@@ -15,7 +16,7 @@ namespace Concorsi.ModelView
     {
         private List<Concorso> listaConcorsi = new List<Concorso>();
         private Concorso concorso = new Concorso();
-        private bool isEnabled = false;
+        private Boolean isEnabled = false;
         private bool isBusy = false;
         public ICommand avviaSimulazione { protected set; get; }
 
@@ -36,7 +37,7 @@ namespace Concorsi.ModelView
             }
         }
 
-        public bool IsEnabled
+        public Boolean IsEnabled
         {
             get { return isEnabled; }
             set
@@ -60,9 +61,11 @@ namespace Concorsi.ModelView
 
         public SimulazioneVeloceRandomModelView()
         {
+            IsEnabled = false;
             avviaSimulazione = new Command(async () =>
             {
-                await App.Current.MainPage.Navigation.PushAsync(new QuizPage(concorso));
+                if(concorso!=null)
+                    await App.Current.MainPage.Navigation.PushAsync(new QuizPage(concorso));
             });
         RicezioneConcorsiMaterie();
         }
@@ -73,7 +76,16 @@ namespace Concorsi.ModelView
             REST<Utente, Response<List<Concorso>>> connessioneMaterieConcorsi = new REST<Utente, Response<List<Concorso>>>();
             utente.username = GestioneUtente.Instance.getUserName;
             var response = await connessioneMaterieConcorsi.PostJson(SingletonURL.Instance.getRotte().datiSpeedQuiz, utente);
-            ListaConcorsi = response.message;
+            if (connessioneMaterieConcorsi.responseMessage != HttpStatusCode.OK)
+            {
+                await App.Current.MainPage.DisplayAlert("Attenzione " + (int)connessioneMaterieConcorsi.responseMessage, connessioneMaterieConcorsi.warning, "OK");
+            }
+            else
+            {
+                ListaConcorsi = response.message;
+            }
+
+            IsEnabled = false;
         }
 
         public async void ConcorsoSelezionato(Concorso concorsoSelezionato)

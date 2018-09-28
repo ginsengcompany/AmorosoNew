@@ -6,7 +6,7 @@
              Title="Login">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" Margin="10,0,10,0" Padding="0,0,0,20">
-
+        <ScrollView>
             <StackLayout Spacing="20"
                          Orientation="Vertical">
                 <Image Source="LogoAmorosoSenzaSfondo.png"
@@ -68,6 +68,7 @@
                                             Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" />
                     </Grid>
                 </StackLayout>
+        </ScrollView>
             </StackLayout>
     </ContentPage.Content>
 </ContentPage>

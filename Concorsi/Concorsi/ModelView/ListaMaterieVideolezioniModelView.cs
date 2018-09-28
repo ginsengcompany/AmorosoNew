@@ -3,6 +3,7 @@ using Concorsi.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Net;
 using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -47,7 +48,14 @@ namespace Concorsi.ModelView
         {
             REST<Object, Response<List<MaterieVideo>>> riceviMaterie = new REST<Object, Response<List<MaterieVideo>>>();
             var result = await riceviMaterie.GetSingleJson(SingletonURL.Instance.getRotte().materieVideo);
-            Materia = result.message;
+            if (riceviMaterie.responseMessage != HttpStatusCode.OK)
+            {
+                await App.Current.MainPage.DisplayAlert("Attenzione " + (int)riceviMaterie.responseMessage, riceviMaterie.warning, "OK");
+            }
+            else
+            {
+                Materia = result.message;
+            }
         }
 
         #region OnPropertyChange

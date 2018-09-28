@@ -23,8 +23,9 @@ namespace Concorsi.View
 		}
 	    private void Concorsi_OnSelectedIndexChanged(object sender, EventArgs e)
 	    {
-	        var a = sender as Picker;
-	        var b = a.SelectedItem as Concorso;
+
+            var a = sender as Picker;
+            var b = a.SelectedItem as Concorso;
 	        modelView.ConcorsoSelezionato(b);
 	    }
     }

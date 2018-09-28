@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using Concorsi.View;
 using Xamarin.Forms;
+using System.Net;
 
 namespace Concorsi.ModelView
 {
@@ -106,7 +107,15 @@ namespace Concorsi.ModelView
            // utente.username = GestioneUtente.Instance.getUserName;
             utente.username =GestioneUtente.Instance.getUserName;
             var response = await connessioneMaterieConcorsi.PostJson(SingletonURL.Instance.getRotte().datiSpeedQuiz, utente);
-            ListaConcorsi = response.message;
+            if (connessioneMaterieConcorsi.responseMessage != HttpStatusCode.OK)
+            {
+                await App.Current.MainPage.DisplayAlert("Attenzione " + (int)connessioneMaterieConcorsi.responseMessage, connessioneMaterieConcorsi.warning, "OK");
+            }
+            else
+            {
+                ListaConcorsi = response.message;
+
+            }
 
         }
 
@@ -160,9 +169,17 @@ namespace Concorsi.ModelView
             REST<SpeedQuiz, Response<List<Pacchetti>>> connessionePacchetti = new REST<SpeedQuiz, Response<List<Pacchetti>>>();
             quiz.intervallo = numeroDomande;
             var response = await connessionePacchetti.PostJson(SingletonURL.Instance.getRotte().domandePacchetti, quiz);
-            Pacchetti = response.message;
-            IsBusy = false;
-            VisibleListaPacchetti = true;
+            if (connessionePacchetti.responseMessage != HttpStatusCode.OK)
+            {
+                await App.Current.MainPage.DisplayAlert("Attenzione " + (int)connessionePacchetti.responseMessage, connessionePacchetti.warning, "OK");
+            }
+            else
+            {
+                Pacchetti = response.message;
+                IsBusy = false;
+                VisibleListaPacchetti = true;
+            }
+            
 
         }
 

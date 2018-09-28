@@ -10,7 +10,7 @@
              NavigationPage.HasBackButton="False">
     <ContentPage.ToolbarItems>
         <ToolbarItem
-            Text="Fine Quiz"
+            Text="Esci"
             Order="Primary"
             Clicked="MenuItem_OnClicked"
             Priority="0"

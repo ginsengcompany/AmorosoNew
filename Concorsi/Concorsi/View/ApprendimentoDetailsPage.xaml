@@ -7,7 +7,7 @@
              NavigationPage.BackButtonTitle="False">
     <ContentPage.ToolbarItems>
         <ToolbarItem
-            Text="Fine Sessione"
+            Text="Esci"
             Order="Primary"
             Clicked="ToolbarItem_Clicked"
             Priority="0"

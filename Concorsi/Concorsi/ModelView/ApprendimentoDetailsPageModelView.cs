@@ -79,7 +79,7 @@ namespace Concorsi.ModelView
         public async void prelevaAnswers()
         {
             REST<Set, Response<List<Answers>>> ricevidomande = new REST<Set, Response<List<Answers>>>();
-            var response = await ricevidomande.PostJson(SingletonURL.Instance.getRotte().apprendimento, set);
+            var response = await ricevidomande.PostJson(SingletonURL.Instance.getRotte().domande, set);
             if (ricevidomande.responseMessage != HttpStatusCode.OK)
             {
                 await App.Current.MainPage.DisplayAlert("Attenzione " + (int)ricevidomande.responseMessage, ricevidomande.warning, "OK");

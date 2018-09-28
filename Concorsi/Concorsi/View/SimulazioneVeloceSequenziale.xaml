@@ -4,7 +4,8 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:segmentCollection="clr-namespace:System.Collections.Generic;assembly=mscorlib"
              x:Class="Concorsi.View.SimulazioneVeloceSequenziale"
-             Title="Sequenziale">
+             Title="Sequenziale"
+             Icon="quizSequenzialeIcon.png">
     <ContentPage.Content>
         <StackLayout>
             <Picker Title="Seleziona Concorso" x:Name="concorsi" ItemsSource="{Binding ListaConcorsi}" ItemDisplayBinding="{Binding Corpo}" SelectedIndexChanged="Concorsi_OnSelectedIndexChanged"></Picker>

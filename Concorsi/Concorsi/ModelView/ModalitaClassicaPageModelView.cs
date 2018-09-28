@@ -3,6 +3,7 @@ using Concorsi.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -56,7 +57,14 @@ namespace Concorsi.ModelView
            utente.username = GestioneUtente.Instance.getUserName;
            REST<Utente, Response<List<PianiFormativi>>> connessionePianiFormativi = new REST<Utente, Response<List<PianiFormativi>>>();
            var response = await connessionePianiFormativi.PostJson(SingletonURL.Instance.getRotte().apprendimento, utente);
-           Piani = response.message;
+           if (connessionePianiFormativi.responseMessage != HttpStatusCode.OK)
+           {
+               await App.Current.MainPage.DisplayAlert("Attenzione " + (int)connessionePianiFormativi.responseMessage, connessionePianiFormativi.warning, "OK");
+           }
+           else
+           {
+               Piani = response.message;
+           }
        }
 
        public async void PianoSelezionato(PianiFormativi pianoSelezionato)
