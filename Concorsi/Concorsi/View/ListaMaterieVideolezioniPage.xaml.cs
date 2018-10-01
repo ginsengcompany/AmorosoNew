@@ -20,7 +20,7 @@ namespace Concorsi.View
         private async void listaMaterie_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var elementoTappato = e.Item as MaterieVideo;
-            await Navigation.PushAsync(new ListaArgomentiVideolezioniPage(elementoTappato.Materia));
+            await listaMaterieVideolezioni.vaiListaLezionielementoTappato(elementoTappato);
         }
     }
 }

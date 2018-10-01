@@ -1,5 +1,6 @@
 ﻿using Concorsi.Model;
 using Concorsi.Service;
+using Concorsi.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,10 +16,12 @@ namespace Concorsi.ModelView
         public event PropertyChangedEventHandler PropertyChanged;
         private List<MaterieVideo> materia;
         private bool isBusy = false;
-        
+        private bool isEnabled = true;
+
 
         public ListaMaterieVideolezioniModelView()
         {
+            IsEnabled = true;
             prelevaMaterieVideolezioni();
         }
         public bool IsBusy
@@ -30,7 +33,15 @@ namespace Concorsi.ModelView
                 isBusy = value;
             }
         }
-
+        public bool IsEnabled
+        {
+            get { return isEnabled; }
+            set
+            {
+                OnPropertyChanged();
+                isEnabled = value;
+            }
+        }
         public List<MaterieVideo> Materia
         {
             set
@@ -56,6 +67,12 @@ namespace Concorsi.ModelView
             {
                 Materia = result.message;
             }
+        }
+        public async Task vaiListaLezionielementoTappato(MaterieVideo materia)
+        {
+            IsEnabled = false;
+            await App.Current.MainPage.Navigation.PushAsync(new ListaArgomentiVideolezioniPage(materia.Materia));
+            IsEnabled = true;
         }
 
         #region OnPropertyChange

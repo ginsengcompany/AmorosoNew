@@ -46,10 +46,10 @@ namespace Concorsi.View
 
 	    }
 
-	    private void VaiQuiz(object sender, ItemTappedEventArgs e)
+	    private async void VaiQuiz(object sender, ItemTappedEventArgs e)
 	    {
 	        var a = e.Item as Pacchetti;
-            modelView.VaiPaginaQuiz(a);
+           await modelView.VaiPaginaQuiz(a);
 
         }
 	}

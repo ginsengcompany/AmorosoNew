@@ -13,9 +13,19 @@ namespace Concorsi.ModelView
     public class SelezionaTipoSimulazioneModelView : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        private bool isEnabled = true;
         public ICommand VaiSimulazioneAssistita { protected set; get; }
         public ICommand VaiSimulazione { protected set; get; }
 
+        public bool IsEnabled
+        {
+            get { return isEnabled; }
+            set
+            {
+                OnPropertyChanged();
+                IsEnabled = value;
+            }
+        }
         #region OnPropertyChange
 
         protected virtual void OnPropertyChanged([CallerMemberName] string name = "")
@@ -27,14 +37,25 @@ namespace Concorsi.ModelView
 
         public SelezionaTipoSimulazioneModelView(Set set)
         {
+            IsEnabled = true;
             VaiSimulazioneAssistita = new Command(async () =>
             {
-                await App.Current.MainPage.Navigation.PushAsync(new QuizPage(set,true));
+                if (isEnabled)
+                {
+                    isEnabled = false;
+                    await App.Current.MainPage.Navigation.PushAsync(new QuizPage(set, true));
+                    IsEnabled = true;
+                }
             });
 
             VaiSimulazione = new Command(async () =>
             {
-                await App.Current.MainPage.Navigation.PushAsync(new QuizPage(set,false));
+                if (isEnabled)
+                {
+                    isEnabled = false;
+                    await App.Current.MainPage.Navigation.PushAsync(new QuizPage(set, false));
+                    IsEnabled = true;
+                }
             });
         }
     }

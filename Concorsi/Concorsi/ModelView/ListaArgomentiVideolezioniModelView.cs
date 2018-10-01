@@ -1,5 +1,6 @@
 ﻿using Concorsi.Model;
 using Concorsi.Service;
+using Concorsi.View;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net;
@@ -15,14 +16,24 @@ namespace Concorsi.ModelView
         public event PropertyChangedEventHandler PropertyChanged;
         private List<VideoLezioni> argomenti;
         private bool isBusy = false;
+        private bool isEnabled = true;
 
         public ListaArgomentiVideolezioniModelView(string materieSelezionate)
         {
+            IsEnabled = true;
             this.materieSelezionate = materieSelezionate;
             prelevaArgomentiVideolezioni();
             // generaThumbnails();
         }
-
+        public bool IsEnabled
+        {
+            get { return isEnabled; }
+            set
+            {
+                OnPropertyChanged();
+                isEnabled = value;
+            }
+        }
         public bool IsBusy
         {
             get { return isBusy; }
@@ -70,6 +81,12 @@ namespace Concorsi.ModelView
                 Argomenti[i].Thumbnail = DependencyService.Get<IThumbnailsVideo>().GenerateThumbImage(
                 URL.urlBase + Argomenti[i].VideoSource, 0);
             }*/
+        }
+        public async Task selezioneVideo(VideoLezioni video)
+        {
+            IsEnabled = false;
+            await App.Current.MainPage.Navigation.PushAsync(new VideolezioniPage(video.VideoSource));
+            IsEnabled = true;
         }
 
         #region OnPropertyChange

@@ -10,7 +10,7 @@
             <ScrollView>
                 <StackLayout>
 
-                    <xfx:XfxCardView CornerRadius="20" Elevation="15" HeightRequest="150" Padding="10">
+                    <xfx:XfxCardView CornerRadius="20" Elevation="15" HeightRequest="150" Padding="10"  IsEnabled="{Binding IsEnabled}">
                     <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
                             <Image x:Name="tapIconaModalitaClassica" 
                                    Source="modalitaClassica.png" 
@@ -24,11 +24,11 @@
                         </StackLayout>
 
                         <xfx:XfxCardView.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding VaiPaginaModalitaClassica}"/>
+                            <TapGestureRecognizer Command="{Binding VaiPaginaModalitaClassica}" NumberOfTapsRequired="1"/>
                         </xfx:XfxCardView.GestureRecognizers>
 
                     </xfx:XfxCardView>
-                    <xfx:XfxCardView  CornerRadius="20" Elevation="15" HeightRequest="150" Padding="10" Margin="5">
+                <xfx:XfxCardView  CornerRadius="20" Elevation="15" HeightRequest="150" Padding="10" Margin="5"  IsEnabled="{Binding IsEnabled}">
                         <StackLayout   HorizontalOptions="Center" Orientation="Horizontal">
                             <Image x:Name="tapIconaModalitaVeloce" 
                                    Source="modalitaVeloce.png" 
@@ -40,7 +40,7 @@
                             </Label>
                         </StackLayout>
                         <xfx:XfxCardView.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding VaiPaginaModalitaVeloce}"/>
+                            <TapGestureRecognizer Command="{Binding VaiPaginaModalitaVeloce}" NumberOfTapsRequired="1"/>
                         </xfx:XfxCardView.GestureRecognizers>
                     </xfx:XfxCardView>
                 

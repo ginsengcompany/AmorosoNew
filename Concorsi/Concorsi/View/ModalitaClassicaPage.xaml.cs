@@ -29,10 +29,10 @@ namespace Concorsi.View
 
 	    }
 
-	    private void ListView_OnItemTapped(object sender, ItemTappedEventArgs e)
+	    private async void ListView_OnItemTapped(object sender, ItemTappedEventArgs e)
 	    {
 	        var a = e.Item as Set;
-	        Navigation.PushAsync(new SelezionaTipoSimulazione(a));
-	    }
+            await modelView.quizSet(a);
+        }
     }
 }

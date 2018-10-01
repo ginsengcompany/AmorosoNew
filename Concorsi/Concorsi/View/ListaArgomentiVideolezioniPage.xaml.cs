@@ -19,8 +19,9 @@ namespace Concorsi.View
 
         private async void ListaVideo_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            
             var elementoTappato = e.Item as VideoLezioni;
-            await Navigation.PushAsync(new VideolezioniPage(elementoTappato.VideoSource));
+            await listaArgomentiVideolezioni.selezioneVideo(elementoTappato);
         }
     }
 }

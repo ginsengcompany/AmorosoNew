@@ -30,7 +30,7 @@
                     <x:String>100</x:String>
                 </segmentCollection:List>
             </buttons:SfSegmentedControl>
-            <ListView ItemsSource="{Binding Pacchetti}" IsVisible="{Binding VisibleListaPacchetti}" HasUnevenRows="True" ItemTapped="VaiQuiz">
+            <ListView ItemsSource="{Binding Pacchetti}" IsVisible="{Binding VisibleListaPacchetti}" HasUnevenRows="True" ItemTapped="VaiQuiz" IsEnabled="{Binding IsEnabledList}">
              <ListView.ItemTemplate>
                  <DataTemplate>
                      <ViewCell>
