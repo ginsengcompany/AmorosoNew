@@ -6,7 +6,7 @@
     
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="ListaVideo" ItemsSource="{Binding Argomenti}"  HasUnevenRows="True" ItemTapped="ListaVideo_ItemTapped">
+            <ListView x:Name="ListaVideo" ItemsSource="{Binding Argomenti}"  HasUnevenRows="True" ItemTapped="ListaVideo_ItemTapped" IsEnabled="{Binding IsEnabled}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
