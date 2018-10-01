@@ -25,7 +25,7 @@
                             </StackLayout>
                         </StackLayout>
                         <xfx:XfxCardView.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding VaiSimulazione}"/>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding VaiSimulazione}"/>
                         </xfx:XfxCardView.GestureRecognizers>
                     </xfx:XfxCardView>
 
@@ -46,7 +46,7 @@
                             </StackLayout>
                         </StackLayout>
                         <xfx:XfxCardView.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding VaiSimulazioneAssistita}"/>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding VaiSimulazioneAssistita}"/>
                         </xfx:XfxCardView.GestureRecognizers>
                     </xfx:XfxCardView>
 

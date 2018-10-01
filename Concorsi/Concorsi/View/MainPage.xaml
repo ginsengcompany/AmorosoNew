@@ -26,7 +26,7 @@
         <StackLayout>
             <ScrollView>
                 <StackLayout Margin="10">
-                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180" Padding="5">
+                    <xfx:XfxCardView ClassId="Esercitazione" CornerRadius="20" Elevation="10" HeightRequest="180" Padding="5">
                         <StackLayout Orientation="Horizontal">
                             <Image x:Name="tapIconaEsercitazione" 
                                    Source="esercitazione.png" 
@@ -41,7 +41,7 @@
                             </Label>
                         </StackLayout>
                         <xfx:XfxCardView.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding VaiPaginaSelezioneModalitaQuiz}"/>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"/>
                                 </xfx:XfxCardView.GestureRecognizers></xfx:XfxCardView>
 
                     <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180" Padding="5">

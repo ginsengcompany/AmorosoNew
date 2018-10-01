@@ -15,6 +15,10 @@ namespace Concorsi.Droid
     [Activity(Label = "Amoroso Concorsi", Icon = "@drawable/icon", Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        public override void OnUserInteraction()
+        {
+            base.OnUserInteraction();
+        }
         protected override void OnCreate(Bundle bundle)
         {
             TabLayoutResource = Resource.Layout.Tabbar;

@@ -24,7 +24,7 @@
                             </Label>
                         </StackLayout>
                         <xfx:XfxCardView.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding VaiPaginaListaMaterieVideolezioniPage}"/>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding VaiPaginaListaMaterieVideolezioniPage}"/>
                         </xfx:XfxCardView.GestureRecognizers>
                     </xfx:XfxCardView>
 
@@ -45,7 +45,7 @@
                             </Label>
                         </StackLayout>
                         <xfx:XfxCardView.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding VaiPaginaApprendimento}"/>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding VaiPaginaApprendimento}"/>
                         </xfx:XfxCardView.GestureRecognizers>
                     </xfx:XfxCardView>
                 </StackLayout>

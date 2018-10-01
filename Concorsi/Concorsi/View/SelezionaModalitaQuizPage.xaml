@@ -24,7 +24,7 @@
                         </StackLayout>
 
                         <xfx:XfxCardView.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding VaiPaginaModalitaClassica}"/>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding VaiPaginaModalitaClassica}"/>
                         </xfx:XfxCardView.GestureRecognizers>
 
                     </xfx:XfxCardView>
@@ -40,7 +40,7 @@
                             </Label>
                         </StackLayout>
                         <xfx:XfxCardView.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding VaiPaginaModalitaVeloce}"/>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding VaiPaginaModalitaVeloce}"/>
                         </xfx:XfxCardView.GestureRecognizers>
                     </xfx:XfxCardView>
                 
