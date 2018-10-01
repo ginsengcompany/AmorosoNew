@@ -46,7 +46,7 @@ namespace Concorsi.View
                     await tempototale.invioTempi("tempoSimulazione");
 
                 };
-                Loader.IsRunning = true;
+                Loader.IsBusy = true;
                 Loader.IsVisible = true;
                 StackDomande.IsVisible = false;
                 StackButtonBot.IsVisible = false;
@@ -57,7 +57,7 @@ namespace Concorsi.View
                 listaDomande.risposteNonDate = listaDomande.numeroDomande - listaDomande.risposteGiuste - listaDomande.risposteSbagliate;
                 var response = await connessioneInvioStatistiche.PostJson(SingletonURL.Instance.getRotte().salvaSessione, listaDomande);
                 await Navigation.PushAsync(new RisultatoQuizPage(listaDomande));
-                Loader.IsRunning = false;
+                Loader.IsBusy = false;
                 Loader.IsVisible = false;
                 StackDomande.IsVisible = true;
                 StackButtonBot.IsVisible = true;
@@ -72,7 +72,7 @@ namespace Concorsi.View
         public QuizPage(Concorso concorsoSelezionato)
         {
             InitializeComponent();
-            Loader.IsRunning = true;
+            Loader.IsBusy = true;
             Loader.IsVisible = true;
             flagconcorso = true;
             concorso.concorso = concorsoSelezionato.id_concorso;
@@ -89,7 +89,7 @@ namespace Concorsi.View
         public QuizPage(SpeedQuiz id_concorso, List<Quiz> domande)
         {
             InitializeComponent();
-            Loader.IsRunning = true;
+            Loader.IsBusy = true;
             Loader.IsVisible = true;
             concorso = id_concorso;
             Title = "QUIZ";
@@ -102,7 +102,7 @@ namespace Concorsi.View
         public QuizPage(Set set, Boolean simulazioneAssistita)
         {
             InitializeComponent();
-            Loader.IsRunning = true;
+            Loader.IsBusy = true;
             Loader.IsVisible = true;
             this.set = set;
             Title = set.Descrizione;
@@ -284,7 +284,8 @@ namespace Concorsi.View
                 gridDomande.Add(grid);
                 index++;
             }
-            Loader.IsRunning = false;
+
+            Loader.IsBusy = false;
             Loader.IsVisible = false;
             tempototale.Tempo(true, lblTimer);
             tempodomanda.Tempo(true);

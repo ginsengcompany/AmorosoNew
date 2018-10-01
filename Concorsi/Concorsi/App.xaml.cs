@@ -13,7 +13,7 @@ namespace Concorsi
         public App()
         {
             InitializeComponent();
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjIwMDdAMzEzNjJlMzIyZTMwazRsNDhKcTdvNVZYS082MUI2dnFCNjAyb0lyRUxOcnJqMjJYdkp6bzJrYz0=");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mjk3NzdAMzEzNjJlMzMyZTMwQXRHYmpuSDdrK1U5bkhzN0E3UFpBaXc1d0JJUTR0SWRYOWdDZzF1OWMrUT0=");
 
 
             MainPage = new NavigationPage(new LoginPage());

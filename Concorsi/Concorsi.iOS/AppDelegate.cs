@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using Foundation;
 using UIKit;
 using Xamarin.Forms;
-using Concorsi.iOS;
 using Xamarin.Forms.Platform.iOS;
 using ImageCircle.Forms.Plugin.iOS;
 using static Concorsi.iOS.AppDelegate;
-using System.Threading.Tasks;
 using System.ComponentModel;
 using Xfx;
-using Syncfusion.SfCalendar.XForms.iOS;
-using Syncfusion.SfSchedule.XForms.iOS;
+
+using Syncfusion.SfBusyIndicator.XForms.iOS;
 
 [assembly: ExportRenderer(typeof(Button), typeof(MyButtonRenderer))]
 namespace Concorsi.iOS
@@ -92,7 +88,7 @@ namespace Concorsi.iOS
             global::Xamarin.Forms.Forms.Init();
 
             XfxControls.Init();
-
+            new SfBusyIndicatorRenderer();
             LoadApplication(new App());
             ImageCircleRenderer.Init();
             Syncfusion.XForms.iOS.Buttons.SfSegmentedControlRenderer.Init();

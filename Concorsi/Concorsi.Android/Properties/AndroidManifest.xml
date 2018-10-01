@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.Concorsi">
-    <uses-sdk android:minSdkVersion="21" android:largeHeap="true" android:targetSdkVersion="27" />
-    <application android:label="Concorsi.Android"></application>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="23" android:versionName="2.0" 
+          package="com.Ak12.AmorosoConcorsi" android:installLocation="auto">
+	<uses-sdk android:minSdkVersion="21" android:largeHeap="true" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<application android:label="Amoroso Concorsi"></application>
 </manifest>
