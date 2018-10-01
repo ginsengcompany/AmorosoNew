@@ -14,11 +14,19 @@ namespace Concorsi.ModelView
         public event PropertyChangedEventHandler PropertyChanged;
         private string testoModalitaClassica, testoModalitaVeloce;
         private bool isBusy = false;
-
+        private bool isEnabled = true;
         public ICommand VaiPaginaModalitaClassica { protected set; get; }
         public ICommand VaiPaginaModalitaVeloce { protected set; get; }
 
-
+        public bool IsEnabled
+        {
+            get { return isEnabled; }
+            set
+            {
+                OnPropertyChanged();
+                isEnabled = value;
+            }
+        }
         public bool IsBusy
         {
             get { return isBusy; }
@@ -67,13 +75,24 @@ namespace Concorsi.ModelView
 
         public SelezionaModalitaQuizPageModelView()
         {
+            IsEnabled = true;
             VaiPaginaModalitaClassica = new Command(async () =>
                 {
-                    await App.Current.MainPage.Navigation.PushAsync(new ModalitaClassicaPage());
+                    if (IsEnabled)
+                    {
+                        IsEnabled = false;
+                        await App.Current.MainPage.Navigation.PushAsync(new ModalitaClassicaPage());
+                        IsEnabled = true;
+                    }
                 });
             VaiPaginaModalitaVeloce = new Command(async () =>
             {
-                await App.Current.MainPage.Navigation.PushAsync(new SpeedQuizPageTabbed());
+                if (IsEnabled)
+                {
+                    IsEnabled = false;
+                    await App.Current.MainPage.Navigation.PushAsync(new SpeedQuizPageTabbed());
+                    IsEnabled = true;
+                }
             });
 
 

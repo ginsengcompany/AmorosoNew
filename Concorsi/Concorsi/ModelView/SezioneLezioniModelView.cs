@@ -12,10 +12,18 @@ namespace Concorsi.ModelView
         public ICommand VaiPaginaListaMaterieVideolezioniPage { protected set; get; }
         public ICommand VaiPaginaApprendimento { protected set; get; }
         private bool isBusy = false;
-
+        private bool isEnabled = true;
         public event PropertyChangedEventHandler PropertyChanged;
 
-
+        public bool IsEnabled
+        {
+            get { return isEnabled; }
+            set
+            {
+                OnPropertyChanged();
+                isEnabled = value;
+            }
+        }
         public bool IsBusy
         {
             get { return isBusy; }
@@ -57,16 +65,26 @@ namespace Concorsi.ModelView
 
         public SezioneLezioniModelView(SezioneLezioniPage page)
         {
+            IsEnabled = true;
             VideoLezioni = "Consulta le tantissime videolezioni disponibili, tenute dai nostri docenti esperti.";
             TestoApprendimento = "Prova a sfogliare tutte le domande della nostra banca dati ed apprendi le relative risposte. La risposta esatta sarà evidenziata in verde.";
             VaiPaginaListaMaterieVideolezioniPage = new Command(async () =>
             {
+                if (IsEnabled)
+                {
+                IsEnabled = false;
                 await App.Current.MainPage.Navigation.PushAsync(new ListaMaterieVideolezioniPage());
+                IsEnabled = true;
+                }
             });
             VaiPaginaApprendimento = new Command(async () =>
             {
-                // modificare
+                if (IsEnabled)
+                {
+                IsEnabled = false;
                 await App.Current.MainPage.Navigation.PushAsync(new ApprendimentoPage());
+                IsEnabled = true;
+                }
             });
         }
     }

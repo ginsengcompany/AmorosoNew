@@ -8,7 +8,7 @@
         <StackLayout>
                 <StackLayout Padding="20,0,20,0" >
 
-                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180" Padding="5">
+                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180" Padding="5" IsEnabled="{Binding IsEnabled}">
                         <StackLayout Orientation="Horizontal" Padding="5">
                             <Image 
                                        Source="videolezioni.png" 
@@ -24,12 +24,12 @@
                             </Label>
                         </StackLayout>
                         <xfx:XfxCardView.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding VaiPaginaListaMaterieVideolezioniPage}"/>
+                        <TapGestureRecognizer Command="{Binding VaiPaginaListaMaterieVideolezioniPage}" NumberOfTapsRequired="1"/>
                         </xfx:XfxCardView.GestureRecognizers>
                     </xfx:XfxCardView>
 
 
-                <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180" Padding="10">
+                <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180" Padding="10" IsEnabled="{Binding IsEnabled}">
                         <StackLayout Orientation="Horizontal">
                             <Image  
                                 Source="apprendimento.png" 
@@ -45,7 +45,7 @@
                             </Label>
                         </StackLayout>
                         <xfx:XfxCardView.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding VaiPaginaApprendimento}"/>
+                        <TapGestureRecognizer Command="{Binding VaiPaginaApprendimento}" NumberOfTapsRequired="1"/>
                         </xfx:XfxCardView.GestureRecognizers>
                     </xfx:XfxCardView>
                 </StackLayout>

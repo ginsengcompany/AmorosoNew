@@ -10,7 +10,7 @@
 
             <ScrollView>
                 <StackLayout>
-                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="150" Padding="5">
+                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="150" Padding="5" IsEnabled="{Binding IsEnabled}">
                         <StackLayout Orientation="Horizontal">
                             <Image x:Name="tapIconaSimulazione" 
                                    Source="simulazione.png" 
@@ -25,12 +25,12 @@
                             </StackLayout>
                         </StackLayout>
                         <xfx:XfxCardView.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding VaiSimulazione}"/>
+                            <TapGestureRecognizer Command="{Binding VaiSimulazione}" NumberOfTapsRequired="1"/>
                         </xfx:XfxCardView.GestureRecognizers>
                     </xfx:XfxCardView>
 
 
-                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="150" Padding="5">
+                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="150" Padding="5" IsEnabled="{Binding IsEnabled}">
                         <StackLayout Orientation="Horizontal">
                             <Image x:Name="tapIconaSimulazioneAssistita" 
                                    Source="simulazioneAssistita.png" 
@@ -46,7 +46,7 @@
                             </StackLayout>
                         </StackLayout>
                         <xfx:XfxCardView.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding VaiSimulazioneAssistita}"/>
+                            <TapGestureRecognizer Command="{Binding VaiSimulazioneAssistita}" NumberOfTapsRequired="1"/>
                         </xfx:XfxCardView.GestureRecognizers>
                     </xfx:XfxCardView>
 
