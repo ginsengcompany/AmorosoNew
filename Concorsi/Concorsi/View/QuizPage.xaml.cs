@@ -214,6 +214,7 @@ namespace Concorsi.View
         private async Task creaGriglia()
         {
             int index = 0;
+            bool flag = false;
             foreach(var quesito in listaDomande.quiz)
             {
                 Grid grid = new Grid();
@@ -234,6 +235,7 @@ namespace Concorsi.View
                 grid.Children.Add(quesiti, 0, 1);
                 if (quesito.tipo == "pdf")
                 {
+                    flag = true;
                     Button pdf = new Button
                     {
                         Text = "apri documento",
@@ -250,6 +252,7 @@ namespace Concorsi.View
                 }
                 else if (quesito.tipo == "img")
                 {
+                    flag = true;
                     var urlRisorsa = SingletonURL.Instance.getRotte().urlBase + quesito.link;
                     var urlProva = new System.Uri(urlRisorsa);
                     Task<ImageSource> result = Task<ImageSource>.Factory.StartNew(() => ImageSource.FromUri(urlProva));
@@ -259,13 +262,11 @@ namespace Concorsi.View
                     grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
                     grid.Children.Add(img, 0, 2);
                 }
-                if (string.IsNullOrEmpty(quesito.urlVideo) && simulazioneAssistita)
+                if (!string.IsNullOrEmpty(quesito.urlVideo) && simulazioneAssistita)
                 {
                     Button video = new Button
                     {
                         Text = "apri video",
-                        WidthRequest = 20,
-                        HeightRequest = 15,
                         BackgroundColor = Color.FromHex("#275B8C"),
                         TextColor = Color.White
 
@@ -275,7 +276,10 @@ namespace Concorsi.View
                         await Navigation.PushAsync(new VideolezioniPage(quesito.urlVideo));
                     };
                     grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
-                    grid.Children.Add(video, 0, 3);
+                    if(!flag)
+                        grid.Children.Add(video, 0, 2);
+                    else
+                        grid.Children.Add(video, 0, 3);
                 }
                 gridDomande.Add(grid);
                 index++;
