@@ -8,7 +8,7 @@
         <StackLayout>
             <syncfusion:SfBusyIndicator AnimationType="Gear" HorizontalOptions="Center" VerticalOptions="Center" IsBusy="{Binding IsBusy}" IsVisible="{Binding IsBusy}"  TextColor="#7DAA60" />
             <Picker ItemsSource="{Binding Piani}" Title="Seleziona Piano formativo" ItemDisplayBinding="{Binding pianoFormativo}" IsEnabled="{Binding IsVisible}" SelectedIndexChanged="Picker_SelectedIndexChanged"></Picker>
-            <ListView ItemsSource="{Binding ListaSetDomande}" HasUnevenRows="True" ItemTapped="ListView_OnItemTapped">
+            <ListView ItemsSource="{Binding ListaSetDomande}" HasUnevenRows="True" ItemTapped="ListView_OnItemTapped" IsEnabled="{Binding IsEnabled}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

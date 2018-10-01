@@ -1,11 +1,13 @@
 ﻿using Concorsi.Model;
 using Concorsi.Service;
+using Concorsi.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Concorsi.ModelView
 {
@@ -15,9 +17,18 @@ namespace Concorsi.ModelView
        private List<Set> listaSetDomande = new List<Set>();
        private bool isBusy = false;
        private bool isVisible = false;
+        private bool isEnabled = true;
 
        public event PropertyChangedEventHandler PropertyChanged;
-
+        public bool IsEnabled
+        {
+            get { return isEnabled; }
+            set
+            {
+                OnPropertyChanged();
+                isEnabled = value;
+            }
+        }
         public bool IsVisible
         {
             get { return isVisible; }
@@ -59,6 +70,7 @@ namespace Concorsi.ModelView
        {
             IsVisible = false;
             IsBusy = true;
+            IsEnabled = true;
            RicezionePianiFormativi();
        }
 
@@ -85,7 +97,14 @@ namespace Concorsi.ModelView
        {
            ListaSetDomande = pianoSelezionato.set;
        }
-       protected virtual void OnPropertyChanged([CallerMemberName] string name = "")
+        public async Task quizSet(Set set)
+        {
+            IsEnabled = false;
+            await App.Current.MainPage.Navigation.PushAsync(new SelezionaTipoSimulazione(set));
+            IsEnabled = true;
+
+        }
+        protected virtual void OnPropertyChanged([CallerMemberName] string name = "")
        {
            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
        }

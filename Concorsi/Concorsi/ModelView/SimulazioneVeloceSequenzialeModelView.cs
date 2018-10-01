@@ -8,6 +8,7 @@ using System.Text;
 using Concorsi.View;
 using Xamarin.Forms;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace Concorsi.ModelView
 {
@@ -19,6 +20,7 @@ namespace Concorsi.ModelView
         private bool isBusy = false;
         private SpeedQuiz quiz = new SpeedQuiz();
         int numeroDomande = 0;
+        private bool isEnabledList = true;
 
         private bool isEnabled, isEnabledMateria,visiblePacchetti = false;
 
@@ -28,7 +30,15 @@ namespace Concorsi.ModelView
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
-
+        public bool IsEnabledList
+        {
+            get { return isEnabledList; }
+            set
+            {
+                OnPropertyChanged();
+                isEnabledList = value;
+            }
+        }
         public bool IsBusy
         {
             get { return isBusy; }
@@ -121,6 +131,7 @@ namespace Concorsi.ModelView
 
         public void RicezioneConcorso(Concorso concorsoSelezionato)
         {
+            IsEnabledList = true;
             IsEnabledMateria = false;
             Pacchetti = new List<Pacchetti>();
             IsEnabled = true;
@@ -190,9 +201,12 @@ namespace Concorsi.ModelView
             quiz.materia = materiaSelezionata.materia;
         }
 
-        public async void VaiPaginaQuiz(Pacchetti pacchettoSelezionato)
+        public async Task VaiPaginaQuiz(Pacchetti pacchettoSelezionato)
         {
-          await  App.Current.MainPage.Navigation.PushAsync(new QuizPage(quiz, pacchettoSelezionato.domande));
+
+            IsEnabledList = false;
+            await  App.Current.MainPage.Navigation.PushAsync(new QuizPage(quiz, pacchettoSelezionato.domande));
+            IsEnabledList = true;
         }
     }
 }

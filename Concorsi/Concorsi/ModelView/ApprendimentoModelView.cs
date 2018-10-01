@@ -1,11 +1,13 @@
 ﻿using Concorsi.Model;
 using Concorsi.Service;
+using Concorsi.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Concorsi.ModelView
 {
@@ -16,6 +18,7 @@ namespace Concorsi.ModelView
 
         private bool isBusy = false;
         private bool isVisible = false;
+        private bool isEnabled = true;
         public event PropertyChangedEventHandler PropertyChanged;
 
         public List<PianiFormativi> Piani
@@ -24,6 +27,15 @@ namespace Concorsi.ModelView
             set {
                 OnPropertyChanged();
                 piani = value;
+            }
+        }
+        public bool IsEnabled
+        {
+            get { return isEnabled; }
+            set
+            {
+                OnPropertyChanged();
+                isEnabled = value;
             }
         }
         public bool IsVisible
@@ -55,6 +67,7 @@ namespace Concorsi.ModelView
         }
         public ApprendimentoModelView()
         {
+            IsEnabled = true;
             IsBusy = true;
             IsVisible = false;
             RicezionePianiFormativi();
@@ -81,6 +94,12 @@ namespace Concorsi.ModelView
         public async void PianoSelezionato(PianiFormativi pianoSelezionato)
         {
             ListaSetDomande = pianoSelezionato.set;
+        }
+        public async Task ApprendimentoDettagli(Set set)
+        {
+            IsEnabled = false;
+            App.Current.MainPage.Navigation.PushAsync(new ApprendimentoDetailsPage(set));
+            IsEnabled = true;
         }
         protected virtual void OnPropertyChanged([CallerMemberName] string name = "")
         {

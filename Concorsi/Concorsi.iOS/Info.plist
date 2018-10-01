@@ -34,9 +34,7 @@
 	<string>New Entry</string>
 	<key>CFBundleVersion</key>
 	<string>2.0</string>
-	<key>UIRequiresFullScreen</key>
-	<true/>
 	<key>XSLaunchImageAssets</key>
-	<string>Assets.xcassets/LaunchImage.launchimage</string>
+	<string>Assets.xcassets/LaunchImages.launchimage</string>
 </dict>
 </plist>
