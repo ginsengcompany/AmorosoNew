@@ -11,11 +11,14 @@
 
                 <Image x:Name="Calendario" Source="calendario.png"  HeightRequest="35"/>
 
-                <Picker Title="Seleziona data" ItemsSource="{Binding DateDisponibili}" ItemDisplayBinding="{Binding dataSessione}" SelectedIndexChanged="Picker_SelectedIndexChanged"></Picker>
+                <Picker Title="Seleziona data" ItemsSource="{Binding DateDisponibili}" 
+                        ItemDisplayBinding="{Binding dataSessione}" 
+                        SelectedIndexChanged="Picker_SelectedIndexChanged"
+                        IsEnabled="{Binding IsEnabled}"></Picker>
                 
             </StackLayout>
             <!--<ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"></ActivityIndicator>-->
-            <syncfusion:SfBusyIndicator AnimationType="Gear" HorizontalOptions="Center" VerticalOptions="Center" IsBusy="{Binding IsBusy}" TextColor="#7DAA60" />
+            <syncfusion:SfBusyIndicator AnimationType="Gear" HorizontalOptions="Center" VerticalOptions="Center" IsBusy="{Binding IsBusy}" IsVisible="{Binding IsBusy}" TextColor="#7DAA60" />
 
             <ListView HasUnevenRows="True" ItemsSource="{Binding SessioneDisponibile}" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
