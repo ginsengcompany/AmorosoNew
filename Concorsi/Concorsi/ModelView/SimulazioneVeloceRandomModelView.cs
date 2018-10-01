@@ -18,6 +18,7 @@ namespace Concorsi.ModelView
         private Concorso concorso = new Concorso();
         private Boolean isEnabled = false;
         private bool isBusy = false;
+        private bool isVisible = false;
         public ICommand avviaSimulazione { protected set; get; }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -26,7 +27,15 @@ namespace Concorsi.ModelView
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
-
+        public bool IsVisible
+        {
+            get { return isVisible; }
+            set
+            {
+                OnPropertyChanged();
+                isVisible = value;
+            }
+        }
         public bool IsBusy
         {
             get { return isBusy; }
@@ -62,6 +71,8 @@ namespace Concorsi.ModelView
         public SimulazioneVeloceRandomModelView()
         {
             IsEnabled = false;
+            IsVisible = false;
+            IsBusy = true;
             avviaSimulazione = new Command(async () =>
             {
                 if(concorso!=null)
@@ -86,6 +97,8 @@ namespace Concorsi.ModelView
             }
 
             IsEnabled = false;
+            IsVisible = true;
+            IsBusy = false;
         }
 
         public async void ConcorsoSelezionato(Concorso concorsoSelezionato)

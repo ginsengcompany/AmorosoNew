@@ -14,11 +14,20 @@ namespace Concorsi.ModelView
        private List<PianiFormativi> piani = new List<PianiFormativi>();
        private List<Set> listaSetDomande = new List<Set>();
        private bool isBusy = false;
+       private bool isVisible = false;
 
        public event PropertyChangedEventHandler PropertyChanged;
 
-
-       public bool IsBusy
+        public bool IsVisible
+        {
+            get { return isVisible; }
+            set
+            {
+                OnPropertyChanged();
+                isVisible = value;
+            }
+        }
+        public bool IsBusy
        {
            get { return isBusy; }
            set
@@ -48,6 +57,8 @@ namespace Concorsi.ModelView
        }
        public ModalitaClassicaPageModelView()
        {
+            IsVisible = false;
+            IsBusy = true;
            RicezionePianiFormativi();
        }
 
@@ -64,7 +75,10 @@ namespace Concorsi.ModelView
            else
            {
                Piani = response.message;
-           }
+
+                IsVisible = true;
+                IsBusy = false;
+            }
        }
 
        public async void PianoSelezionato(PianiFormativi pianoSelezionato)
