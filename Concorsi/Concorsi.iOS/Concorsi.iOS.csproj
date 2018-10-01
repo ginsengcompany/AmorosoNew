@@ -144,7 +144,31 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon87.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Default-568h@2x-640x1136.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Default-Landscape-1024x768.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Default-Landscape@2x-2048x1536.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Default-Portrait-768x1024.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Default-Portrait@2x-1536x2048.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Default@2x-640x960.png">
+      <Visible>false</Visible>
+    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\LaunchImages.launchimage\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\LaunchImages.launchimage\Default-568h@2x-640x1136.png">
@@ -163,10 +187,6 @@
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\LaunchImages.launchimage\Default@2x-640x960.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
   </ItemGroup>
@@ -407,5 +427,23 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\quizRandomIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Default-Portrait%402x-1536x2048.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Default-Portrait-768x1024.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Default%402x-640x960.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Default-568h%402x-640x1136.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Default-Landscape%402x-2048x1536.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Default-Landscape-1024x768.png" />
   </ItemGroup>
 </Project>
