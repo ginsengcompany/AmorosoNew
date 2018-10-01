@@ -95,6 +95,8 @@ namespace Concorsi.ModelView
         // Costruttore del ModelView che inizializza le variabili fondamentali per il corretto funzionamento della pagina di login (sia Android che IOS).
         public CronologiaModelView(CronologiaPage cronologiaPage)
         {
+            IsBusy = true;
+            IsEnabled = false;
             connessioneCronologia();
         }
 
@@ -116,6 +118,8 @@ namespace Concorsi.ModelView
             else
                 DateDisponibili = response.message;
 
+            IsBusy = false;
+            IsEnabled = true;
 
         }
 
