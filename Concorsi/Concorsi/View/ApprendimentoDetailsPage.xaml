@@ -17,7 +17,7 @@
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" x:Name="StackHistoryDomande">
            <!-- <ActivityIndicator  HorizontalOptions="Center" VerticalOptions="Center" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsVisible}"/>-->
-            <syncfusion:SfBusyIndicator AnimationType="Gear" HorizontalOptions="Center" VerticalOptions="Center" IsBusy="{Binding IsBusy}" TextColor="#7DAA60" />
+            <syncfusion:SfBusyIndicator AnimationType="Gear" HorizontalOptions="Center" VerticalOptions="Center" IsBusy="{Binding IsBusy}" IsVisible="{Binding IsVisible}"  TextColor="#7DAA60" />
             <ListView x:Name="lstApprendimento" CachingStrategy="RecycleElement" HasUnevenRows="True" SeparatorColor="Black" IsVisible="True" ItemsSource="{Binding ListaDomande}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
