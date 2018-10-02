@@ -2,6 +2,7 @@
 using Concorsi.View;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -9,6 +10,7 @@ namespace Concorsi.ModelView
 {
     public class MainPageModelView : INotifyPropertyChanged
     {
+        private bool isEnabled = true;
         private string testoEsercitazione, testoRisultati, testoStatistiche, testoLezioni;
         public ICommand effettuaLogout { protected set; get; }
         public ICommand visualizzaInfo { protected set; get; }
@@ -40,6 +42,16 @@ namespace Concorsi.ModelView
                 return testoEsercitazione;
             }
 
+        }
+
+        public bool IsEnabled
+        {
+            get { return isEnabled; }
+            set
+            {
+                OnPropertyChanged();
+                isEnabled = value;
+            }
         }
 
 
@@ -82,6 +94,7 @@ namespace Concorsi.ModelView
 
         public MainPageModelView(MainPage mainPage, Utente utente)
         {
+            IsEnabled = true;
             effettuaLogout = new Command(async () =>
             {
                 await utente.Logout();
@@ -92,26 +105,6 @@ namespace Concorsi.ModelView
                 await App.Current.MainPage.Navigation.PushAsync(new InfoPage());
             });
 
-            VaiPaginaCronologiaStatistiche = new Command(async () =>
-            {
-                await App.Current.MainPage.Navigation.PushAsync(new Statistiche());
-            });
-
-            VaiPaginaLezioni = new Command(async () =>
-            {
-                await App.Current.MainPage.Navigation.PushAsync(new SezioneLezioniPage());// era listamaterie videolezioni
-            });
-
-            VaiPaginaCronologia = new Command(async () =>
-            {
-                await App.Current.MainPage.Navigation.PushAsync(new CronologiaPage());
-            });
-
-            VaiPaginaSelezioneModalitaQuiz = new Command(async () =>
-            {
-                await App.Current.MainPage.Navigation.PushAsync(new SelezionaModalitaQuizPage());
-            });
-
             TestoEsercitazione = "Accedi alla sezione dedicata alle Esercitazioni. Potrai cimentarti nell'" +
                 "esecuzione della Simulazione d'esame in Modalità Classica o in Modalità Assistita!"; 
             TestoRisultati = "Visualizza i risultati ottenuti durante le esercitazioni e valuta la tua preparazione.";
@@ -119,6 +112,24 @@ namespace Concorsi.ModelView
                 "valutare il tuo tasso di successo!";
             TestoLezioni = "Migliora la tua preparazione grazie alle videolezioni " +
                 "tenute dai nostri docenti esperti ed accedendo alla nostra vasta banca dati dedicata al tuo piano di studi.";
+        }
+
+        public async Task SceltaCard(string cardselezionata)
+        {
+            if (IsEnabled)
+            {
+                IsEnabled = false;
+                if (cardselezionata == "Esercitazione")
+                    await App.Current.MainPage.Navigation.PushAsync(new SelezionaModalitaQuizPage());
+                else if (cardselezionata == "Lezione")
+                    await App.Current.MainPage.Navigation.PushAsync(new SezioneLezioniPage());// era listamaterie videolezioni
+                else if (cardselezionata == "Cronologia")
+                    await App.Current.MainPage.Navigation.PushAsync(new CronologiaPage());
+                else if (cardselezionata == "Statistiche")
+                    await App.Current.MainPage.Navigation.PushAsync(new Statistiche());
+                IsEnabled = true;
+            }
+          
         }
     }
 }

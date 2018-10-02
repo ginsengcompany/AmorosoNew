@@ -73,12 +73,13 @@ namespace Concorsi.ModelView
             IsEnabled = false;
             IsVisible = false;
             IsBusy = true;
+            RicezioneConcorsiMaterie();
             avviaSimulazione = new Command(async () =>
             {
                 if(concorso!=null)
                     await App.Current.MainPage.Navigation.PushAsync(new QuizPage(concorso));
             });
-        RicezioneConcorsiMaterie();
+        
         }
 
         private async void RicezioneConcorsiMaterie()
@@ -94,11 +95,12 @@ namespace Concorsi.ModelView
             else
             {
                 ListaConcorsi = response.message;
+                IsEnabled = false;
+                IsVisible = true;
+                IsBusy = false;
             }
 
-            IsEnabled = false;
-            IsVisible = true;
-            IsBusy = false;
+          
         }
 
         public async void ConcorsoSelezionato(Concorso concorsoSelezionato)

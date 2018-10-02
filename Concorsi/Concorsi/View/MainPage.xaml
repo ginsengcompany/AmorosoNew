@@ -26,7 +26,7 @@
         <StackLayout>
             <ScrollView>
                 <StackLayout Margin="10">
-                    <xfx:XfxCardView ClassId="Esercitazione" CornerRadius="20" Elevation="10" HeightRequest="180" Padding="5">
+                    <xfx:XfxCardView ClassId="Esercitazione" CornerRadius="20" Elevation="10" HeightRequest="180" Padding="5" IsEnabled="{Binding IsEnabled}">
                         <StackLayout Orientation="Horizontal">
                             <Image x:Name="tapIconaEsercitazione" 
                                    Source="esercitazione.png" 
@@ -41,10 +41,10 @@
                             </Label>
                         </StackLayout>
                         <xfx:XfxCardView.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"/>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped" NumberOfTapsRequired="1"/>
                                 </xfx:XfxCardView.GestureRecognizers></xfx:XfxCardView>
 
-                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180" Padding="5">
+                    <xfx:XfxCardView ClassId="Lezione" CornerRadius="20" Elevation="10" HeightRequest="180" Padding="5" IsEnabled="{Binding IsEnabled}">
                         <StackLayout Orientation="Horizontal">
                             <Image x:Name="tapIconaVideolezioni" 
                                    Source="lezioni.png" 
@@ -58,11 +58,11 @@
                             </Label>
                         </StackLayout>
                         <xfx:XfxCardView.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding VaiPaginaLezioni}"/>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped" NumberOfTapsRequired="1"/>
                         </xfx:XfxCardView.GestureRecognizers>
                     </xfx:XfxCardView>
 
-                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180" Padding="5">
+                    <xfx:XfxCardView ClassId="Cronologia" CornerRadius="20" Elevation="10" HeightRequest="180" Padding="5" IsEnabled="{Binding IsEnabled}">
                         <StackLayout Orientation="Horizontal">
                             <Image x:Name="tapIconaRisultati" 
                                            Source="risultati.png" 
@@ -77,10 +77,10 @@
                             </Label>
                         </StackLayout>
                         <xfx:XfxCardView.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding VaiPaginaCronologia}"/>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped" NumberOfTapsRequired="1"/>
                         </xfx:XfxCardView.GestureRecognizers>
                         </xfx:XfxCardView>
-                    <xfx:XfxCardView CornerRadius="20" Elevation="10" HeightRequest="180" Padding="5" >
+                    <xfx:XfxCardView ClassId="Statistiche" CornerRadius="20" Elevation="10" HeightRequest="180" Padding="5" IsEnabled="{Binding IsEnabled}">
                         <StackLayout Orientation="Horizontal">
                             <Image x:Name="tapIconaStatistiche" 
                                            Source="statistiche.png" 
@@ -94,7 +94,7 @@
                             </Label>
                         </StackLayout>
                         <xfx:XfxCardView.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding VaiPaginaCronologiaStatistiche}" NumberOfTapsRequired="1"/>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped" NumberOfTapsRequired="1"/>
                         </xfx:XfxCardView.GestureRecognizers>
                         </xfx:XfxCardView>
 

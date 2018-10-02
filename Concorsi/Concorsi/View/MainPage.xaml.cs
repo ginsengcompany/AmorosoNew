@@ -22,11 +22,11 @@ namespace Concorsi
             BindingContext = z; //Questa pagina utilizza l'MWWM ed effettua il binding con la classe LoginModelView
         }
 
-        private void TapGestureRecognizer_OnTapped(object sender, EventArgs e)
+        private async void TapGestureRecognizer_OnTapped(object sender, EventArgs e)
         {
             XfxCardView card = (XfxCardView) sender;
-            card.Equals("Esercitazione");
             var x=card.ClassId;
+           await z.SceltaCard(x);
         }
     }
 }
