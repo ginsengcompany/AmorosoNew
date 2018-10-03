@@ -23,7 +23,7 @@ namespace Concorsi.ModelView
             set
             {
                 OnPropertyChanged();
-                IsEnabled = value;
+                isEnabled = value;
             }
         }
         #region OnPropertyChange
@@ -40,9 +40,9 @@ namespace Concorsi.ModelView
             IsEnabled = true;
             VaiSimulazioneAssistita = new Command(async () =>
             {
-                if (isEnabled)
+                if (IsEnabled)
                 {
-                    isEnabled = false;
+                    IsEnabled = false;
                     await App.Current.MainPage.Navigation.PushAsync(new QuizPage(set, true));
                     IsEnabled = true;
                 }
@@ -50,9 +50,9 @@ namespace Concorsi.ModelView
 
             VaiSimulazione = new Command(async () =>
             {
-                if (isEnabled)
+                if (IsEnabled)
                 {
-                    isEnabled = false;
+                    IsEnabled = false;
                     await App.Current.MainPage.Navigation.PushAsync(new QuizPage(set, false));
                     IsEnabled = true;
                 }
