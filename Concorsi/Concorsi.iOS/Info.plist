@@ -23,7 +23,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>it.gesan.QuizAmoroso</string>
 	<key>UILaunchStoryboardName</key>
-	<string>(non impostato)</string>
+	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
 	<string>Concorsi</string>
 	<key>XSAppIconAssets</key>
@@ -34,9 +34,9 @@
 	<string>New Entry</string>
 	<key>CFBundleVersion</key>
 	<string>2.0</string>
-	<key>XSLaunchImageAssets</key>
-	<string>Assets.xcassets/LaunchImages.launchimage</string>
 	<key>CFBundleShortVersionString</key>
 	<string>9</string>
+	<key>XSLaunchImageAssets</key>
+	<string>Assets.xcassets/LaunchImage.launchimage</string>
 </dict>
 </plist>
