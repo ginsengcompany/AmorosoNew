@@ -182,7 +182,7 @@ namespace Concorsi.View
         {
             tempodomanda.ResetTempo();
             tempodomanda.RestartTempo();
-            
+            Title = "Domanda: " + (posizioneCorrente + 1) + "/" + listaDomande.quiz.Count;
             if (posizioneCorrente == 0)
                 btnIndietro.IsVisible = false;
             else
@@ -191,7 +191,6 @@ namespace Concorsi.View
             btnAvanti.Clicked -= ButtonClickedAvanti;
             if (posizioneCorrente < listaDomande.quiz.Count - 1)
             {
-                Title = "Domanda: " + (posizioneCorrente + 1) + "/" + listaDomande.quiz.Count;
                 btnAvanti.Text = "Avanti";
                 btnAvanti.Clicked += ButtonClickedAvanti;
             }
