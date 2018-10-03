@@ -182,7 +182,7 @@ namespace Concorsi.View
         {
             tempodomanda.ResetTempo();
             tempodomanda.RestartTempo();
-            Title = "Domanda: " + (posizioneCorrente + 1) + "/" + listaDomande.quiz.Count;
+            
             if (posizioneCorrente == 0)
                 btnIndietro.IsVisible = false;
             else
@@ -191,6 +191,7 @@ namespace Concorsi.View
             btnAvanti.Clicked -= ButtonClickedAvanti;
             if (posizioneCorrente < listaDomande.quiz.Count - 1)
             {
+                Title = "Domanda: " + (posizioneCorrente + 1) + "/" + listaDomande.quiz.Count;
                 btnAvanti.Text = "Avanti";
                 btnAvanti.Clicked += ButtonClickedAvanti;
             }
@@ -341,8 +342,7 @@ namespace Concorsi.View
                     {
                         lettera.BackgroundColor = Color.DarkBlue;
                         detalies.FontAttributes = FontAttributes.Bold;
-                        posizioneCorrente++;
-                        await avanti();
+                        await SimulazioneClick(grid, risposta);
                     }
                 };               
                 grid.Children.Add(lettera, 0, i);
@@ -399,8 +399,22 @@ namespace Concorsi.View
                 }
             }
         }
+        private async Task SimulazioneClick(Grid grid, String risposta)
+        {
+            Label label = new Label();
+            Button button = new Button();
+            foreach (var y in grid.Children)
+            {
+                if (y.GetType() == button.GetType())
+                {
+                    y.IsEnabled = false;
+                }
+            }
+            posizioneCorrente++;
+            await avanti();
+        }
 
-        private void MenuItem_OnClicked(object sender, EventArgs e)
+            private void MenuItem_OnClicked(object sender, EventArgs e)
         {
             FineQuiz();
         }
