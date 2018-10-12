@@ -15,9 +15,13 @@ namespace Concorsi.View
          * l'utente che utilizza l'applicazione(Avendo opportunamente attivato il servizio di geolocalizzazione), 
          * e le label di informazioni.
          **/
-        public InfoPage()
+        public InfoPage(Utente utente)
         {
             InitializeComponent();
+            labelReminder.Text = "Gentile " + utente.nome + " ti invitiamo ad effettuare l'operazione di Logout " +
+                "al termine dell'utilizzo dell'applicazione.";
+            labelReminder.Style = Device.Styles.BodyStyle;
+            labelReminder.TextColor = Color.FromHex("1b2776");
             labelLuogo.FormattedText = "Viale Italia n° 53" + "\n" + "San Nicola La Strada (CE)";
           //  labelBenvenuto.FormattedText = GestioneUtente.Instance.getNomeDiBattesimo;
            // LabelInformazioneLog.Text = " Sei connesso con il dispositivo " + GestioneUtente.Instance.getDevDescrizione;

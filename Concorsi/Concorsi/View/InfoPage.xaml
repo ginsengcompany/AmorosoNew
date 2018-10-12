@@ -89,8 +89,11 @@
                     </Grid>
                 </StackLayout>
                 </ScrollView>
+            <StackLayout VerticalOptions="EndAndExpand" Padding="5">
+                <Label x:Name ="labelReminder"  HorizontalOptions="CenterAndExpand"/>
 
-                <StackLayout VerticalOptions="EndAndExpand">
+            </StackLayout>
+            <StackLayout VerticalOptions="EndAndExpand">
                     <StackLayout HorizontalOptions="StartAndExpand"></StackLayout>
                     <Frame>
                         <Frame.BackgroundColor>

@@ -102,7 +102,7 @@ namespace Concorsi.ModelView
 
             visualizzaInfo = new Command(async () =>
             {
-                await App.Current.MainPage.Navigation.PushAsync(new InfoPage());
+                await App.Current.MainPage.Navigation.PushAsync(new InfoPage(utente));
             });
 
             TestoEsercitazione = "Accedi alla sezione dedicata alle Esercitazioni. Potrai cimentarti nell'" +
