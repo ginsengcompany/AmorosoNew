@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="26" android:versionName="2.0.3" package="com.Ak12.AmorosoConcorsi" android:installLocation="auto">
-	<uses-sdk android:minSdkVersion="21" android:largeHeap="true" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="28" android:versionName="2.0.5" package="com.Ak12.AmorosoConcorsi" android:installLocation="auto">
+	<uses-sdk android:minSdkVersion="21" android:largeHeap="true" android:targetSdkVersion="27" />
 	<uses-feature android:glEsVersion="0x00020000" android:required="true" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	<application android:label="Amoroso Concorsi" android:icon="@drawable/icon"></application>
